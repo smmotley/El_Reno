@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!--   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script> -->
+    <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+    <script src="./mapbox-gl.min.js"></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
+    <link href="elreno.css" rel="stylesheet" />
+</head>
+<body>
+
+
+<div class='map' id="mapL"></div>
+<div class='map' id="mapR"></div>
+<pre id='info'></pre>
+
+<div class='map-overlay top'>
+    <div class='map-overlay-inner'>
+        <h2>El Reno Tornado</h2>
+        <label id='timeStamps'></label>
+        <div>
+        <i class="forward_arrow"></i></p>
+        <input id='slider' type='range' min='0' max='11' step='1' value='0' />
+        <i class="back_arrow"></i></p></div>
+        <button id='pause'></button>
+    </div>
+    <div class='map-overlay-inner'>
+        <div id='legend' class='legend'>
+            <div class='bar'></div>
+            <div>Magnitude (m)</div>
+        </div>
+    </div>
+</div>
+
+<script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js" charset="utf-8"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
+
+
+<!--<script src="../Playground/lib/grid/lodash.js" charset="utf-8"></script> -->
+
+<script type="module" src="app.js"></script>
+
+
+</body>
+</html>
