@@ -22,6 +22,37 @@ let animationId, lastFrame = 0, lastDraw = 0;
 const radarImageCache = new Map();
 let volumeViewer, volumeLoadVersion=0;
 let activeVolumeMarkers=new Map();
+const volumePanelNames={position:'Position controls',radar:'Radar controls',source:'Radar source',scan:'Scan information',legend:'Color legend',guide:'Guide'};
+const compactVolumePanels=window.matchMedia('(max-width:850px)');
+const volumePanelStorageKey=()=>compactVolumePanels.matches?'elreno.volumePanels.mobile.v1':'elreno.volumePanels.v1';
+function setVolumePanel(id,minimized,{focus=false,save=true}={}) {
+  const panel=document.querySelector('[data-volume-panel="'+id+'"]'),button=document.querySelector('[data-toggle-panel="'+id+'"]');
+  if(!panel||!button)return;
+  if(!panel.id)panel.id='volume-panel-'+id;
+  button.setAttribute('aria-controls',panel.id);
+  panel.classList.toggle('is-minimized',minimized);
+  button.setAttribute('aria-expanded',String(!minimized));
+  button.setAttribute('aria-label',(minimized?'Show ':'Minimize ')+volumePanelNames[id]);
+  if(focus)button.focus({preventScroll:true});
+  if(save)try{localStorage.setItem(volumePanelStorageKey(),JSON.stringify(Object.fromEntries(Object.keys(volumePanelNames).map(key=>[key,document.querySelector('[data-volume-panel="'+key+'"]').classList.contains('is-minimized')]))));}catch{}
+}
+function restoreVolumePanels() {
+  let saved={};try{saved=JSON.parse(localStorage.getItem(volumePanelStorageKey()))||{};}catch{}
+  let opened=false;
+  for(const id of Object.keys(volumePanelNames)){
+    let minimized=typeof saved[id]==='boolean'?saved[id]:(compactVolumePanels.matches||id==='guide');
+    if(compactVolumePanels.matches&&!minimized){minimized=opened;opened=true;}
+    setVolumePanel(id,minimized,{save:false});
+  }
+}
+function updateVolumeViewUI(view) {
+  const directions=['N','NE','E','SE','S','SW','W','NW'],bearing=((view.bearingDegrees%360)+360)%360;
+  $('volume-view-state').textContent='Looking '+directions[Math.round(bearing/45)%8]+' · '+Math.round(bearing)+'° · tilt '+Math.round(view.tiltDegrees)+'°';
+  $('volume-zoom-value').textContent=view.zoomRatio.toFixed(view.zoomRatio<10?1:0)+'×';
+  const closest=view.distanceKm<=view.limits.minDistanceKm+.001;
+  $('volume-zoom-note').textContent=(closest?'Closest view · ':view.distanceKm.toFixed(1)+' km to view center · ')+'Shift-drag to move';
+  for(const button of document.querySelectorAll('[data-camera-zoom]'))button.disabled=Number(button.dataset.cameraZoom)>1?closest:view.distanceKm>=view.limits.maxDistanceKm-.001;
+}
 const featuredChasers = {
   'survey-holcomb': {name:'Ben Holcomb',color:'#ffb454'},
   'survey-sullivan': {name:'Brandon Sullivan',color:'#ff7fa5'},
@@ -58,7 +89,9 @@ async function enterVolumeMode() {
     if(version!==volumeLoadVersion)return;
     const {AirVolumeViewer}=await import('./js/air-volume-viewer.js');
     if(version!==volumeLoadVersion)return;
-    if(!volumeViewer)volumeViewer=new AirVolumeViewer($('volume-canvas'),{onMarkerSelect:selected=>{
+    if(!volumeViewer)volumeViewer=new AirVolumeViewer($('volume-canvas'),{onViewChange:updateVolumeViewUI,onLabelsChange:({hiddenCount})=>{
+      $('volume-restore-labels').hidden=!hiddenCount;$('volume-restore-labels').textContent='Restore names ('+hiddenCount+')';
+    },onMarkerSelect:selected=>{
       const marker=activeVolumeMarkers.get(selected.id);if(marker)toast(marker.description);
     },onStatus:status=>{
       $('volume-load-status').textContent=status.message;
@@ -98,6 +131,7 @@ function updateVolumeSurface(car) {
   volumeViewer?.setMarkers(markers);
   $('volume-marker-count').textContent=state.volumeSurface?(markers.some(m=>m.kind==='suv')?'Our SUV · ':'')+markers.filter(m=>m.kind==='chaser').length+' survey chasers':'Surface hidden';
   $('volume-focus').disabled=!activeVolumeMarkers.has('smotley');
+  for(const button of document.querySelectorAll('[data-camera-action="focus"]'))button.disabled=!activeVolumeMarkers.has('smotley');
 }
 function velocityNote() {
   return state.radarSource==='air'
@@ -586,6 +620,21 @@ function buildVideos() {
   });
 }
 function bindControls() {
+  restoreVolumePanels();compactVolumePanels.addEventListener('change',restoreVolumePanels);
+  for(const button of document.querySelectorAll('[data-minimize-panel]'))button.addEventListener('click',()=>setVolumePanel(button.dataset.minimizePanel,true,{focus:true}));
+  for(const button of document.querySelectorAll('[data-toggle-panel]'))button.addEventListener('click',()=>{
+    const id=button.dataset.togglePanel,open=document.querySelector('[data-volume-panel="'+id+'"]').classList.contains('is-minimized');
+    if(open&&compactVolumePanels.matches)for(const other of Object.keys(volumePanelNames))if(other!==id)setVolumePanel(other,true);
+    setVolumePanel(id,!open);
+  });
+  $('volume-minimize-all').addEventListener('click',()=>{for(const id of Object.keys(volumePanelNames))setVolumePanel(id,true);});
+  $('volume-restore-labels').addEventListener('click',()=>volumeViewer?.restoreLabels());
+  $('volume-axes').addEventListener('change',e=>volumeViewer?.setAxisLabelsVisible(e.target.checked));
+  for(const button of document.querySelectorAll('[data-camera-view]'))button.addEventListener('click',()=>volumeViewer?.setViewPreset(button.dataset.cameraView));
+  for(const button of document.querySelectorAll('[data-camera-pan]'))button.addEventListener('click',()=>volumeViewer?.panView(...button.dataset.cameraPan.split(',').map(Number)));
+  for(const button of document.querySelectorAll('[data-camera-rotate]'))button.addEventListener('click',()=>volumeViewer?.rotateView(...button.dataset.cameraRotate.split(',').map(Number)));
+  for(const button of document.querySelectorAll('[data-camera-zoom]'))button.addEventListener('click',()=>volumeViewer?.zoomView(Number(button.dataset.cameraZoom)));
+  for(const button of document.querySelectorAll('[data-camera-action]'))button.addEventListener('click',()=>button.dataset.cameraAction==='reset'?volumeViewer?.resetView():volumeViewer?.focusMarker('smotley'));
   document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
   for(const layer of Object.keys(state.visible)){
     $('layer-'+layer).addEventListener('change',e=>{
@@ -604,7 +653,6 @@ function bindControls() {
   $('view-single').addEventListener('click',()=>{volumeLoadVersion++;toggleCompare(false);});$('view-compare').addEventListener('click',()=>{volumeLoadVersion++;toggleCompare(true);});
   $('view-volume').addEventListener('click',enterVolumeMode);
   $('view-volume').disabled=false;
-  $('volume-reset').addEventListener('click',()=>volumeViewer?.resetView());
   $('volume-surface').addEventListener('change',e=>{state.volumeSurface=e.target.checked;render();});
   $('volume-focus').addEventListener('click',()=>volumeViewer?.focusMarker('smotley'));
   $('volume-threshold').addEventListener('input',e=>{

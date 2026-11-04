@@ -1,7 +1,8 @@
 /**
  * Measured AIR reflectivity rendered as a metric Cartesian volume. Import is
  * safe without a DOM; browser resources are acquired only by the constructor.
- * Coordinates are east/north/meters MSL, with no vertical exaggeration.
+ * Manifest bounds are meters; rendering and surface annotations use kilometers
+ * east/north/MSL on every axis, with no vertical exaggeration.
  */
 const VERTEX = `#version 300 es
 in vec2 position;
@@ -104,6 +105,8 @@ void main(){
 }`;
 const DEFAULT_STOPS = [[-10,'#334c68'],[0,'#487aa0'],[10,'#42b66b'],[20,'#20b83b'],[30,'#b6d938'],[40,'#ffd941'],[50,'#ee7834'],[60,'#d52f40'],[70,'#ba66d4'],[80,'#f0d7f4']];
 const clamp = (n,a,b) => Math.min(b,Math.max(a,n));
+const DEG = Math.PI/180;
+const CAMERA_LIMITS = {minDistanceKm:2,maxDistanceRatio:3.5,minTiltDegrees:5,maxTiltDegrees:89,clearanceKm:.05};
 const subtract = (a,b) => a.map((v,i)=>v-b[i]);
 const dot = (a,b) => a.reduce((sum,v,i)=>sum+v*b[i],0);
 const normalize = a => {const length=Math.hypot(...a);return a.map(v=>v/length);};
@@ -137,14 +140,15 @@ function compile(gl,type,source) {
  * renderer retains at most three decoded arrays and one GPU volume texture.
  */
 export class AirVolumeViewer {
-  constructor(container,{onStatus,onMarkerSelect}={}) {
+  constructor(container,{onStatus,onMarkerSelect,onViewChange,onLabelsChange}={}) {
     if(!container?.appendChild)throw new TypeError('A browser container is required for the radar viewer.');
-    this.container=container;this.onStatus=onStatus;this.onMarkerSelect=onMarkerSelect;this.supported=false;
+    this.container=container;this.onStatus=onStatus;this.onMarkerSelect=onMarkerSelect;this.onViewChange=onViewChange;this.onLabelsChange=onLabelsChange;this.supported=false;
     this.active=true;this.destroyed=false;this.opacity=.72;this.threshold=30;
     this._cache=new Map();this._pointers=new Map();this._listeners=[];this._generation=0;
     this._ready=false;this._key=null;this._pending=null;this._desired=null;this._raf=0;this._empty=false;this._emptyMessage=null;
     this._surface=null;this._terrain=null;this._terrainCount=0;this._roads=[];this._markers=[];this._markerHits=[];
-    this.yaw=-.3;this.pitch=.4;this.zoom=1;this._pan=[0,0,0];
+    this._hiddenLabels=new Set();this._labelButtons=new Map();this._axisLabelsVisible=true;this._lastViewState=null;this._lastLabelsState=null;
+    this.yaw=0;this.pitch=.4;this.zoom=1;this._pan=[0,0,0];
     this._oldPosition=container.style.position;
     if(getComputedStyle(container).position==='static')container.style.position='relative';
     this.element=document.createElement('div');
@@ -155,9 +159,11 @@ export class AirVolumeViewer {
     Object.assign(this.canvas.style,{display:'block',width:'100%',height:'100%',touchAction:'none',cursor:'grab',outlineOffset:'-3px'});
     this.labels=document.createElement('canvas');this.labels.setAttribute('aria-hidden','true');
     Object.assign(this.labels.style,{position:'absolute',inset:'0',width:'100%',height:'100%',pointerEvents:'none'});
+    this.labelControls=document.createElement('div');
+    Object.assign(this.labelControls.style,{position:'absolute',inset:'0',pointerEvents:'none'});
     this.message=document.createElement('div');
     Object.assign(this.message.style,{position:'absolute',inset:'40% 14% auto',textAlign:'center',font:'13px/1.6 system-ui,sans-serif',color:'#d3dfcc',pointerEvents:'none',textShadow:'0 1px 4px #000'});
-    this.element.append(this.canvas,this.labels,this.message);container.append(this.element);
+    this.element.append(this.canvas,this.labels,this.labelControls,this.message);container.append(this.element);
     try {
       this.gl=this.canvas.getContext('webgl2',{alpha:false,antialias:false,depth:false,stencil:false,preserveDrawingBuffer:false});
       if(!this.gl)throw new Error('WebGL 2 is unavailable.');
@@ -273,13 +279,14 @@ export class AirVolumeViewer {
     this._surface=surface??null;
     this._roads=(surface?.roads??[]).filter(road=>Array.isArray(road.points)&&road.points.length>=2);
     if(terrain!==this._terrain){this._terrain=terrain;this._terrainCount=0;if(terrain&&this.supported)this._uploadTerrain(terrain);}
-    this._schedule();
+    this._viewChanged();
   }
 
   /** Foreground annotations; x east, y north, z MSL, all in kilometers. */
   setMarkers(markers) {
     if(this.destroyed)return;
     this._markers=(Array.isArray(markers)?markers:[]).filter(m=>m&&[m.x,m.y,m.z].every(Number.isFinite)).map(m=>({...m,opacity:Number.isFinite(m.opacity)?clamp(m.opacity,0,1):1,priority:Number.isFinite(m.priority)?m.priority:m.kind==='suv'?3:1,color:/^#[a-f0-9]{6}$/i.test(m.color??'')?m.color:m.kind==='suv'?'#a4ada9':'#8eb5bc'}));
+    this._emitLabelsChange();
     this._schedule();
   }
 
@@ -317,42 +324,41 @@ export class AirVolumeViewer {
       this._pointers.set(event.pointerId,next);
       if(this._pointers.size===1){
         if(event.shiftKey)this._panPixels(next[0]-old[0],next[1]-old[1]);
-        else{this.yaw-=(next[0]-old[0])*.007;this.pitch=clamp(this.pitch+(next[1]-old[1])*.007,.12,1.48);}
+        else{this.yaw-=(next[0]-old[0])*.007;this.pitch+=(next[1]-old[1])*.007;}
       }
       else {
         const after=[...this._pointers.values()];
         const previousDistance=Math.hypot(before[0][0]-before[1][0],before[0][1]-before[1][1]);
         const nextDistance=Math.hypot(after[0][0]-after[1][0],after[0][1]-after[1][1]);
-        if(previousDistance>5&&nextDistance>5)this.zoom=clamp(this.zoom*previousDistance/nextDistance,.38,3.5);
+        if(previousDistance>5&&nextDistance>5)this.zoom*=previousDistance/nextDistance;
         this._panPixels((after[0][0]+after[1][0]-before[0][0]-before[1][0])/2,(after[0][1]+after[1][1]-before[0][1]-before[1][1])/2);
       }
-      this._schedule();event.preventDefault();
+      this._viewChanged();event.preventDefault();
     });
     const release=event=>{
-      if(event.type==='pointerup'&&this._clickStart?.id===event.pointerId){const hit=this._markerAtEvent(event);if(hit)this.onMarkerSelect?.(hit.marker);}
+      if(event.type==='pointerup'&&this._clickStart?.id===event.pointerId&&Math.hypot(event.clientX-this._clickStart.x,event.clientY-this._clickStart.y)<=5){const hit=this._markerAtEvent(event);if(hit){this.showLabel(hit.marker.id);this.onMarkerSelect?.(hit.marker);}}
       this._clickStart=null;this._pointers.delete(event.pointerId);if(!this._pointers.size)this.canvas.style.cursor='grab';
     };
     this._listen(this.canvas,'pointerup',release);this._listen(this.canvas,'pointercancel',release);this._listen(this.canvas,'lostpointercapture',release);
     this._listen(this.canvas,'wheel',event=>{
       const amount=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?this._height:1);
-      this.zoom=clamp(this.zoom*Math.exp(clamp(amount,-400,400)*.0015),.38,3.5);this._schedule();event.preventDefault();
+      this.zoomView(Math.exp(-clamp(amount,-400,400)*.0015));event.preventDefault();
     },{passive:false});
     this._listen(this.canvas,'keydown',event=>{
       if(event.altKey||event.ctrlKey||event.metaKey)return;
       if(event.shiftKey&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)){
-        this._panPixels(event.key==='ArrowLeft'?-24:event.key==='ArrowRight'?24:0,event.key==='ArrowUp'?-24:event.key==='ArrowDown'?24:0);
-        this._schedule();event.preventDefault();event.stopPropagation();return;
+        this.panView(event.key==='ArrowLeft'?-24:event.key==='ArrowRight'?24:0,event.key==='ArrowUp'?-24:event.key==='ArrowDown'?24:0);
+        event.preventDefault();event.stopPropagation();return;
       }
-      const angle=.08;
-      if(event.key==='ArrowLeft')this.yaw+=angle;
-      else if(event.key==='ArrowRight')this.yaw-=angle;
-      else if(event.key==='ArrowUp')this.pitch=clamp(this.pitch+angle,.12,1.48);
-      else if(event.key==='ArrowDown')this.pitch=clamp(this.pitch-angle,.12,1.48);
-      else if(event.key==='+'||event.key==='=')this.zoom=clamp(this.zoom*.88,.38,3.5);
-      else if(event.key==='-'||event.key==='_')this.zoom=clamp(this.zoom/ .88,.38,3.5);
+      if(event.key==='ArrowLeft')this.rotateView(-5,0);
+      else if(event.key==='ArrowRight')this.rotateView(5,0);
+      else if(event.key==='ArrowUp')this.rotateView(0,5);
+      else if(event.key==='ArrowDown')this.rotateView(0,-5);
+      else if(event.key==='+'||event.key==='=')this.zoomView(1/.88);
+      else if(event.key==='-'||event.key==='_')this.zoomView(.88);
       else if(event.key==='Home'){this.resetView();event.preventDefault();event.stopPropagation();return;}
       else return;
-      this._schedule();event.preventDefault();event.stopPropagation();
+      event.preventDefault();event.stopPropagation();
     });
   }
 
@@ -380,6 +386,7 @@ export class AirVolumeViewer {
     }
     if(key===this._key)return this._pending??this._ready;
     this._key=key;this._ready=false;this._grid=grid;
+    this._viewChanged();
     const generation=++this._generation;
     this._controller?.abort();const controller=new AbortController();this._controller=controller;
     this._status('loading','Loading measured radar volume…',frame);this._draw();
@@ -440,11 +447,45 @@ export class AirVolumeViewer {
 
   setOpacity(value) {if(Number.isFinite(value)){const next=clamp(value,0,1);if(next!==this.opacity){this.opacity=next;this._schedule();}}}
   setThreshold(dbz) {if(Number.isFinite(dbz)){const next=clamp(dbz,-32,95);if(next!==this.threshold){this.threshold=next;this._schedule();}}}
-  resetView() {this.yaw=-.3;this.pitch=.4;this.zoom=1;this._pan=[0,0,0];this._schedule();}
+  /** Positive yaw turns the view clockwise; positive pitch looks more downward. */
+  rotateView(deltaYawDeg,deltaPitchDeg) {
+    if(this.destroyed||![deltaYawDeg,deltaPitchDeg].every(Number.isFinite))return;
+    this.yaw-=deltaYawDeg*DEG;this.pitch+=deltaPitchDeg*DEG;this._viewChanged();
+  }
+  panView(dxPx,dyPx) {if(!this.destroyed&&[dxPx,dyPx].every(Number.isFinite)){this._panPixels(dxPx,dyPx);this._viewChanged();}}
+  /** A factor greater than one zooms in; all controls share a metric limit. */
+  zoomView(factor) {if(!this.destroyed&&Number.isFinite(factor)&&factor>0){this.zoom/=factor;this._viewChanged();}}
+  setViewPreset(preset) {
+    const bearings={north:0,east:90,south:180,west:270,top:0};
+    if(this.destroyed||!Object.hasOwn(bearings,preset))return false;
+    this.yaw=-bearings[preset]*DEG;this.pitch=preset==='top'?89*DEG:.4;this._viewChanged();return true;
+  }
+  resetView() {this.yaw=0;this.pitch=.4;this.zoom=1;this._pan=[0,0,0];this._viewChanged();}
   focusMarker(id) {
     const marker=this._markers.find(m=>m.id===id);if(!marker)return false;
     const grid=this._camera().grid,point=[marker.x,marker.y,marker.z];
-    this._pan=point.map((v,i)=>v-(grid.min[i]+grid.max[i])/2);this.zoom=.5;this.pitch=.4;this._schedule();return true;
+    this._pan=point.map((v,i)=>v-(grid.min[i]+grid.max[i])/2);this.zoom=.5;this.pitch=.4;this._viewChanged();return true;
+  }
+  getViewState() {
+    const c=this._camera();
+    return {bearingDegrees:(Math.atan2(c.forward[0],c.forward[1])/DEG+360)%360,tiltDegrees:Math.asin(-c.forward[2])/DEG,zoomRatio:c.baseDistance/c.distance,distanceKm:c.distance,centerKilometers:[...c.center],limits:{minDistanceKm:CAMERA_LIMITS.minDistanceKm,maxDistanceKm:c.baseDistance*CAMERA_LIMITS.maxDistanceRatio,minZoomRatio:1/CAMERA_LIMITS.maxDistanceRatio,maxZoomRatio:c.baseDistance/CAMERA_LIMITS.minDistanceKm,minTiltDegrees:CAMERA_LIMITS.minTiltDegrees,maxTiltDegrees:CAMERA_LIMITS.maxTiltDegrees,canZoomIn:c.distance>CAMERA_LIMITS.minDistanceKm+1e-6,canZoomOut:c.distance<c.baseDistance*CAMERA_LIMITS.maxDistanceRatio-1e-6}};
+  }
+  _viewChanged() {
+    if(this.yaw< -Math.PI||this.yaw>=Math.PI)this.yaw=((this.yaw+Math.PI)%(Math.PI*2)+Math.PI*2)%(Math.PI*2)-Math.PI;
+    this.pitch=clamp(this.pitch,CAMERA_LIMITS.minTiltDegrees*DEG,CAMERA_LIMITS.maxTiltDegrees*DEG);
+    let c=this._camera();this.zoom=clamp(this.zoom,CAMERA_LIMITS.minDistanceKm/c.baseDistance,CAMERA_LIMITS.maxDistanceRatio);
+    if(c.clearanceCorrection>0)this._pan[2]+=c.clearanceCorrection;
+    const state=this.getViewState(),key=JSON.stringify(state);
+    if(key!==this._lastViewState){this._lastViewState=key;this.onViewChange?.(state);}
+    this._schedule();
+  }
+  setAxisLabelsVisible(visible) {const next=Boolean(visible);if(this._axisLabelsVisible!==next){this._axisLabelsVisible=next;this._schedule();}}
+  hideLabel(id) {if(id!=null&&!this._hiddenLabels.has(id)){this._hiddenLabels.add(id);this._emitLabelsChange();this._schedule();}}
+  showLabel(id) {if(this._hiddenLabels.delete(id)){this._emitLabelsChange();this._schedule();}}
+  restoreLabels() {if(this._hiddenLabels.size){this._hiddenLabels.clear();this._emitLabelsChange();this._schedule();}}
+  _emitLabelsChange() {
+    const state={hiddenCount:this._hiddenLabels.size,visibleHiddenCount:this._markers.filter(marker=>this._hiddenLabels.has(marker.id)).length},key=JSON.stringify(state);
+    if(key!==this._lastLabelsState){this._lastLabelsState=key;this.onLabelsChange?.(state);}
   }
   setActive(active) {
     if(this.destroyed||this.active===Boolean(active))return;
@@ -460,22 +501,38 @@ export class AirVolumeViewer {
     if(this.canvas.width!==width||this.canvas.height!==height){this.canvas.width=width;this.canvas.height=height;}
     const labelRatio=Math.min(globalThis.devicePixelRatio||1,2);
     this.labels.width=Math.round(this._width*labelRatio);this.labels.height=Math.round(this._height*labelRatio);this._labelRatio=labelRatio;
-    this._schedule();
+    this._viewChanged();
   }
   _schedule() {if(this.active&&this.supported&&!this.destroyed&&!this._raf)this._raf=requestAnimationFrame(()=>{this._raf=0;this._draw();});}
   _panPixels(dx,dy) {
     const c=this._camera(),unitsPerPixel=2*c.distance*c.tanHalfFov/Math.max(1,this._height);
     this._pan=this._pan.map((v,i)=>v+(-c.right[i]*dx+c.up[i]*dy)*unitsPerPixel);
   }
+  _terrainHeightAt(x,y) {
+    const terrain=this._terrain;if(!terrain)return null;
+    const [nx,ny]=terrain.dimensions,[x0,x1]=terrain.bounds.x,[y0,y1]=terrain.bounds.y;
+    if(x<x0||x>x1||y<y0||y>y1)return null;
+    const u=(x-x0)/(x1-x0)*(nx-1),v=(y-y0)/(y1-y0)*(ny-1),i=Math.min(nx-2,Math.floor(u)),j=Math.min(ny-2,Math.floor(v)),dx=u-i,dy=v-j;
+    const h=[terrain.heights[j*nx+i],terrain.heights[j*nx+i+1],terrain.heights[(j+1)*nx+i],terrain.heights[(j+1)*nx+i+1]];
+    // Match the actual mesh diagonal and missing-triangle mask, rather than
+    // inventing a bilinear surface between the two rendered triangles.
+    return dx>=dy
+      ?[h[0],h[1],h[3]].every(Number.isFinite)?h[0]+(h[1]-h[0])*dx+(h[3]-h[1])*dy:null
+      :[h[0],h[3],h[2]].every(Number.isFinite)?h[0]+(h[3]-h[2])*dx+(h[2]-h[0])*dy:null;
+  }
   _camera() {
     const grid=this._grid??{min:[-45,0,0],max:[23,45,16],dimensions:[192,160,96],decode:{scale:.5,offset:-32,indexOffset:1}};
     const size=subtract(grid.max,grid.min),center=grid.min.map((v,i)=>(v+grid.max[i])/2+this._pan[i]);
     const aspect=this.canvas.width/this.canvas.height,tanHalfFov=Math.tan(Math.PI/8);
-    const distance=Math.hypot(...size)*.58/tanHalfFov/Math.min(1,aspect)*this.zoom;
+    const baseDistance=Math.hypot(...size)*.58/tanHalfFov/Math.min(1,aspect);
+    const distance=clamp(baseDistance*this.zoom,CAMERA_LIMITS.minDistanceKm,baseDistance*CAMERA_LIMITS.maxDistanceRatio);
     const eye=[center[0]+Math.sin(this.yaw)*Math.cos(this.pitch)*distance,center[1]-Math.cos(this.yaw)*Math.cos(this.pitch)*distance,center[2]+Math.sin(this.pitch)*distance];
+    const referenceHeight=this._terrainHeightAt(eye[0],eye[1])??grid.min[2];
+    const clearanceCorrection=Math.max(0,referenceHeight+CAMERA_LIMITS.clearanceKm-eye[2]);
+    eye[2]+=clearanceCorrection;center[2]+=clearanceCorrection;
     const forward=normalize(subtract(center,eye)),right=normalize(cross(forward,[0,0,1])),up=cross(right,forward);
-    const clipRange=[.1,Math.max(1000,Math.hypot(...eye)+Math.hypot(...grid.max.map((v,i)=>Math.max(Math.abs(v),Math.abs(grid.min[i]))))+100)];
-    return {grid,size,eye,forward,right,up,aspect,tanHalfFov,distance,clipRange};
+    const clipRange=[.02,Math.max(100,Math.hypot(...eye)+Math.hypot(...grid.max.map((v,i)=>Math.max(Math.abs(v),Math.abs(grid.min[i]))))+100)];
+    return {grid,size,center,eye,forward,right,up,aspect,tanHalfFov,distance,baseDistance,clearanceCorrection,clipRange};
   }
   _draw() {
     if(!this.supported||!this.active||this.destroyed)return;
@@ -513,6 +570,7 @@ export class AirVolumeViewer {
   }
   _drawMarkerAnnotations(ctx,project) {
     this._markerHits=[];
+    for(const button of this._labelButtons.values())button.hidden=true;
     const visible=this._markers.flatMap(marker=>{
       const p=project([marker.x,marker.y,marker.z]);
       return p&&p[0]>=4&&p[0]<=this._width-4&&p[1]>=4&&p[1]<=this._height-4&&marker.opacity>0?[{marker,p}]:[];
@@ -534,20 +592,47 @@ export class AirVolumeViewer {
       }
       ctx.restore();this._markerHits.push({marker,x:p[0],y:p[1],radius:marker.kind==='suv'?16:10});
     }
-    const occupied=[];
+    const occupied=this._width>=122?[{x:this._width-113,y:7,w:98,h:84}]:[];
     const overlaps=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
     for(const {marker,p} of visible){
+      if(this._hiddenLabels.has(marker.id))continue;
       ctx.font=(marker.kind==='suv'?'600 ':'')+'11px system-ui,sans-serif';
-      const text=String(marker.label??marker.id??'Chaser'),w=ctx.measureText(text).width+12,h=18;
+      const text=String(marker.label??marker.id??'Chaser'),w=ctx.measureText(text).width+36,h=24;
       if(w>this._width-16)continue;
       const x=clamp(p[0]-w/2,8,this._width-w-8);
-      const candidates=[{x,y:p[1]-(marker.kind==='suv'?35:28),w,h},{x,y:p[1]+(marker.kind==='suv'?20:12),w,h}].filter(r=>r.y>=6&&r.y+r.h<=this._height-6);
+      const candidates=[{x,y:p[1]-(marker.kind==='suv'?40:32),w,h},{x,y:p[1]+(marker.kind==='suv'?20:12),w,h}].filter(r=>r.y>=6&&r.y+r.h<=this._height-6);
       let box=candidates.find(r=>!occupied.some(other=>overlaps(r,other))&&!this._markerHits.some(hit=>hit.marker!==marker&&overlaps(r,{x:hit.x-hit.radius,y:hit.y-hit.radius,w:hit.radius*2,h:hit.radius*2})));
       if(!box&&marker.kind==='suv')box=candidates[0];
       if(!box)continue;
       occupied.push(box);ctx.save();ctx.globalAlpha=marker.opacity;ctx.fillStyle='#0b1815e8';ctx.fillRect(box.x,box.y,box.w,box.h);
-      ctx.fillStyle=marker.color;ctx.fillRect(box.x,box.y,3,box.h);ctx.fillStyle='#e8eee0';ctx.textAlign='left';ctx.fillText(text,box.x+7,box.y+13);ctx.restore();
+      ctx.fillStyle=marker.color;ctx.fillRect(box.x,box.y,3,box.h);ctx.fillStyle='#e8eee0';ctx.textAlign='left';ctx.fillText(text,box.x+7,box.y+16);ctx.restore();
+      if(marker.id!=null){
+        let button=this._labelButtons.get(marker.id);
+        if(!button){
+          button=document.createElement('button');button.type='button';button.textContent='×';button.className='air-volume-label-close';
+          Object.assign(button.style,{position:'absolute',width:'24px',height:'24px',padding:'0',border:'0',borderRadius:'2px',font:'17px/24px system-ui,sans-serif',background:'#253d32',color:'#e8eee0',cursor:'pointer',pointerEvents:'auto'});
+          button.addEventListener('pointerdown',event=>event.stopPropagation());
+          button.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();this.hideLabel(marker.id);this.canvas.focus({preventScroll:true});});
+          this._labelButtons.set(marker.id,button);this.labelControls.append(button);
+        }
+        button.hidden=false;button.title='Hide '+text+' label';button.setAttribute('aria-label','Hide label for '+text);
+        button.style.left=(box.x+box.w-24)+'px';button.style.top=box.y+'px';button.style.opacity=String(marker.opacity);
+      }
     }
+  }
+  _drawCompass(ctx,camera) {
+    const x=this._width-64,y=49;if(x<58)return;
+    ctx.save();ctx.fillStyle='#0b1815d9';ctx.fillRect(x-49,y-42,98,84);
+    ctx.strokeStyle='#657c6655';ctx.strokeRect(x-49,y-42,98,84);
+    for(const [axis,name,color] of [[[0,1,0],'N','#f0dfb8'],[[1,0,0],'E','#b8d1bd']]){
+      const direction=[dot(axis,camera.right),-dot(axis,camera.up)],length=Math.hypot(...direction);
+      if(length<1e-6)continue;
+      const dx=direction[0]/length,dy=direction[1]/length,tip=[x+dx*25,y+dy*25];
+      ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=1.8;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(...tip);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(...tip);ctx.lineTo(tip[0]-dx*7-dy*3,tip[1]-dy*7+dx*3);ctx.lineTo(tip[0]-dx*7+dy*3,tip[1]-dy*7-dx*3);ctx.closePath();ctx.fill();
+      ctx.font='600 11px system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(name,x+dx*35,y+dy*35);
+    }
+    ctx.fillStyle='#d6e1cd';ctx.beginPath();ctx.arc(x,y,2,0,Math.PI*2);ctx.fill();ctx.restore();
   }
   _drawLabels(camera) {
     const ctx=this.labels.getContext('2d');if(!ctx)return;
@@ -575,12 +660,15 @@ export class AirVolumeViewer {
     // Choose the nearest box corner for the altitude ruler as the camera turns.
     const base=[...corners].sort((a,b)=>Math.hypot(...subtract(a,camera.eye))-Math.hypot(...subtract(b,camera.eye)))[0];
     line(base,[base[0],base[1],z1],'#c4d2b4aa');
-    for(let height=Math.ceil(z0/4)*4;height<=z1;height+=4)label([base[0],base[1],height],height+' km',-24,3);
-    label([base[0],base[1],z1],'MSL',-24,-14);
-    label([(x0+x1)/2,y0,z0],'East–west extent · '+Math.round(x1-x0)+' km',0,24);
-    label([x1,(y0+y1)/2,z0],'North–south extent · '+Math.round(y1-y0)+' km',45,0);
-    if(!this._terrainCount&&x0<=0&&x1>=0&&y0<=0&&y1>=0){label([0,0,z0],'AIR reference · 0 MSL',0,12);}
+    if(this._axisLabelsVisible){
+      for(let height=Math.ceil(z0/4)*4;height<=z1;height+=4)label([base[0],base[1],height],height+' km',-24,3);
+      label([base[0],base[1],z1],'MSL',-24,-14);
+      label([(x0+x1)/2,y0,z0],'East–west extent · '+Math.round(x1-x0)+' km',0,24);
+      label([x1,(y0+y1)/2,z0],'North–south extent · '+Math.round(y1-y0)+' km',45,0);
+      if(!this._terrainCount&&x0<=0&&x1>=0&&y0<=0&&y1>=0){label([0,0,z0],'AIR reference · 0 MSL',0,12);}
+    }
     this._drawMarkerAnnotations(ctx,project);
+    this._drawCompass(ctx,camera);
   }
   destroy() {
     if(this.destroyed)return;this.destroyed=true;this._generation++;this._controller?.abort();cancelAnimationFrame(this._raf);this._observer?.disconnect();
@@ -592,6 +680,6 @@ export class AirVolumeViewer {
       for(const p of [this._program,this._terrainProgram])if(p)this.gl.deleteProgram(p);
       if(this._surfaceFramebuffer)this.gl.deleteFramebuffer(this._surfaceFramebuffer);
     }
-    this.element.remove();this.container.style.position=this._oldPosition;
+    this._labelButtons.clear();this._hiddenLabels.clear();this.element.remove();this.container.style.position=this._oldPosition;
   }
 }
