@@ -52,7 +52,21 @@ The first AIR reflectivity image contains a prominent ring/hook feature that app
 
 The independent pixel and gate checks found no conversion/projection defect that explains the apparent difference. The original source position, bearing, and timing are retained. No translation, rotation, range adjustment, or clock shift has been fitted to make the radar resemble the surveyed path.
 
-The 2017 paper's illustrated case studies are Shawnee (19 May 2013), Denver (21 May 2014), Tipton (16 May 2015), and Canadian (27 May 2015). It offers no dated first/last El Reno reflectivity panels suitable for directly validating this subset. A bounded primary-source search did not establish an independent El Reno deployment position or correction. Accordingly, the preview must keep its alignment limitation visible and must not supply tornado-center, tornado-edge, wind-speed, or closest-approach measurements.
+The 2017 paper's illustrated case studies are Shawnee (19 May 2013), Denver (21 May 2014), Tipton (16 May 2015), and Canadian (27 May 2015). A subsequent search found an El Reno panel in [Kurdzo's 2015 dissertation, §5.2.2.2, pp. 239–241](https://shareok.org/items/539e005a-7c39-4572-94a4-21bb3f74d7f8): Figure 5.24 is labeled 23:15:52 UTC, matching native volume 31's start. This supersedes the earlier search's lack of a published El Reno panel, but does not independently establish clock accuracy or deployment coordinates.
+
+That dissertation also reports event-specific beam blockage **below 2°**, a minimum usable beam height above 1.2 km, and uses a 2° slice beneath its 3D rendering. The existing 0.5° AIR layer therefore falls below the reported usable elevations and must not be treated as a reliable low-level comparison with KTLX or the ground survey. This newly identified limitation is separate from the successful byte/value/projection checks. See the [timing follow-up](air-time-audit.md#follow-up-proposed-1012-minute-shift). No time or coordinate correction is established. The preview must not supply tornado-center, tornado-edge, wind-speed, or closest-approach measurements.
+
+### Follow-up: radar origin and bearing
+
+A fresh read of retained original NetCDFs spanning all 99 volumes confirms **35.31209945678711° N, 97.74459838867188° W, altitude 385 m**. The latitude/longitude units explicitly specify degrees north/east. This is the source value, not a substituted default. The 2D imagery, 3D grid, terrain and projected chasers share that origin. Independent spherical unit-vector checks at 32 cardinal/oblique destinations from 1 to 44 km found no latitude/longitude reversal, degree/radian error, east/north sign error, or north/clockwise bearing error in the coordinate conversion.
+
+The azimuth variable explicitly describes angles from true north. However, the files contain no GPS-quality, heading, rotation, roll/pitch, or georeference-correction fields validating the reported position or orientation. Missing heading information is not evidence of a verified zero correction. The altitude variable supplies no explicit vertical datum.
+
+Using the recorded site, distances to the NWS estimated ground centers are 29.56 km at 6:12 PM CDT, 26.79 km at 6:16, and 23.57 km at 6:24; the radar-to-center bearings are respectively 302.07°, 307.54°, and 321.69°. Those values broadly fit the dissertation's approximately 25 km southeast description, but do not independently locate the truck.
+
+The team's [official field-experiments page](https://arrc.ou.edu/~bodine/field-experiments.html) includes a multi-year deployment map, but the individual sites are not assigned dates or coordinates. It cannot identify the May 31 site. A remaining [2015 IEEE conference-paper lead](https://doi.org/10.1109/RADAR.2015.7131105) could not be fully inspected in this search; no claim is made about whether it supplies coordinates.
+
+**Conclusion:** correct use of the archived origin is established; the actual deployment origin and bearing calibration are not. An erroneous origin would shift the georeferenced returns, while an azimuth error would rotate them around that origin. Either can contribute to apparent disagreement with a moving storm, but neither is demonstrated by the current comparison. No spatial or clock correction was applied. A deployment GPS log, surveyed stationary target, or documented correction from the radar team is needed to resolve this independently.
 
 ## Review limits
 
