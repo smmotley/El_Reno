@@ -1,0 +1,22 @@
+{
+  "method": "Independent 3D unit-vector inverse projection, original PNG hashes and RGB decoding, bilinear source-pixel sampling, then actual JavaScript forward-projection and height-helper checks. No producer imports or downloads.",
+  "sourceTilesVerified": 6,
+  "terrainNodesChecked": 12467,
+  "nodesUsingTileSeamNeighbors": 121,
+  "maxNodeDifferenceMeters": 0.0004999666228968636,
+  "elevationRangeMeters": [
+    311.405,
+    509.57300000000004
+  ],
+  "radarOriginDemMeters": 379.367,
+  "archivedRadarAltitudeMeters": 385.0,
+  "client": {
+    "nodes": 12467,
+    "betweenNodeChecks": 1000,
+    "maxProjectionErrorMeters": 2.723678737405175e-09,
+    "maxClientHeightErrorMeters": 2.220446049250313e-13,
+    "outsideDomainRejected": true,
+    "missingPositionRejected": true
+  },
+  "limitations": "Approximate sea-level terrain from mixed source dates/datums;500m output mesh is not a road-deck or GPS-altitude measurement. Radar registration remains unverified."
+}

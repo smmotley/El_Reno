@@ -3,6 +3,15 @@ import { radarFrameAt } from './analysis.js';
 const PRODUCTS = ['reflectivity', 'velocity'];
 const DEFAULT_MAX_AGE_SECONDS = 600;
 
+// A 3D volume is a different representation of the same reflectivity interval.
+// Keep all native timing/availability metadata, and reuse the source selector.
+export function createVolumeRadarSource(baseRadar, manifest) {
+  if(!manifest?.frames?.length)return null;
+  return {...baseRadar,...manifest,site:'AIR',colorScales:baseRadar.colorScales,
+    frames:manifest.frames.map(frame=>({...frame,reflectivity:frame.volumeURL??frame.volume,reflectivityTime:frame.time})),
+    unavailableProducts:{...baseRadar.unavailableProducts,...manifest.unavailableProducts}};
+}
+
 // Acquisition timestamps must have a timezone; browser locale never determines
 // when a radar image becomes eligible. Finite epoch milliseconds are also valid.
 function epoch(value) {

@@ -313,6 +313,8 @@ def process(item, raw, source, g, scales):
             product_info = {
                 'time': iso(midpoint),
                 'scanStart': iso(start), 'scanEnd': iso(end), 'sweepIndex': 5,
+                'sweepIndexConvention': 'Normalized zero-based slice index; filename s6 is the sixth elevation slice',
+                'sourceSweepNumber': int(scalar('sweep_number')),
                 'targetElevationDegrees': fixed, 'medianElevationDegrees': float(np.median(elevations)),
                 'elevationRangeDegrees': [float(elevations.min()), float(elevations.max())],
                 'rayCount': len(azimuth), 'gateCount': len(ranges), 'rangeGateMeters': spacing,

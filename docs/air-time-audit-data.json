@@ -1,0 +1,2365 @@
+{
+  "auditedAtUtc": "2026-11-04T22:04:49.008463+00:00",
+  "archiveUrl": "https://arrc.ou.edu/data/20130531_AIR_CFRadial.zip",
+  "method": "Independent parsing of the original cached ZIP central directory and original classic NetCDF bytes, without using prepare_air.py or rendered manifest for source extraction. Six small sibling members retrieved by HTTP range and independently CRC-verified; all 99 original cached 0.5-degree members and one previously downloaded -2-degree sibling also verified. Rendered manifest used only for a final midpoint comparison.",
+  "centralDirectory": {
+    "sha256": "7d174ce5e6e7d14200bd7dd801d6f781e32f4ee05c4aa0cd565a5ba8556568c7",
+    "entryCount": 4456,
+    "netcdfCount": 4455,
+    "volumeGroups": 99,
+    "membersPerGroup": 45,
+    "sweepNumbersInEveryGroup": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+    ],
+    "oneCommonFilenameTimePerGroup": true,
+    "zipNetcdfFilesystemTimestampRange": [
+      "2018-07-13T15:38:56",
+      "2018-07-13T16:05:24"
+    ],
+    "zipTimeMeaning": "2018 ZIP filesystem timestamps are file creation/conversion-era metadata, not 2013 radar observation times; timezone not specified."
+  },
+  "conclusions": {
+    "filenameVMeans": "Native volume_number; v1..v99 in consecutive groups",
+    "filenameSMeans": "Elevation-file index, not a later acquisition time. Native sweep_number matches filename sN, despite its misleading 0_based long_name.",
+    "selectedS6": "Actual fixed angle is 0.5 degrees in every one of the 99 source files.",
+    "sampledSiblingAngles": [
+      [
+        1,
+        -2.0
+      ],
+      [
+        5,
+        0.0
+      ],
+      [
+        6,
+        0.5
+      ],
+      [
+        7,
+        1.0
+      ],
+      [
+        45,
+        20.0
+      ]
+    ],
+    "siblingCoverageAndAzimuthArraysIdentical": true,
+    "coverageStart": "2013-05-31T23:11:56Z",
+    "coverageEnd": "2013-05-31T23:24:57Z",
+    "sourceIntervalsSeconds": {
+      "8.0": 57,
+      "7.0": 37,
+      "15.0": 4,
+      "6.0": 1
+    },
+    "successiveCoverageIntervalsContiguous": true,
+    "allRayTimesZero": true,
+    "alternativeUsableAbsoluteTimeFound": false,
+    "manifestMidpointsMatchNativeIntervals": true,
+    "timeCorrectionAppliedSeconds": 0,
+    "absoluteClockValidation": "Not established: repeated time strings are internally consistent, but may all originate from the same unverified acquisition or conversion clock. No independent event anchor or justified clock offset was found in these files.",
+    "mergingImplication": "Combining same-timestamp elevation files is consistent with one multi-elevation volume. It does not create extra temporal information or fix zero ray times.",
+    "precisionLimit": "The displayed midpoint is representative of the global acquisition interval. It is not a recovered per-ray timestamp, and interval duration is not a bound on absolute clock error.",
+    "allCoverageAliasesAgreeAndStartsMatchFilenameIn106CheckedFiles": true
+  },
+  "all99SelectedSourceChecks": [
+    {
+      "member": "CFradial/cfrad.20130531_231156_AIR_v1_s6.nc",
+      "volumeNumber": 1,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:11:56Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "b1afe2e8dfe39bb7bb272be34ed014ac8f5b2c42fd011e26243b76f01c4fec23",
+      "rawNetcdfSha256": "c251abdf5c3671832906e805842dfa97a8480a191b89a5869f335b7b2b130911",
+      "crc32": "e4b097b1",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:11:56Z",
+      "coverageEnd": "2013-05-31T23:12:04Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231204_AIR_v2_s6.nc",
+      "volumeNumber": 2,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:12:04Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "bb07d7d2aafb10ee7974566fde4491c275ee9293451dd1fc978d338964634ce2",
+      "rawNetcdfSha256": "a8af15f428cf3fecb003bd5688f159fd82ea1d057ef48007d875908284ca14c6",
+      "crc32": "d6ccf7f5",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:12:04Z",
+      "coverageEnd": "2013-05-31T23:12:11Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231211_AIR_v3_s6.nc",
+      "volumeNumber": 3,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:12:11Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "a620b561df33ee87bd7aaa7ac765a41b34f3985f1213a20e64585e50f1b910c0",
+      "rawNetcdfSha256": "ba00f8db1e84a9b07cdeb12a80787c9c6886c5e46d86b904187d7b3106837ea1",
+      "crc32": "6441bf53",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:12:11Z",
+      "coverageEnd": "2013-05-31T23:12:19Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231219_AIR_v4_s6.nc",
+      "volumeNumber": 4,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:12:19Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "e5beb45b16a44e25f7d2e6f934ca44d5136e9b840a4e487adf20a4479ce6cca6",
+      "rawNetcdfSha256": "f4ae544be2bb887604751bdcee0a377495eb2c347f313d8c7b2643efad5b4e4f",
+      "crc32": "e80382fb",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:12:19Z",
+      "coverageEnd": "2013-05-31T23:12:26Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231226_AIR_v5_s6.nc",
+      "volumeNumber": 5,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:12:26Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "b5bd8d9ecde5b04fcb05cc25e573bd3fe643e22800df92cdee89d97ce18c1c34",
+      "rawNetcdfSha256": "c794a7437e34d339d42477165a258a4317935a1b2a2f9288c655a739eb22529a",
+      "crc32": "21494712",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:12:26Z",
+      "coverageEnd": "2013-05-31T23:12:34Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231234_AIR_v6_s6.nc",
+      "volumeNumber": 6,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:12:34Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "1b9b2785f71206869d97c1a0f8239a2b931c485b673ce3c3b50399c0809032c1",
+      "rawNetcdfSha256": "f200e9aa0d91a0844f56d5fc77d17e90e58ba856bd77bfae8afebfd5228e139f",
+      "crc32": "fbec282b",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:12:34Z",
+      "coverageEnd": "2013-05-31T23:12:42Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231242_AIR_v7_s6.nc",
+      "volumeNumber": 7,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:12:42Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "c9fc1b5a82b7134fd3d31cbe98070457228c7a3cbf212be9361ab570d3c7bad9",
+      "rawNetcdfSha256": "7d4bdf92d45874fb162d7f26fbc51e1a8efe77ab99223aa7e273528627faf36c",
+      "crc32": "587e65f6",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:12:42Z",
+      "coverageEnd": "2013-05-31T23:12:49Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231249_AIR_v8_s6.nc",
+      "volumeNumber": 8,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:12:49Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "181caf7a4bc3f46811dfcdd12d571b9dca1df18df0bf20f6f312f07714109fe6",
+      "rawNetcdfSha256": "ae9a41211d2338bbf71a5554114fecbc9aec168a11b280c6ed4d4a92661edcbb",
+      "crc32": "44416d4d",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:12:49Z",
+      "coverageEnd": "2013-05-31T23:12:57Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231257_AIR_v9_s6.nc",
+      "volumeNumber": 9,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:12:57Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "cab6980bb4e28336b10ac77658872db3ebeb877c5978485e256995ecb0152082",
+      "rawNetcdfSha256": "e39e99eb6f776fcf371f606f2238d8e85ab4e072141113be3d8731ea516dc962",
+      "crc32": "158e0959",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:12:57Z",
+      "coverageEnd": "2013-05-31T23:13:04Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231304_AIR_v10_s6.nc",
+      "volumeNumber": 10,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:13:04Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "da89d8186b504c1dcb059ca6b67fc9a2c72eda047fd6b7e681054067b6296b3b",
+      "rawNetcdfSha256": "a2b5745106fb6eb9514833daca43e1d39b68e883ef57db1fe5f639793a2aecdd",
+      "crc32": "cb86d24a",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:13:04Z",
+      "coverageEnd": "2013-05-31T23:13:12Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231312_AIR_v11_s6.nc",
+      "volumeNumber": 11,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:13:12Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "be4853690f84950ccbd0c4e15a601bfb804144f4ab5f0706a3bca70796b60aaf",
+      "rawNetcdfSha256": "1eeab190cae4a9f4f2323a43607a792a48b85b701a0c5f2fb7308a718a44edc1",
+      "crc32": "e2afdd6e",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:13:12Z",
+      "coverageEnd": "2013-05-31T23:13:20Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231320_AIR_v12_s6.nc",
+      "volumeNumber": 12,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:13:20Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "29aabed6fea6fc0035b743a37a3e574f8091f736501d90836d9bb8d329251747",
+      "rawNetcdfSha256": "2a3af7982d31f046537240b168e10b7c071d0a2878cbb982f420289f75d2a826",
+      "crc32": "97c3c53b",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:13:20Z",
+      "coverageEnd": "2013-05-31T23:13:27Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231327_AIR_v13_s6.nc",
+      "volumeNumber": 13,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:13:27Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "7f1ba73dca8e736f25064bf8cb7c89169c5d31a384fd922c8b39f3b652d6a4e0",
+      "rawNetcdfSha256": "7740f54b170c0c4d9812a72a6744242196e35c726cab8df7edf85304b84b273b",
+      "crc32": "01b0aae6",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:13:27Z",
+      "coverageEnd": "2013-05-31T23:13:35Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231335_AIR_v14_s6.nc",
+      "volumeNumber": 14,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:13:35Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "e85a1cecbacbde7c23121c50e494f4a8dcdbbf1e1231aba04f6dc27a6407e025",
+      "rawNetcdfSha256": "75f0f7b6533e293f64e4911501de53bc97da73554226526841c620d89e05a810",
+      "crc32": "f756eab7",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:13:35Z",
+      "coverageEnd": "2013-05-31T23:13:42Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231342_AIR_v15_s6.nc",
+      "volumeNumber": 15,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:13:42Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "00a4a0ee8912d808fea286c7d578eb053f3c61d326151305bc9647326bacc7c5",
+      "rawNetcdfSha256": "15e7af6cdf1c2c7b851ba3979030bd3e8bb80fbaa993a9afbe7de26c7415d7a9",
+      "crc32": "c35adfad",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:13:42Z",
+      "coverageEnd": "2013-05-31T23:13:50Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231350_AIR_v16_s6.nc",
+      "volumeNumber": 16,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:13:50Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "1d0d60071d0cbef220ea02e6899563239bb318ae9e14c3da2d1bf2c9def70fb6",
+      "rawNetcdfSha256": "72c5eb9aef4c5af85bd73dda5c1837069656b09b49985586bd2cb375955a6539",
+      "crc32": "7ca6bc96",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:13:50Z",
+      "coverageEnd": "2013-05-31T23:13:58Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231358_AIR_v17_s6.nc",
+      "volumeNumber": 17,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:13:58Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "9f7e123980d151722980d31e483cdacfb428e246fec90410d1819c9d6362676e",
+      "rawNetcdfSha256": "12459f1cd73def48e5dc6ea2824c33b205a2903b4cc6881b688e59da851ec248",
+      "crc32": "224a9f15",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:13:58Z",
+      "coverageEnd": "2013-05-31T23:14:05Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231405_AIR_v18_s6.nc",
+      "volumeNumber": 18,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:14:05Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "a221fb389a42b5adecdf74fcd57cda7961b0f26d53c9a9487ba7786f3480783b",
+      "rawNetcdfSha256": "8e3df94a1d98f9d12fc0f81c7b1cfb5561fb86db5f39f2fdec561d9e682fa5b5",
+      "crc32": "088679d0",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:14:05Z",
+      "coverageEnd": "2013-05-31T23:14:13Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231413_AIR_v19_s6.nc",
+      "volumeNumber": 19,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:14:13Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "540b5a2dfbd5087f5b6cd849ac43d0009c9b629677b5fe62437a5dd46ce644d8",
+      "rawNetcdfSha256": "74afc01f0a4fe14526f85ab17daa14652ba1b4f954b994f1caac1ff365cc74e3",
+      "crc32": "e82b78a2",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:14:13Z",
+      "coverageEnd": "2013-05-31T23:14:20Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231420_AIR_v20_s6.nc",
+      "volumeNumber": 20,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:14:20Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "cc6e7b74c582820f61ee2ce0352268f193ec362a20aaf0340079653dbb4e3fb1",
+      "rawNetcdfSha256": "2709fbb2d40af5bd5bcd03994aeff922539e6aad42138c2bca5450f413898403",
+      "crc32": "69d80ff8",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:14:20Z",
+      "coverageEnd": "2013-05-31T23:14:28Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231428_AIR_v21_s6.nc",
+      "volumeNumber": 21,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:14:28Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "6cef023bdc3229611f7156f2d5060897fcb956ff9e1b41a3e1ac7d751f8cafae",
+      "rawNetcdfSha256": "bf5f93813a01398f0ef4b36fcaaba5f60bc686e9366a21224d6d43fe956a49e6",
+      "crc32": "9d326c35",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:14:28Z",
+      "coverageEnd": "2013-05-31T23:14:36Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231436_AIR_v22_s6.nc",
+      "volumeNumber": 22,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:14:36Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "75f1f8b747065b412644b0837b5c83c260c076842b918968fe825a0ffa2d2f09",
+      "rawNetcdfSha256": "4c414d244785fe24b7700d9147a1d90cb8ffdf036bcad893e24310372962ce97",
+      "crc32": "ba1fbfaf",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:14:36Z",
+      "coverageEnd": "2013-05-31T23:14:43Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231443_AIR_v23_s6.nc",
+      "volumeNumber": 23,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:14:43Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "0b7d484a6227f2e782ef52c26b3e7e0ed9f8f43128d786ec508d8721188004f2",
+      "rawNetcdfSha256": "d655bdcf405db8ccb9f656af9382fd67879a12d13385822f91adc50036da2aa0",
+      "crc32": "f9320045",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:14:43Z",
+      "coverageEnd": "2013-05-31T23:14:58Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231458_AIR_v24_s6.nc",
+      "volumeNumber": 24,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:14:58Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "7659fdbd77f8829822ddad40336c87987b5b734df674320c5f16f973103bb810",
+      "rawNetcdfSha256": "5b60cfd2ae95ea7eb20ac09ef0391d5bff4aa6fe94a19b83f986ed3a62b19d9d",
+      "crc32": "a9a04ce1",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:14:58Z",
+      "coverageEnd": "2013-05-31T23:15:06Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231506_AIR_v25_s6.nc",
+      "volumeNumber": 25,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:15:06Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "9c2569e7d329e1bee3d41c95d8b68ec1af70c199fbcae37082339d65784463eb",
+      "rawNetcdfSha256": "cbd2019e7894ef0a43120bfe2a8fcd9e5d86d4a34e564df494482de5d8275ae9",
+      "crc32": "24b19b2c",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:15:06Z",
+      "coverageEnd": "2013-05-31T23:15:14Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231514_AIR_v26_s6.nc",
+      "volumeNumber": 26,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:15:14Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "81330142a6a05586e9b431fcfd93356781ccf7400247a0a9ef98b42ded826edc",
+      "rawNetcdfSha256": "016aeeff53e73b427a9447447e75388d007d9ff433d6e83839b5fc84c8c0905c",
+      "crc32": "94c142ae",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:15:14Z",
+      "coverageEnd": "2013-05-31T23:15:21Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231521_AIR_v27_s6.nc",
+      "volumeNumber": 27,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:15:21Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "c58b907a332bf1ee0b14a2449faed5f2c9088be6560e0bffbf19bbf21cb29cb5",
+      "rawNetcdfSha256": "1e96116d0b824648113308b62cca743bc691714a824286c7700380c23e767ed1",
+      "crc32": "4d66e714",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:15:21Z",
+      "coverageEnd": "2013-05-31T23:15:29Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231529_AIR_v28_s6.nc",
+      "volumeNumber": 28,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:15:29Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "613c48ae794f02b2849b6c12489abbe648b83e876da6a546a694c767dd9a7a6e",
+      "rawNetcdfSha256": "dbefc3c0b0ffc444872522f66e21cdad5dcb54b4c1172e183901d826284e3744",
+      "crc32": "fb14f26c",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:15:29Z",
+      "coverageEnd": "2013-05-31T23:15:36Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231536_AIR_v29_s6.nc",
+      "volumeNumber": 29,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:15:36Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "a3ecdf249c0e5868b4335fdc2f1e846cbe429daf838218a212f3444d1e5d4edd",
+      "rawNetcdfSha256": "98692177ac889a3798c18151946349c60f9601621dc13ad3bcc838cce04f6ebf",
+      "crc32": "d689e9cd",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:15:36Z",
+      "coverageEnd": "2013-05-31T23:15:44Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231544_AIR_v30_s6.nc",
+      "volumeNumber": 30,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:15:44Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "cf18886691728ec5672c961ce81baa21df730c1f7353e9187f8b9d45c4f16533",
+      "rawNetcdfSha256": "97c9615f98ced1b99e2accdd63a387999a31cecf49ca409b5dce0b4ffff34599",
+      "crc32": "1483e404",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:15:44Z",
+      "coverageEnd": "2013-05-31T23:15:52Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231552_AIR_v31_s6.nc",
+      "volumeNumber": 31,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:15:52Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "0fdc406bb418eff7f4e0bd063b7d7ba4313a7234429110d0a4dc94b1f0a23b71",
+      "rawNetcdfSha256": "9963e92b9ec5b005d7dcb708f11b7c316101f8b8dec588cc59dad23d3ce42eb1",
+      "crc32": "30b1cc01",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:15:52Z",
+      "coverageEnd": "2013-05-31T23:15:59Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231559_AIR_v32_s6.nc",
+      "volumeNumber": 32,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:15:59Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "2514b4bc70dc4fd366f2e8d1ec5ecf64cd3e1ed73f08b039456047b00b0e9ce1",
+      "rawNetcdfSha256": "f6dafb964d411da7ee8fbeb85e425841b883602270357b047e307d39ef838647",
+      "crc32": "b749416e",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:15:59Z",
+      "coverageEnd": "2013-05-31T23:16:07Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231607_AIR_v33_s6.nc",
+      "volumeNumber": 33,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:16:07Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "971d5b4f6eb66e7c8c1ddfa263b166704e5c2038b064b717012bdf3f9be4e14d",
+      "rawNetcdfSha256": "33f66a6818cfd255fb3d3c080586f8dbbe3a0ecbcd38ac2bfa3e9307aedc2714",
+      "crc32": "c43ceca5",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:16:07Z",
+      "coverageEnd": "2013-05-31T23:16:14Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231614_AIR_v34_s6.nc",
+      "volumeNumber": 34,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:16:14Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "7459084cdf33b0a3657e0d343b05b77d3523433270d97e62024c8f42757b3823",
+      "rawNetcdfSha256": "f84ea61d927136d8164f68c219940d7199220ba3bc9862a1feb7ad588af17c80",
+      "crc32": "d679878e",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:16:14Z",
+      "coverageEnd": "2013-05-31T23:16:22Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231622_AIR_v35_s6.nc",
+      "volumeNumber": 35,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:16:22Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "6deb53651977044a912fcffd659ab44393924c6027ed585f2af68595b658eba4",
+      "rawNetcdfSha256": "b5b285a24cdeef234112044d8dff0de4fca8dc2885a2893ccb478b22460d569a",
+      "crc32": "aaeffe1a",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:16:22Z",
+      "coverageEnd": "2013-05-31T23:16:30Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231630_AIR_v36_s6.nc",
+      "volumeNumber": 36,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:16:30Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "fa4970771e4725239d58f77810a0b97c66729fc096c7ad54afbd88a2007a4d43",
+      "rawNetcdfSha256": "199f2163df1569557ebc4f6f25880c574740ac0bfc9800120f3228cc3c7982c4",
+      "crc32": "89e6d24f",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:16:30Z",
+      "coverageEnd": "2013-05-31T23:16:37Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231637_AIR_v37_s6.nc",
+      "volumeNumber": 37,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:16:37Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "4ccbe04a5a1c27888fb7e0b8dc66d8a7a71a745ba165e743d244a19c1b474f99",
+      "rawNetcdfSha256": "4574b0628f0c5d90e983d7ca4aa2fa1efb31ffabbe797337f582adf7aeeb0ce0",
+      "crc32": "43bd453e",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:16:37Z",
+      "coverageEnd": "2013-05-31T23:16:45Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231645_AIR_v38_s6.nc",
+      "volumeNumber": 38,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:16:45Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "6a4f7ef829a532b848908ac2c63517d583daad42ba2953c59632c14b1edbf2a1",
+      "rawNetcdfSha256": "573950cc4185650d8485d490211cc61998d2cb25ae777290743d5012ac476728",
+      "crc32": "deb46e88",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:16:45Z",
+      "coverageEnd": "2013-05-31T23:16:53Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231653_AIR_v39_s6.nc",
+      "volumeNumber": 39,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:16:53Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "730661932de97e601c9d4c93cf69a1053561aa2dd6d28895812d3eac2bb2e639",
+      "rawNetcdfSha256": "f2d7385868b8fec7325efe8414aa0c204a3f6198fdaaf02f7ca280f119fa7f00",
+      "crc32": "ef891908",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:16:53Z",
+      "coverageEnd": "2013-05-31T23:17:00Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231700_AIR_v40_s6.nc",
+      "volumeNumber": 40,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:17:00Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "1ecd2462e0b3792562c7fd800ce72a89af055bf51c1aecfcd9030f02119f3630",
+      "rawNetcdfSha256": "870ffebfc71e583db6620eb5d1a458802f5ff7fd34bd2c4263ca84ed2b97e709",
+      "crc32": "1e6a7433",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:17:00Z",
+      "coverageEnd": "2013-05-31T23:17:08Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231708_AIR_v41_s6.nc",
+      "volumeNumber": 41,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:17:08Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "d4f411feca3404d527143e3327ca31a2f1dc5c75bb68530f989ca33bb620ca00",
+      "rawNetcdfSha256": "dd59b35ddf053201fba2f2f7f859b5c4e749e99093c67c76e4d08f7a55a90434",
+      "crc32": "09d067cb",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:17:08Z",
+      "coverageEnd": "2013-05-31T23:17:15Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231715_AIR_v42_s6.nc",
+      "volumeNumber": 42,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:17:15Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "241f3ec3622bc840e60db481399996895bc79978a74aea9cc19c57c27c98b783",
+      "rawNetcdfSha256": "c175109c6b6ac8b920799f0dce9e5c8828d781a1f87840c226cf4efb57d971d2",
+      "crc32": "bf7c613f",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:17:15Z",
+      "coverageEnd": "2013-05-31T23:17:23Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231723_AIR_v43_s6.nc",
+      "volumeNumber": 43,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:17:23Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "1b08d6de6504cea79bc71a4321f321bc1b47668365096a1eadd9ab2f3e6428ff",
+      "rawNetcdfSha256": "d9cf2dc046e6f02c4b3b1abd40eb3af4b7cd3de0466ead529f55cf16918234af",
+      "crc32": "da0701a5",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:17:23Z",
+      "coverageEnd": "2013-05-31T23:17:31Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231731_AIR_v44_s6.nc",
+      "volumeNumber": 44,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:17:31Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "37ee43b7740a9a3b30be6c3445621fbf8a558c9c4e0c3b6845f84e97a734a3bf",
+      "rawNetcdfSha256": "1e840e45df28c768ff9108b6f38424e0e5450377de95ee833d98efc0031cec56",
+      "crc32": "cbb35d1f",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:17:31Z",
+      "coverageEnd": "2013-05-31T23:17:38Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231738_AIR_v45_s6.nc",
+      "volumeNumber": 45,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:17:38Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "4fd2bf7c65b24d2f8972bf804c5325364bd764ca415c4d9fb8b86fd923268a81",
+      "rawNetcdfSha256": "622498b8028a6e2e3060c221a97def16eaf1056e5ac2a27b95c14143233cfe45",
+      "crc32": "173f5a8a",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:17:38Z",
+      "coverageEnd": "2013-05-31T23:17:46Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231746_AIR_v46_s6.nc",
+      "volumeNumber": 46,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:17:46Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "06e01702617838ac1e4703b5f4e94e0d8856b32b942cac37e4a5a32c698cbf88",
+      "rawNetcdfSha256": "984aea169c2db2f81208d20d941bcd6db3988e23470d0a40482dd131bca1712b",
+      "crc32": "598a1189",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:17:46Z",
+      "coverageEnd": "2013-05-31T23:18:01Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231801_AIR_v47_s6.nc",
+      "volumeNumber": 47,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:18:01Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "a20ae90b149151c3843bd92be7d56e1553fb9c12b7c3ffd400a2ad765b8016ba",
+      "rawNetcdfSha256": "25a6db1e16b4a9d062ddd7b1f598085e57614e2c36d0243cfbc046142d610f86",
+      "crc32": "11ed9026",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:18:01Z",
+      "coverageEnd": "2013-05-31T23:18:09Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231809_AIR_v48_s6.nc",
+      "volumeNumber": 48,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:18:09Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "82e128ff9a704baa46c1559a720a2b821d6356da5efc364c970047f5fb399c88",
+      "rawNetcdfSha256": "008f1192b17687c2a4295bd564a9f9afb1a77bdd9912667ef31a3ebb665939ca",
+      "crc32": "9afdcab2",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:18:09Z",
+      "coverageEnd": "2013-05-31T23:18:16Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231816_AIR_v49_s6.nc",
+      "volumeNumber": 49,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:18:16Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "1f97ba590cdbafd604f4fa9501e087ad65d3779599677673925c79158dda170c",
+      "rawNetcdfSha256": "6240181b38f52c00f4493de781c002b70315151d3a28cc61dbabbc83315271f0",
+      "crc32": "10d8c133",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:18:16Z",
+      "coverageEnd": "2013-05-31T23:18:24Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231824_AIR_v50_s6.nc",
+      "volumeNumber": 50,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:18:24Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "47b9ca82d8afdfd00cfb0cbe1571726eca932c4ecfb972a7d17b067b5eb8e086",
+      "rawNetcdfSha256": "71c56c2560e9a02159eae4482fc7c0df9de9d943205c5516bd078d9e0714dfaf",
+      "crc32": "c1fdea49",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:18:24Z",
+      "coverageEnd": "2013-05-31T23:18:31Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231831_AIR_v51_s6.nc",
+      "volumeNumber": 51,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:18:31Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "4f3cb68aa6a550efe631b83cc1763e20d0c26618698593160751b3b9da93a35c",
+      "rawNetcdfSha256": "275ca83c98d231e605ccd258f7146a14ab8ca2ce1f62e55a25f653da89f82163",
+      "crc32": "20bab43b",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:18:31Z",
+      "coverageEnd": "2013-05-31T23:18:39Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231839_AIR_v52_s6.nc",
+      "volumeNumber": 52,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:18:39Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "af36972fc23d980ff38327aa1aaa871ca0f4d86f53c9e46ba92759cbf104ebd6",
+      "rawNetcdfSha256": "49bd3bb8e8d631fe767748d38f71ee02f23feaef5d30a3618fbeca2169e8ff78",
+      "crc32": "c6a9a47b",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:18:39Z",
+      "coverageEnd": "2013-05-31T23:18:47Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231847_AIR_v53_s6.nc",
+      "volumeNumber": 53,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:18:47Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "01666bb733279139cf02e89284ca14ae15993171568fb107102af6e1e28a52a5",
+      "rawNetcdfSha256": "38f98056b6108092f706719474990e3daf8675fe94b02198b5858f08d56ccaeb",
+      "crc32": "4a6baef0",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:18:47Z",
+      "coverageEnd": "2013-05-31T23:18:54Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231854_AIR_v54_s6.nc",
+      "volumeNumber": 54,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:18:54Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "f1f266354b0d3cbe07631bf7f172e7c9c813c4adaeb1d82ce0ea6e9d5b14cea2",
+      "rawNetcdfSha256": "9560e0a72f38a2d33b15731408832f372f9dc3bd0ecada328b4e33a3fe1a7350",
+      "crc32": "cf30d514",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:18:54Z",
+      "coverageEnd": "2013-05-31T23:19:02Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231902_AIR_v55_s6.nc",
+      "volumeNumber": 55,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:19:02Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "3926cc027d30be18b86741fdd8a93c4056a945c9cb1daa6b762afd09c25f450c",
+      "rawNetcdfSha256": "e18969dd6b15b9adf5293d252b5ad5d48ca149ac44e0e82a604ec85e8685d1f3",
+      "crc32": "cdca1fca",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:19:02Z",
+      "coverageEnd": "2013-05-31T23:19:09Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231909_AIR_v56_s6.nc",
+      "volumeNumber": 56,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:19:09Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "398e1810f16c4ba526836d8b85899976931f3eb1bd44aa4f1940f4b2f377335d",
+      "rawNetcdfSha256": "e47b51a925d1c0de6a7e9fda75c509eca23341d96d25c2d50334eb4972e8e034",
+      "crc32": "d8e85f48",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:19:09Z",
+      "coverageEnd": "2013-05-31T23:19:17Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231917_AIR_v57_s6.nc",
+      "volumeNumber": 57,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:19:17Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "c5964dad3f553950cb55143c5843bf616f3175433619b77fe735b8dff9811977",
+      "rawNetcdfSha256": "0b368ed5a2c7eb5424aec36ce49f19e12a01a2c66fa08f1cf6c666072339f600",
+      "crc32": "84d5e621",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:19:17Z",
+      "coverageEnd": "2013-05-31T23:19:25Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231925_AIR_v58_s6.nc",
+      "volumeNumber": 58,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:19:25Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "8e3dcdbc65caf8c880960a02fef6170e3bc05e6fe18f72cb501ce83c3f511c17",
+      "rawNetcdfSha256": "c26970e592a5ad617641b4298b96fbde6466bba50184129a92c1d95fd316b6e1",
+      "crc32": "fd9dcfa1",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:19:25Z",
+      "coverageEnd": "2013-05-31T23:19:32Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231932_AIR_v59_s6.nc",
+      "volumeNumber": 59,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:19:32Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "856d1ece209d7d702a16ca07a9a0f8f870f2043b297c992658cc6c91039f8ecf",
+      "rawNetcdfSha256": "40db7d742fa4d8c8a169e0b8d47f8d1f6f76814ca3f3311ba824d6367df3fb89",
+      "crc32": "9769c38d",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:19:32Z",
+      "coverageEnd": "2013-05-31T23:19:40Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231940_AIR_v60_s6.nc",
+      "volumeNumber": 60,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:19:40Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "b3cc76c1f6abab1d456fa0a66d344b355e8f4c9509694df69a9a6243e40e064a",
+      "rawNetcdfSha256": "358684003bb529d01d2a59c92ee3a659c3a25b85e884a1c96c5914ede154ec38",
+      "crc32": "425a2897",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:19:40Z",
+      "coverageEnd": "2013-05-31T23:19:47Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231947_AIR_v61_s6.nc",
+      "volumeNumber": 61,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:19:47Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "db991949741e1ed5dcdf7ab3207ac99bda1dcdb9fd69b5571a403b95b4b017a0",
+      "rawNetcdfSha256": "b52e1b2cc6f510f0908ea7e0d46c30acd18ffe5039168fe4f49f1f4ca838f8ed",
+      "crc32": "26e278ae",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:19:47Z",
+      "coverageEnd": "2013-05-31T23:19:55Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231955_AIR_v62_s6.nc",
+      "volumeNumber": 62,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:19:55Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "b0021719d609e3b4d767c524e6e84c7532c6f99ee0ddf6ba014c66f3329e68d0",
+      "rawNetcdfSha256": "3efe01951e9464da4c58d57a6dfcf955afdd40bc5f60e30f20942fadcffdce28",
+      "crc32": "51ac87df",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:19:55Z",
+      "coverageEnd": "2013-05-31T23:20:03Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232003_AIR_v63_s6.nc",
+      "volumeNumber": 63,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:20:03Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "522a8ee5d3758d25353c35a1d2aa05c31837d57696d75d54fcca4c6db9a00981",
+      "rawNetcdfSha256": "02bf722a47de4afd2fc1a40d89bd2bb943872d0aa2e229e3015fc58f6116f8db",
+      "crc32": "d1d3712e",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:20:03Z",
+      "coverageEnd": "2013-05-31T23:20:10Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232010_AIR_v64_s6.nc",
+      "volumeNumber": 64,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:20:10Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "7e741877b1a2cd54822a87f7a05d0cd28030cc878d18aa4dcafa32e673ed4e66",
+      "rawNetcdfSha256": "e63a5dc0cfd8bbdf459b78086296849915323335066903989698254e6bc48a9e",
+      "crc32": "9bfb66ce",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:20:10Z",
+      "coverageEnd": "2013-05-31T23:20:18Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232018_AIR_v65_s6.nc",
+      "volumeNumber": 65,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:20:18Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "fb96b8f4dc08a740de29a8c86663e988b0b4b0a9a0971d3c54036294d40f8192",
+      "rawNetcdfSha256": "25849aac56d4feb57b19b9165126a6f89b1edcdeb2a5bc29fec2be3bc0703c83",
+      "crc32": "f45e2dd9",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:20:18Z",
+      "coverageEnd": "2013-05-31T23:20:25Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232025_AIR_v66_s6.nc",
+      "volumeNumber": 66,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:20:25Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "fb6739ba70ea6e81a088efd31ccdceaef4ee83c0090bdddd5fc0d911b38e2b9f",
+      "rawNetcdfSha256": "4ed545e9f0de2c3a9fc77f62f488e86f63472c53f53658e6c5840896c0cff567",
+      "crc32": "5791d392",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:20:25Z",
+      "coverageEnd": "2013-05-31T23:20:33Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232033_AIR_v67_s6.nc",
+      "volumeNumber": 67,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:20:33Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "4aa3068bd10c3cfb4f105c22f20cec6d99b4c97b31d37480a96fe0c20497b0a8",
+      "rawNetcdfSha256": "8be7c4d712bc35fa3a4ae02d1cc9c4701f57a1926b7c23cb34280acf66efe2c3",
+      "crc32": "a5f3cd78",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:20:33Z",
+      "coverageEnd": "2013-05-31T23:20:41Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232041_AIR_v68_s6.nc",
+      "volumeNumber": 68,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:20:41Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "4ea548442e679ecab880d24b935efda4e94d9d78dbb56a4364830aa7a7851c90",
+      "rawNetcdfSha256": "b6bbb16a76492dc258acd01de6f3c035add9057d58a601c5d7095380c7fd4d7b",
+      "crc32": "c5742a44",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:20:41Z",
+      "coverageEnd": "2013-05-31T23:20:48Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232048_AIR_v69_s6.nc",
+      "volumeNumber": 69,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:20:48Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "ad434496357f58925b76c9967dc4da0bacd2426bf1584bd539416a63003bdf06",
+      "rawNetcdfSha256": "d797bd13a694f79b36e54ebf8f1b84b5ae849361e7348d3e1cd2865abd3fcbce",
+      "crc32": "b83d7200",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:20:48Z",
+      "coverageEnd": "2013-05-31T23:20:56Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232056_AIR_v70_s6.nc",
+      "volumeNumber": 70,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:20:56Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "b471ea72a998c3614ad1ec3896c5f7e591b779bd29baff62de429fbea2779d0e",
+      "rawNetcdfSha256": "4366b36cdba1d2d3da5bc40aa152786d0b8160bc92dda3e74d2b5aa1ba9249d4",
+      "crc32": "7adcb62b",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:20:56Z",
+      "coverageEnd": "2013-05-31T23:21:03Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232103_AIR_v71_s6.nc",
+      "volumeNumber": 71,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:21:03Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "9b2e2d8f248a6b9a739b0c85c9b0cf6bc7a57301a9513b85d7e07bb3d941ff5c",
+      "rawNetcdfSha256": "8cfade14a59f7f64ecdd091015f52d189ba8d052d028dbf1db8e8c1ad27da375",
+      "crc32": "442b8740",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:21:03Z",
+      "coverageEnd": "2013-05-31T23:21:11Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232111_AIR_v72_s6.nc",
+      "volumeNumber": 72,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:21:11Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "1d78149fb3da683670fbe6df701ba1e403df2fbe998359cf3c3248c043777ef4",
+      "rawNetcdfSha256": "b5d3106d3c062498046564b055d414d9b87653d299e8750818f8ed3650327127",
+      "crc32": "141b69ce",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:21:11Z",
+      "coverageEnd": "2013-05-31T23:21:19Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232119_AIR_v73_s6.nc",
+      "volumeNumber": 73,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:21:19Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "182eb0536ef507cfde8dba2a74c1fe898444568d0d0ad51584d9682900190d41",
+      "rawNetcdfSha256": "2f9e8826368611e5226e13d12f7a3e5c59df8b64eb3044f0fad5755943d9b4da",
+      "crc32": "a4666aaa",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:21:19Z",
+      "coverageEnd": "2013-05-31T23:21:26Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232126_AIR_v74_s6.nc",
+      "volumeNumber": 74,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:21:26Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "c8530d5f010d53296400051457f88ace43a6f5c0a9ccee5981e241a77452b190",
+      "rawNetcdfSha256": "101d1527706d097aaa78f9e7d5cfa7918353ba7262d414cb9aa8b81df957f1b9",
+      "crc32": "a1de2458",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:21:26Z",
+      "coverageEnd": "2013-05-31T23:21:34Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232134_AIR_v75_s6.nc",
+      "volumeNumber": 75,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:21:34Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "85aaa1c44828307db2e26276c3b6ea69865b019ccce75722769855eb7b05b782",
+      "rawNetcdfSha256": "8f86fee05bd0946eac4d0b2dd8406e6e1fa7cd1f1560c9a2fa399c98f6e0ffe9",
+      "crc32": "10170e27",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:21:34Z",
+      "coverageEnd": "2013-05-31T23:21:41Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232141_AIR_v76_s6.nc",
+      "volumeNumber": 76,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:21:41Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "b55d51bae633eacc82e9061f07571fc6c8288dcb61acf0e0adc1b1a5ae5d5caf",
+      "rawNetcdfSha256": "c919b5ff1e13d2b9d76e6959f887e5ea260d852b77122756826a9fc5fe45a249",
+      "crc32": "7d7d05e2",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:21:41Z",
+      "coverageEnd": "2013-05-31T23:21:49Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232149_AIR_v77_s6.nc",
+      "volumeNumber": 77,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:21:49Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "9c6ad9189c53f4bb46bf9656581b6f2c912742627d147b1152268b81acf447d9",
+      "rawNetcdfSha256": "74a7f94b05b735ca8850f1fdd704397d7d231299a25e439caab297c1867f33ef",
+      "crc32": "53a2d074",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:21:49Z",
+      "coverageEnd": "2013-05-31T23:22:04Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232204_AIR_v78_s6.nc",
+      "volumeNumber": 78,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:22:04Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "d9687d7e12365bee55341d07ca44350f0a6725c68f4cd1198cdb19195084dcb0",
+      "rawNetcdfSha256": "2f90b10d67c00c5abc269add7b3e79998115fb96f0df87e301b8b6ebdfeeb99a",
+      "crc32": "536de516",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:22:04Z",
+      "coverageEnd": "2013-05-31T23:22:12Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232212_AIR_v79_s6.nc",
+      "volumeNumber": 79,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:22:12Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "e95e06f51becd4a319299f94a96a751624379a7519f94d757657f5f89d8697d5",
+      "rawNetcdfSha256": "74c0967b4e94850592c964db68f6bb89a518660bce046f38dc2e58d919550964",
+      "crc32": "3771b4c4",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:22:12Z",
+      "coverageEnd": "2013-05-31T23:22:19Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232219_AIR_v80_s6.nc",
+      "volumeNumber": 80,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:22:19Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "a09f919f0ad3fb4a2aba0ab44a5b3b15e11bda66d2607d0c5b45fc7ed50f1c8d",
+      "rawNetcdfSha256": "2c9f39cef05314b18c042ba7e73811eed2fff6807ed6f5d6795623da7bb951c5",
+      "crc32": "d0ab05c8",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:22:19Z",
+      "coverageEnd": "2013-05-31T23:22:27Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232227_AIR_v81_s6.nc",
+      "volumeNumber": 81,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:22:27Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "0a68b311b45677c044563f40f6d9ed3b23104a5aa22257a4955eff266991e7c6",
+      "rawNetcdfSha256": "c18ed6fa373ed1e83020947b8dfe55b428c798c0accde940acd25b4e2bff1826",
+      "crc32": "9c62d09b",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:22:27Z",
+      "coverageEnd": "2013-05-31T23:22:35Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232235_AIR_v82_s6.nc",
+      "volumeNumber": 82,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:22:35Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "44c8bc9202418bf213b651a514e7b10ba8945994cd398ff067ce4d9ef107374e",
+      "rawNetcdfSha256": "3578441007d3cd83a9ab30dbffdab58d0ee883ba922e0ebfeac78ee73230c320",
+      "crc32": "7413981b",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:22:35Z",
+      "coverageEnd": "2013-05-31T23:22:42Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232242_AIR_v83_s6.nc",
+      "volumeNumber": 83,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:22:42Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "86fe98d0e48d96643ad045a4f92742e7ab37ac65b56a80d64e3fad97948abb7c",
+      "rawNetcdfSha256": "fb3a953b72587bd533230842f53e0d8f0ecd2302d978f7215240a405f789c768",
+      "crc32": "c903d0d4",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:22:42Z",
+      "coverageEnd": "2013-05-31T23:22:50Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232250_AIR_v84_s6.nc",
+      "volumeNumber": 84,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:22:50Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "38f56497517ae11d51d6223408a90ff3ce3e99ede78a9af9502ed4d3277b1cca",
+      "rawNetcdfSha256": "4a5acc9b7620f28635f18212edd6e0e7c00ad33fdcf2d2d8ea4d1bb1d99142fe",
+      "crc32": "43920252",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:22:50Z",
+      "coverageEnd": "2013-05-31T23:22:57Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232257_AIR_v85_s6.nc",
+      "volumeNumber": 85,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:22:57Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "f21f5caa316ff4859d976113eb5a88d4a1d1400f7217e46150962b5b7b6e1b40",
+      "rawNetcdfSha256": "67137247ead40ee30095a68f185f3723b04759da16ce01e4b0b24278af6b6547",
+      "crc32": "1d9fe7a5",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:22:57Z",
+      "coverageEnd": "2013-05-31T23:23:05Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232305_AIR_v86_s6.nc",
+      "volumeNumber": 86,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:23:05Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "4232411fd807f2b1455579963d7e7167645600101ab2f2edbfa954c9b03bf508",
+      "rawNetcdfSha256": "111e8ef5838ddc2b2e5c0b4baf2b8ac5027fcd2a09b9f4fd167254bb4c83105e",
+      "crc32": "d0aa9cd6",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:23:05Z",
+      "coverageEnd": "2013-05-31T23:23:13Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232313_AIR_v87_s6.nc",
+      "volumeNumber": 87,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:23:13Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "0c6034e025583f864fbf62651484217acc747e50ed1b9e55b3823de5818c9010",
+      "rawNetcdfSha256": "796bf2b67f3edafc837f21557fa0de81e527eb17e3c7997ba6ca1f04796495de",
+      "crc32": "85d68db9",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:23:13Z",
+      "coverageEnd": "2013-05-31T23:23:20Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232320_AIR_v88_s6.nc",
+      "volumeNumber": 88,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:23:20Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "a9aa8bc7af849ab1ece95b9da1a60ae390102b33ab3208fe035f03c9806a3f24",
+      "rawNetcdfSha256": "f72e03d982763554537e181b9a9be0500a7b3b4a133fc82b14289ab083ce3a06",
+      "crc32": "93bf5e2b",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:23:20Z",
+      "coverageEnd": "2013-05-31T23:23:28Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232328_AIR_v89_s6.nc",
+      "volumeNumber": 89,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:23:28Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "656445558af1be2fc17daa35a11efed29df394fcbc3b7ab8f77496928671b59f",
+      "rawNetcdfSha256": "50c89fd8236d1a2caba28584b10470e485c9a606aefd5902630f1b48b41739fa",
+      "crc32": "c3e6247b",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:23:28Z",
+      "coverageEnd": "2013-05-31T23:23:35Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232335_AIR_v90_s6.nc",
+      "volumeNumber": 90,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:23:35Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "8a592c44015646716169622e127060de5828bfad9dbaf7b8d548a4c693adc294",
+      "rawNetcdfSha256": "b1794cd0dcdfa90ba23cfd041780571ab55fddc06bcacb4b0b2845ff34757c98",
+      "crc32": "9a9af67e",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:23:35Z",
+      "coverageEnd": "2013-05-31T23:23:43Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232343_AIR_v91_s6.nc",
+      "volumeNumber": 91,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:23:43Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "ed2cb4e12fc86f5620abcee39156980765eff13f6624147e851245b43e3f1ccd",
+      "rawNetcdfSha256": "c083190bcf2c1b67abf5e9fe894a68fe3467e089a687f7b3bcd0cbf9d4bde9bb",
+      "crc32": "9695c5ca",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:23:43Z",
+      "coverageEnd": "2013-05-31T23:23:51Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232351_AIR_v92_s6.nc",
+      "volumeNumber": 92,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:23:51Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "a1460b38a772c7bbe8509efa415bf16a5e3dfd24a67a2240043cc35ba6d1c75f",
+      "rawNetcdfSha256": "c93397705aa6056d62e3f5933cc5a559b7d12dcf36c8da8b6a633cc8767826c7",
+      "crc32": "5d506627",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:23:51Z",
+      "coverageEnd": "2013-05-31T23:24:06Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232406_AIR_v93_s6.nc",
+      "volumeNumber": 93,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:24:06Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "9d5e3adf137ae91aaa02628a27457604f6977bb8aabfa54e03587bc0a7c639d1",
+      "rawNetcdfSha256": "1b90b2cc5c413473c58a370a66586f07e0946912fecff9fac9a15c0f09156dcb",
+      "crc32": "e78495d1",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:24:06Z",
+      "coverageEnd": "2013-05-31T23:24:13Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232413_AIR_v94_s6.nc",
+      "volumeNumber": 94,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:24:13Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "626a640f8f5cb58170df4fc66b92c3afae28d70e6f318cc9051372caeb5ea773",
+      "rawNetcdfSha256": "c0d804c6d788b75fe41b699350009b88f426dbaf18f535bccc8591653ab38b1a",
+      "crc32": "4963c93e",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:24:13Z",
+      "coverageEnd": "2013-05-31T23:24:21Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232421_AIR_v95_s6.nc",
+      "volumeNumber": 95,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:24:21Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "cf25689c3ff8b682c3af642feefb9c24c684b1fdae6258102cadcd1cbf010498",
+      "rawNetcdfSha256": "a3b653566de093f089966d333132730b474759f3735f10f54b681bca74208705",
+      "crc32": "ce4ce8df",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:24:21Z",
+      "coverageEnd": "2013-05-31T23:24:29Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232429_AIR_v96_s6.nc",
+      "volumeNumber": 96,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:24:29Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "9b776a35412e436fcc6c898102a01ed904b63005eaa5f74cd64d4428689285be",
+      "rawNetcdfSha256": "c4321ea9a9f02dd33cf0ff7fe3987cadb12f497ce27b4d2c9f62044b2c940eac",
+      "crc32": "b3f3fc0e",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:24:29Z",
+      "coverageEnd": "2013-05-31T23:24:36Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232436_AIR_v97_s6.nc",
+      "volumeNumber": 97,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:24:36Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "a9097f765595d98c88c35b01d1e7f17e72f6d68487cc80335ff25df78f7d4c9f",
+      "rawNetcdfSha256": "bc81cd663e6565da5659f3a044b40f789018272af3986752dbc121081c92a6b9",
+      "crc32": "4deda175",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:24:36Z",
+      "coverageEnd": "2013-05-31T23:24:44Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232444_AIR_v98_s6.nc",
+      "volumeNumber": 98,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:24:44Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "31cbc2462821d8a3893fdd695de562b3154b24cc9507c1b58c530bcb8df1ddee",
+      "rawNetcdfSha256": "e8a5483fc745c2812d556192819dd336ccfe344b94854628dacb12e85c91f1da",
+      "crc32": "c29be372",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:24:44Z",
+      "coverageEnd": "2013-05-31T23:24:51Z",
+      "coverageAliasesAgree": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232451_AIR_v99_s6.nc",
+      "volumeNumber": 99,
+      "sourceSweepNumber": 6,
+      "fixedAngleDegrees": 0.5,
+      "filenameUtc": "2013-05-31T23:24:51Z",
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "azimuthSha256": "c4911338bffb78bc965ca7922506dc790dba20034b66d3f7ed2c1473877dc51d",
+      "rawNetcdfSha256": "3ba58f9137df877da092d157471011ebfea3f812c8dccf7ac50df94112ab3399",
+      "crc32": "3e32f42f",
+      "crc32Verified": true,
+      "coverageStart": "2013-05-31T23:24:51Z",
+      "coverageEnd": "2013-05-31T23:24:57Z",
+      "coverageAliasesAgree": true
+    }
+  ],
+  "fullSiblingMetadataChecks": [
+    {
+      "member": "CFradial/cfrad.20130531_231156_AIR_v1_s1.nc",
+      "volumeNumber": 1,
+      "sourceSweepNumber": 1,
+      "sourceSweepNumberLabel": "sweep_index_number_0_based",
+      "fixedAngleDegrees": -2.0,
+      "filenameUtc": "2013-05-31T23:11:56Z",
+      "coverageAliases": {
+        "global.time_coverage_start": "2013-05-31T23:11:56Z",
+        "global.start_datetime": "2013-05-31T23:11:56Z",
+        "variable.time_coverage_start": "2013-05-31T23:11:56Z",
+        "global.time_coverage_end": "2013-05-31T23:12:04Z",
+        "global.end_datetime": "2013-05-31T23:12:04Z",
+        "variable.time_coverage_end": "2013-05-31T23:12:04Z"
+      },
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "rayTimeUnitsDecoded": "seconds since \uffff",
+      "rayTimeUnitsHex": "7365636f6e64732073696e636520efbfbf",
+      "rayTimeLongName": "time_in_seconds_since_volume_start",
+      "globalTitle": "19700109",
+      "otherGlobalMetadata": {
+        "Conventions": "CF/Radial instrument_parameters radar_parameters",
+        "institution": "University of Oklahoma",
+        "references": "",
+        "source": "",
+        "history": "",
+        "comment": "",
+        "instrument_name": "AIR",
+        "version": "CF-Radial-1.3"
+      },
+      "variableNames": [
+        "volume_number",
+        "time_coverage_start",
+        "time_coverage_end",
+        "latitude",
+        "longitude",
+        "altitude",
+        "sweep_number",
+        "sweep_mode",
+        "fixed_angle",
+        "sweep_start_ray_index",
+        "sweep_end_ray_index",
+        "time",
+        "range",
+        "azimuth",
+        "elevation",
+        "pulse_width",
+        "prt",
+        "nyquist_velocity",
+        "DBZ",
+        "VEL",
+        "WIDTH"
+      ],
+      "azimuthSha256": "b1afe2e8dfe39bb7bb272be34ed014ac8f5b2c42fd011e26243b76f01c4fec23",
+      "rawNetcdfSha256": "665494a22048758bb915ceb0c3f26d2383472f79a4763c1c8c391ce3e2b69725",
+      "crc32": "52fe6991",
+      "crc32Verified": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231156_AIR_v1_s45.nc",
+      "volumeNumber": 1,
+      "sourceSweepNumber": 45,
+      "sourceSweepNumberLabel": "sweep_index_number_0_based",
+      "fixedAngleDegrees": 20.0,
+      "filenameUtc": "2013-05-31T23:11:56Z",
+      "coverageAliases": {
+        "global.time_coverage_start": "2013-05-31T23:11:56Z",
+        "global.start_datetime": "2013-05-31T23:11:56Z",
+        "variable.time_coverage_start": "2013-05-31T23:11:56Z",
+        "global.time_coverage_end": "2013-05-31T23:12:04Z",
+        "global.end_datetime": "2013-05-31T23:12:04Z",
+        "variable.time_coverage_end": "2013-05-31T23:12:04Z"
+      },
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "rayTimeUnitsDecoded": "seconds since \uffff",
+      "rayTimeUnitsHex": "7365636f6e64732073696e636520efbfbf",
+      "rayTimeLongName": "time_in_seconds_since_volume_start",
+      "globalTitle": "19700109",
+      "otherGlobalMetadata": {
+        "Conventions": "CF/Radial instrument_parameters radar_parameters",
+        "institution": "University of Oklahoma",
+        "references": "",
+        "source": "",
+        "history": "",
+        "comment": "",
+        "instrument_name": "AIR",
+        "version": "CF-Radial-1.3"
+      },
+      "variableNames": [
+        "volume_number",
+        "time_coverage_start",
+        "time_coverage_end",
+        "latitude",
+        "longitude",
+        "altitude",
+        "sweep_number",
+        "sweep_mode",
+        "fixed_angle",
+        "sweep_start_ray_index",
+        "sweep_end_ray_index",
+        "time",
+        "range",
+        "azimuth",
+        "elevation",
+        "pulse_width",
+        "prt",
+        "nyquist_velocity",
+        "DBZ",
+        "VEL",
+        "WIDTH"
+      ],
+      "azimuthSha256": "b1afe2e8dfe39bb7bb272be34ed014ac8f5b2c42fd011e26243b76f01c4fec23",
+      "rawNetcdfSha256": "ef65c432a09b6399a865a68818c92115882727fd4f5f47bdd6582262adaa8f94",
+      "crc32": "61b3f825",
+      "crc32Verified": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231156_AIR_v1_s5.nc",
+      "volumeNumber": 1,
+      "sourceSweepNumber": 5,
+      "sourceSweepNumberLabel": "sweep_index_number_0_based",
+      "fixedAngleDegrees": 0.0,
+      "filenameUtc": "2013-05-31T23:11:56Z",
+      "coverageAliases": {
+        "global.time_coverage_start": "2013-05-31T23:11:56Z",
+        "global.start_datetime": "2013-05-31T23:11:56Z",
+        "variable.time_coverage_start": "2013-05-31T23:11:56Z",
+        "global.time_coverage_end": "2013-05-31T23:12:04Z",
+        "global.end_datetime": "2013-05-31T23:12:04Z",
+        "variable.time_coverage_end": "2013-05-31T23:12:04Z"
+      },
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "rayTimeUnitsDecoded": "seconds since \uffff",
+      "rayTimeUnitsHex": "7365636f6e64732073696e636520efbfbf",
+      "rayTimeLongName": "time_in_seconds_since_volume_start",
+      "globalTitle": "19700109",
+      "otherGlobalMetadata": {
+        "Conventions": "CF/Radial instrument_parameters radar_parameters",
+        "institution": "University of Oklahoma",
+        "references": "",
+        "source": "",
+        "history": "",
+        "comment": "",
+        "instrument_name": "AIR",
+        "version": "CF-Radial-1.3"
+      },
+      "variableNames": [
+        "volume_number",
+        "time_coverage_start",
+        "time_coverage_end",
+        "latitude",
+        "longitude",
+        "altitude",
+        "sweep_number",
+        "sweep_mode",
+        "fixed_angle",
+        "sweep_start_ray_index",
+        "sweep_end_ray_index",
+        "time",
+        "range",
+        "azimuth",
+        "elevation",
+        "pulse_width",
+        "prt",
+        "nyquist_velocity",
+        "DBZ",
+        "VEL",
+        "WIDTH"
+      ],
+      "azimuthSha256": "b1afe2e8dfe39bb7bb272be34ed014ac8f5b2c42fd011e26243b76f01c4fec23",
+      "rawNetcdfSha256": "2d6882c7aa74a60af598f3be7a3ad9c2cd63640a62e90040f63dffd56f44572f",
+      "crc32": "5ce3f568",
+      "crc32Verified": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231156_AIR_v1_s7.nc",
+      "volumeNumber": 1,
+      "sourceSweepNumber": 7,
+      "sourceSweepNumberLabel": "sweep_index_number_0_based",
+      "fixedAngleDegrees": 1.0,
+      "filenameUtc": "2013-05-31T23:11:56Z",
+      "coverageAliases": {
+        "global.time_coverage_start": "2013-05-31T23:11:56Z",
+        "global.start_datetime": "2013-05-31T23:11:56Z",
+        "variable.time_coverage_start": "2013-05-31T23:11:56Z",
+        "global.time_coverage_end": "2013-05-31T23:12:04Z",
+        "global.end_datetime": "2013-05-31T23:12:04Z",
+        "variable.time_coverage_end": "2013-05-31T23:12:04Z"
+      },
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "rayTimeUnitsDecoded": "seconds since \uffff",
+      "rayTimeUnitsHex": "7365636f6e64732073696e636520efbfbf",
+      "rayTimeLongName": "time_in_seconds_since_volume_start",
+      "globalTitle": "19700109",
+      "otherGlobalMetadata": {
+        "Conventions": "CF/Radial instrument_parameters radar_parameters",
+        "institution": "University of Oklahoma",
+        "references": "",
+        "source": "",
+        "history": "",
+        "comment": "",
+        "instrument_name": "AIR",
+        "version": "CF-Radial-1.3"
+      },
+      "variableNames": [
+        "volume_number",
+        "time_coverage_start",
+        "time_coverage_end",
+        "latitude",
+        "longitude",
+        "altitude",
+        "sweep_number",
+        "sweep_mode",
+        "fixed_angle",
+        "sweep_start_ray_index",
+        "sweep_end_ray_index",
+        "time",
+        "range",
+        "azimuth",
+        "elevation",
+        "pulse_width",
+        "prt",
+        "nyquist_velocity",
+        "DBZ",
+        "VEL",
+        "WIDTH"
+      ],
+      "azimuthSha256": "b1afe2e8dfe39bb7bb272be34ed014ac8f5b2c42fd011e26243b76f01c4fec23",
+      "rawNetcdfSha256": "12311ad019ff85335c37baa83c36364cc266aafbcd38af9447b06b680380d2a7",
+      "crc32": "4ace1262",
+      "crc32Verified": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_231824_AIR_v50_s45.nc",
+      "volumeNumber": 50,
+      "sourceSweepNumber": 45,
+      "sourceSweepNumberLabel": "sweep_index_number_0_based",
+      "fixedAngleDegrees": 20.0,
+      "filenameUtc": "2013-05-31T23:18:24Z",
+      "coverageAliases": {
+        "global.time_coverage_start": "2013-05-31T23:18:24Z",
+        "global.start_datetime": "2013-05-31T23:18:24Z",
+        "variable.time_coverage_start": "2013-05-31T23:18:24Z",
+        "global.time_coverage_end": "2013-05-31T23:18:31Z",
+        "global.end_datetime": "2013-05-31T23:18:31Z",
+        "variable.time_coverage_end": "2013-05-31T23:18:31Z"
+      },
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "rayTimeUnitsDecoded": "seconds since \uffff",
+      "rayTimeUnitsHex": "7365636f6e64732073696e636520efbfbf",
+      "rayTimeLongName": "time_in_seconds_since_volume_start",
+      "globalTitle": "19700109",
+      "otherGlobalMetadata": {
+        "Conventions": "CF/Radial instrument_parameters radar_parameters",
+        "institution": "University of Oklahoma",
+        "references": "",
+        "source": "",
+        "history": "",
+        "comment": "",
+        "instrument_name": "AIR",
+        "version": "CF-Radial-1.3"
+      },
+      "variableNames": [
+        "volume_number",
+        "time_coverage_start",
+        "time_coverage_end",
+        "latitude",
+        "longitude",
+        "altitude",
+        "sweep_number",
+        "sweep_mode",
+        "fixed_angle",
+        "sweep_start_ray_index",
+        "sweep_end_ray_index",
+        "time",
+        "range",
+        "azimuth",
+        "elevation",
+        "pulse_width",
+        "prt",
+        "nyquist_velocity",
+        "DBZ",
+        "VEL",
+        "WIDTH"
+      ],
+      "azimuthSha256": "47b9ca82d8afdfd00cfb0cbe1571726eca932c4ecfb972a7d17b067b5eb8e086",
+      "rawNetcdfSha256": "10806e4a7bc28cfe57ae0e6499dfaab1b224de07c89880cc8c852f3ab6aa0a82",
+      "crc32": "08cdd3a8",
+      "crc32Verified": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232451_AIR_v99_s1.nc",
+      "volumeNumber": 99,
+      "sourceSweepNumber": 1,
+      "sourceSweepNumberLabel": "sweep_index_number_0_based",
+      "fixedAngleDegrees": -2.0,
+      "filenameUtc": "2013-05-31T23:24:51Z",
+      "coverageAliases": {
+        "global.time_coverage_start": "2013-05-31T23:24:51Z",
+        "global.start_datetime": "2013-05-31T23:24:51Z",
+        "variable.time_coverage_start": "2013-05-31T23:24:51Z",
+        "global.time_coverage_end": "2013-05-31T23:24:57Z",
+        "global.end_datetime": "2013-05-31T23:24:57Z",
+        "variable.time_coverage_end": "2013-05-31T23:24:57Z"
+      },
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "rayTimeUnitsDecoded": "seconds since \uffff",
+      "rayTimeUnitsHex": "7365636f6e64732073696e636520efbfbf",
+      "rayTimeLongName": "time_in_seconds_since_volume_start",
+      "globalTitle": "19700109",
+      "otherGlobalMetadata": {
+        "Conventions": "CF/Radial instrument_parameters radar_parameters",
+        "institution": "University of Oklahoma",
+        "references": "",
+        "source": "",
+        "history": "",
+        "comment": "",
+        "instrument_name": "AIR",
+        "version": "CF-Radial-1.3"
+      },
+      "variableNames": [
+        "volume_number",
+        "time_coverage_start",
+        "time_coverage_end",
+        "latitude",
+        "longitude",
+        "altitude",
+        "sweep_number",
+        "sweep_mode",
+        "fixed_angle",
+        "sweep_start_ray_index",
+        "sweep_end_ray_index",
+        "time",
+        "range",
+        "azimuth",
+        "elevation",
+        "pulse_width",
+        "prt",
+        "nyquist_velocity",
+        "DBZ",
+        "VEL",
+        "WIDTH"
+      ],
+      "azimuthSha256": "c4911338bffb78bc965ca7922506dc790dba20034b66d3f7ed2c1473877dc51d",
+      "rawNetcdfSha256": "b0f8648009d17d29d2a61f398661cf3e714c8837d8fca518ba1fe7f92aea15ef",
+      "crc32": "ce4f1ed9",
+      "crc32Verified": true
+    },
+    {
+      "member": "CFradial/cfrad.20130531_232451_AIR_v99_s45.nc",
+      "volumeNumber": 99,
+      "sourceSweepNumber": 45,
+      "sourceSweepNumberLabel": "sweep_index_number_0_based",
+      "fixedAngleDegrees": 20.0,
+      "filenameUtc": "2013-05-31T23:24:51Z",
+      "coverageAliases": {
+        "global.time_coverage_start": "2013-05-31T23:24:51Z",
+        "global.start_datetime": "2013-05-31T23:24:51Z",
+        "variable.time_coverage_start": "2013-05-31T23:24:51Z",
+        "global.time_coverage_end": "2013-05-31T23:24:57Z",
+        "global.end_datetime": "2013-05-31T23:24:57Z",
+        "variable.time_coverage_end": "2013-05-31T23:24:57Z"
+      },
+      "rayTimeCount": 239,
+      "rayTimeUniqueValues": [
+        0.0
+      ],
+      "rayTimeUnitsDecoded": "seconds since \uffff",
+      "rayTimeUnitsHex": "7365636f6e64732073696e636520efbfbf",
+      "rayTimeLongName": "time_in_seconds_since_volume_start",
+      "globalTitle": "19700109",
+      "otherGlobalMetadata": {
+        "Conventions": "CF/Radial instrument_parameters radar_parameters",
+        "institution": "University of Oklahoma",
+        "references": "",
+        "source": "",
+        "history": "",
+        "comment": "",
+        "instrument_name": "AIR",
+        "version": "CF-Radial-1.3"
+      },
+      "variableNames": [
+        "volume_number",
+        "time_coverage_start",
+        "time_coverage_end",
+        "latitude",
+        "longitude",
+        "altitude",
+        "sweep_number",
+        "sweep_mode",
+        "fixed_angle",
+        "sweep_start_ray_index",
+        "sweep_end_ray_index",
+        "time",
+        "range",
+        "azimuth",
+        "elevation",
+        "pulse_width",
+        "prt",
+        "nyquist_velocity",
+        "DBZ",
+        "VEL",
+        "WIDTH"
+      ],
+      "azimuthSha256": "c4911338bffb78bc965ca7922506dc790dba20034b66d3f7ed2c1473877dc51d",
+      "rawNetcdfSha256": "5cc6a1a7766907049eefedc0676489b5fab1e55f35627b7d28d454b5e427ebae",
+      "crc32": "175fa31b",
+      "crc32Verified": true
+    }
+  ],
+  "exampleVariableInventory": [
+    "volume_number",
+    "time_coverage_start",
+    "time_coverage_end",
+    "latitude",
+    "longitude",
+    "altitude",
+    "sweep_number",
+    "sweep_mode",
+    "fixed_angle",
+    "sweep_start_ray_index",
+    "sweep_end_ray_index",
+    "time",
+    "range",
+    "azimuth",
+    "elevation",
+    "pulse_width",
+    "prt",
+    "nyquist_velocity",
+    "DBZ",
+    "VEL",
+    "WIDTH"
+  ],
+  "exampleGlobalMetadata": {
+    "Conventions": "CF/Radial instrument_parameters radar_parameters",
+    "institution": "University of Oklahoma",
+    "references": "",
+    "source": "",
+    "history": "",
+    "comment": "",
+    "instrument_name": "AIR",
+    "version": "CF-Radial-1.3"
+  },
+  "fullVolumePipelineChecks": {
+    "method": "Additional conversion-time verification of every original member, separate from the106-file independent metadata audit above.",
+    "count": 4455,
+    "allNativeVolumeAndSweepNumbersMatchFilenames": true,
+    "allRayTimesZero": true,
+    "allSiblingCoverageAliasesMatchAndIntervalsAgree": true,
+    "all45AnglesVerifiedPerGroup": true,
+    "timeCorrectionAppliedSeconds": 0
+  }
+}

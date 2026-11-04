@@ -7,6 +7,6 @@
   "scripts": {
     "start": "node scripts/serve.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check app.js && node --check js/analysis.js && node --check js/road-motion.js && node --check js/timeline.js && node --check js/radar-source.js && node --check scripts/serve.mjs"
+    "check": "node --check app.js && node --check js/analysis.js && node --check js/road-motion.js && node --check js/timeline.js && node --check js/radar-source.js && node --check js/air-volume-viewer.js && node --check js/air-surface.js && node --check scripts/serve.mjs"
   }
 }

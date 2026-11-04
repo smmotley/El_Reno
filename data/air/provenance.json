@@ -107,7 +107,9 @@
           "displayedValueRange": [
             -24.64,
             77.32000000000001
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -157,7 +159,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -246,7 +250,9 @@
           "displayedValueRange": [
             -24.32,
             77.06
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -296,7 +302,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -385,7 +393,9 @@
           "displayedValueRange": [
             -24.060000000000002,
             75.27
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -435,7 +445,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -524,7 +536,9 @@
           "displayedValueRange": [
             -23.53,
             77.39
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -574,7 +588,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -663,7 +679,9 @@
           "displayedValueRange": [
             -23.990000000000002,
             76.94
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -713,7 +731,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -802,7 +822,9 @@
           "displayedValueRange": [
             -24.2,
             77.95
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -852,7 +874,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -941,7 +965,9 @@
           "displayedValueRange": [
             -23.54,
             76.39
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -991,7 +1017,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -1080,7 +1108,9 @@
           "displayedValueRange": [
             -23.61,
             79.89
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -1130,7 +1160,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -1219,7 +1251,9 @@
           "displayedValueRange": [
             -24.18,
             75.49
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -1269,7 +1303,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -1358,7 +1394,9 @@
           "displayedValueRange": [
             -25.01,
             75.79
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -1408,7 +1446,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -1497,7 +1537,9 @@
           "displayedValueRange": [
             -24.09,
             77.01
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -1547,7 +1589,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -1636,7 +1680,9 @@
           "displayedValueRange": [
             -23.78,
             76.79
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -1686,7 +1732,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -1775,7 +1823,9 @@
           "displayedValueRange": [
             -23.87,
             76.88
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -1825,7 +1875,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -1914,7 +1966,9 @@
           "displayedValueRange": [
             -24.6,
             75.04
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -1964,7 +2018,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -2053,7 +2109,9 @@
           "displayedValueRange": [
             -25.46,
             76.31
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -2103,7 +2161,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -2192,7 +2252,9 @@
           "displayedValueRange": [
             -24.28,
             79.12
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -2242,7 +2304,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -2331,7 +2395,9 @@
           "displayedValueRange": [
             -23.8,
             75.01
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -2381,7 +2447,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -2470,7 +2538,9 @@
           "displayedValueRange": [
             -24.01,
             74.79
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -2520,7 +2590,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -2609,7 +2681,9 @@
           "displayedValueRange": [
             -24.55,
             78.54
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -2659,7 +2733,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -2748,7 +2824,9 @@
           "displayedValueRange": [
             -23.97,
             77.92
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -2798,7 +2876,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -2887,7 +2967,9 @@
           "displayedValueRange": [
             -23.96,
             75.44
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -2937,7 +3019,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -3026,7 +3110,9 @@
           "displayedValueRange": [
             -24.94,
             74.94
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -3076,7 +3162,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -3165,7 +3253,9 @@
           "displayedValueRange": [
             -24.11,
             75.5
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -3215,7 +3305,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -3304,7 +3396,9 @@
           "displayedValueRange": [
             -23.54,
             74.92
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -3354,7 +3448,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -3443,7 +3539,9 @@
           "displayedValueRange": [
             -24.43,
             74.08
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -3493,7 +3591,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -3582,7 +3682,9 @@
           "displayedValueRange": [
             -24.060000000000002,
             74.95
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -3632,7 +3734,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -3721,7 +3825,9 @@
           "displayedValueRange": [
             -24.3,
             74.66
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -3771,7 +3877,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -3860,7 +3968,9 @@
           "displayedValueRange": [
             -24.740000000000002,
             76.83
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -3910,7 +4020,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -3999,7 +4111,9 @@
           "displayedValueRange": [
             -24.310000000000002,
             74.28
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -4049,7 +4163,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -4138,7 +4254,9 @@
           "displayedValueRange": [
             -23.69,
             76.47
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -4188,7 +4306,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -4277,7 +4397,9 @@
           "displayedValueRange": [
             -24.37,
             76.02
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -4327,7 +4449,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -4416,7 +4540,9 @@
           "displayedValueRange": [
             -24.13,
             75.75
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -4466,7 +4592,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -4555,7 +4683,9 @@
           "displayedValueRange": [
             -23.94,
             76.99
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -4605,7 +4735,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -4694,7 +4826,9 @@
           "displayedValueRange": [
             -24.22,
             74.3
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -4744,7 +4878,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -4833,7 +4969,9 @@
           "displayedValueRange": [
             -24.080000000000002,
             75.87
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -4883,7 +5021,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -4972,7 +5112,9 @@
           "displayedValueRange": [
             -24.03,
             76.89
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -5022,7 +5164,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -5111,7 +5255,9 @@
           "displayedValueRange": [
             -24.25,
             75.29
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -5161,7 +5307,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -5250,7 +5398,9 @@
           "displayedValueRange": [
             -23.900000000000002,
             74.13
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -5300,7 +5450,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -5389,7 +5541,9 @@
           "displayedValueRange": [
             -24.17,
             75.7
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -5439,7 +5593,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -5528,7 +5684,9 @@
           "displayedValueRange": [
             -23.78,
             77.09
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -5578,7 +5736,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -5667,7 +5827,9 @@
           "displayedValueRange": [
             -24.16,
             75.49
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -5717,7 +5879,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -5806,7 +5970,9 @@
           "displayedValueRange": [
             -24.37,
             77.4
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -5856,7 +6022,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -5945,7 +6113,9 @@
           "displayedValueRange": [
             -24.23,
             75.43
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -5995,7 +6165,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -6084,7 +6256,9 @@
           "displayedValueRange": [
             -24.53,
             76.24
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -6134,7 +6308,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -6223,7 +6399,9 @@
           "displayedValueRange": [
             -24.02,
             74.78
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -6273,7 +6451,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -6362,7 +6542,9 @@
           "displayedValueRange": [
             -24.060000000000002,
             75.55
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -6412,7 +6594,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -6501,7 +6685,9 @@
           "displayedValueRange": [
             -24.61,
             77.31
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -6551,7 +6737,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -6640,7 +6828,9 @@
           "displayedValueRange": [
             -24.69,
             78.61
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -6690,7 +6880,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -6779,7 +6971,9 @@
           "displayedValueRange": [
             -24.03,
             74.31
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -6829,7 +7023,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -6918,7 +7114,9 @@
           "displayedValueRange": [
             -25.11,
             77.4
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -6968,7 +7166,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -7057,7 +7257,9 @@
           "displayedValueRange": [
             -24.61,
             76.88
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -7107,7 +7309,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -7196,7 +7400,9 @@
           "displayedValueRange": [
             -23.78,
             76.13
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -7246,7 +7452,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -7335,7 +7543,9 @@
           "displayedValueRange": [
             -24.21,
             76.38
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -7385,7 +7595,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -7474,7 +7686,9 @@
           "displayedValueRange": [
             -26.27,
             75.64
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -7524,7 +7738,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -7613,7 +7829,9 @@
           "displayedValueRange": [
             -24.13,
             77.29
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -7663,7 +7881,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -7752,7 +7972,9 @@
           "displayedValueRange": [
             -24.310000000000002,
             75.51
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -7802,7 +8024,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -7891,7 +8115,9 @@
           "displayedValueRange": [
             -24.830000000000002,
             78.4
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -7941,7 +8167,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -8030,7 +8258,9 @@
           "displayedValueRange": [
             -24.22,
             75.85000000000001
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -8080,7 +8310,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -8169,7 +8401,9 @@
           "displayedValueRange": [
             -24.64,
             76.13
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -8219,7 +8453,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -8308,7 +8544,9 @@
           "displayedValueRange": [
             -24.77,
             78.98
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -8358,7 +8596,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -8447,7 +8687,9 @@
           "displayedValueRange": [
             -24.12,
             79.41
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -8497,7 +8739,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -8586,7 +8830,9 @@
           "displayedValueRange": [
             -24.69,
             77.87
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -8636,7 +8882,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -8725,7 +8973,9 @@
           "displayedValueRange": [
             -23.88,
             75.62
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -8775,7 +9025,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -8864,7 +9116,9 @@
           "displayedValueRange": [
             -24.46,
             75.95
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -8914,7 +9168,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -9003,7 +9259,9 @@
           "displayedValueRange": [
             -24.35,
             75.83
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -9053,7 +9311,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -9142,7 +9402,9 @@
           "displayedValueRange": [
             -24.26,
             79.43
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -9192,7 +9454,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -9281,7 +9545,9 @@
           "displayedValueRange": [
             -24.52,
             75.75
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -9331,7 +9597,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -9420,7 +9688,9 @@
           "displayedValueRange": [
             -24.57,
             76.58
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -9470,7 +9740,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -9559,7 +9831,9 @@
           "displayedValueRange": [
             -24.17,
             76.8
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -9609,7 +9883,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -9698,7 +9974,9 @@
           "displayedValueRange": [
             -24.85,
             75.8
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -9748,7 +10026,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -9837,7 +10117,9 @@
           "displayedValueRange": [
             -23.91,
             76.33
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -9887,7 +10169,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -9976,7 +10260,9 @@
           "displayedValueRange": [
             -23.72,
             73.68
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -10026,7 +10312,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -10115,7 +10403,9 @@
           "displayedValueRange": [
             -24.63,
             74.14
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -10165,7 +10455,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -10254,7 +10546,9 @@
           "displayedValueRange": [
             -24.6,
             78.45
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -10304,7 +10598,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -10393,7 +10689,9 @@
           "displayedValueRange": [
             -24.35,
             74.71000000000001
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -10443,7 +10741,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -10532,7 +10832,9 @@
           "displayedValueRange": [
             -24.490000000000002,
             74.42
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -10582,7 +10884,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -10671,7 +10975,9 @@
           "displayedValueRange": [
             -24.73,
             74.38
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -10721,7 +11027,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -10810,7 +11118,9 @@
           "displayedValueRange": [
             -24.41,
             75.06
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -10860,7 +11170,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -10949,7 +11261,9 @@
           "displayedValueRange": [
             -24.42,
             75.57000000000001
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -10999,7 +11313,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -11088,7 +11404,9 @@
           "displayedValueRange": [
             -24.14,
             75.69
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -11138,7 +11456,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -11227,7 +11547,9 @@
           "displayedValueRange": [
             -24.52,
             73.79
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -11277,7 +11599,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -11366,7 +11690,9 @@
           "displayedValueRange": [
             -23.8,
             74.08
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -11416,7 +11742,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -11505,7 +11833,9 @@
           "displayedValueRange": [
             -24.84,
             75.74
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -11555,7 +11885,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -11644,7 +11976,9 @@
           "displayedValueRange": [
             -24.26,
             75.42
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -11694,7 +12028,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -11783,7 +12119,9 @@
           "displayedValueRange": [
             -24.25,
             77.8
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -11833,7 +12171,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -11922,7 +12262,9 @@
           "displayedValueRange": [
             -23.89,
             74.22
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -11972,7 +12314,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -12061,7 +12405,9 @@
           "displayedValueRange": [
             -24.400000000000002,
             76.47
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -12111,7 +12457,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -12200,7 +12548,9 @@
           "displayedValueRange": [
             -23.82,
             77.99
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -12250,7 +12600,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -12339,7 +12691,9 @@
           "displayedValueRange": [
             -24.32,
             76.3
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -12389,7 +12743,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -12478,7 +12834,9 @@
           "displayedValueRange": [
             -24.64,
             75.89
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -12528,7 +12886,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -12617,7 +12977,9 @@
           "displayedValueRange": [
             -23.84,
             78.54
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -12667,7 +13029,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -12756,7 +13120,9 @@
           "displayedValueRange": [
             -23.85,
             77.53
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -12806,7 +13172,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -12895,7 +13263,9 @@
           "displayedValueRange": [
             -24.7,
             76.93
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -12945,7 +13315,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -13034,7 +13406,9 @@
           "displayedValueRange": [
             -24.0,
             77.8
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -13084,7 +13458,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -13173,7 +13549,9 @@
           "displayedValueRange": [
             -24.68,
             79.77
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -13223,7 +13601,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -13312,7 +13692,9 @@
           "displayedValueRange": [
             -24.650000000000002,
             78.71000000000001
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -13362,7 +13744,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -13451,7 +13835,9 @@
           "displayedValueRange": [
             -24.45,
             76.09
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -13501,7 +13887,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -13590,7 +13978,9 @@
           "displayedValueRange": [
             -24.13,
             75.87
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -13640,7 +14030,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"
@@ -13729,7 +14121,9 @@
           "displayedValueRange": [
             -23.98,
             74.39
-          ]
+          ],
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "unavailableSourceProducts": {
@@ -13779,7 +14173,9 @@
             16.80942153930664,
             16.80942153930664
           ],
-          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history."
+          "nyquistWarning": "Decoded source velocities exceed the Nyquist metadata. These metadata do not establish a valid folding interval or verified dealiasing history.",
+          "sweepIndexConvention": "Normalized zero-based slice index; filename s6 is the sixth elevation slice",
+          "sourceSweepNumber": 6
         }
       },
       "status": "verified-and-rendered"

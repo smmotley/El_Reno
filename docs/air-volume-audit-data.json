@@ -1,0 +1,1151 @@
+{
+  "auditedAtUtc": "2026-11-04T22:25:44.325016+00:00",
+  "method": "Offline CRC-verified native sources, independent triangle-law beam inversion and nearest native-coordinate matching; no production converter imports.",
+  "publishedVolumeCount": 99,
+  "completeRequestedSubset": true,
+  "firstVolumeSourceSweepsIndependentlyVerified": 45,
+  "sourceChecks": "All 45 first-volume sources; cached 0.5-degree source for every other published volume.",
+  "allPublishedOutputHashesVerified": true,
+  "checks": [
+    {
+      "sourceVolumeNumber": 1,
+      "checkedVoxels": 28824,
+      "observedVoxels": 13075,
+      "missingVoxels": 15749,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        -2.0,
+        -1.5,
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        2.5,
+        3.0,
+        3.5,
+        4.0,
+        4.5,
+        5.0,
+        5.5,
+        6.0,
+        6.5,
+        7.0,
+        7.5,
+        8.0,
+        8.5,
+        9.0,
+        9.5,
+        10.0,
+        10.5,
+        11.0,
+        11.5,
+        12.0,
+        12.5,
+        13.0,
+        13.5,
+        14.0,
+        14.5,
+        15.0,
+        15.5,
+        16.0,
+        16.5,
+        17.0,
+        17.5,
+        18.0,
+        18.5,
+        19.0,
+        19.5,
+        20.0
+      ]
+    },
+    {
+      "sourceVolumeNumber": 2,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 3,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 4,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 5,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 6,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 7,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 8,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 9,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 10,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 11,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 12,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 13,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 14,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 15,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 16,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 17,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 18,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 19,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 20,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 21,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 22,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 23,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 24,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 25,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 26,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 27,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 28,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 29,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 30,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 31,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 32,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 33,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 34,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 35,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 36,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 37,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 38,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 39,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 40,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 41,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 42,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 43,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 44,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 45,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 46,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 47,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 48,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 49,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 50,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 51,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 52,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 53,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 54,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 55,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 56,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 57,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 58,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 59,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 60,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 61,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 62,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 63,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 64,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 65,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 66,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 67,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 68,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 69,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 70,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 71,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 72,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 73,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 74,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 75,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 76,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 77,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 78,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 79,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 80,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 81,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 82,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 83,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 84,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 85,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 86,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 87,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 88,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 89,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 90,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 91,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 92,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 93,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 94,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 95,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 96,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 97,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 98,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    },
+    {
+      "sourceVolumeNumber": 99,
+      "checkedVoxels": 422,
+      "observedVoxels": 256,
+      "missingVoxels": 166,
+      "quantizationTieCases": 0,
+      "maxQuantizationErrorDbz": 0.25,
+      "sourceElevationsExercised": [
+        0.5
+      ]
+    }
+  ],
+  "declaredClippedVoxels": {
+    "low": 0,
+    "high": 0
+  },
+  "totalVoxelsChecked": 70180,
+  "maxQuantizationErrorDbz": 0.25,
+  "limits": "Representative native-value checks, not every voxel. Source clock, location and reflectivity calibration remain independently unverified."
+}

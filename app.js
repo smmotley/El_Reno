@@ -1,7 +1,8 @@
 import { MI, normalizePoints, haversine, positionAt, validateSpotterImport } from './js/analysis.js';
 import { prepareRoadTrack, roadPositionAt, roadSegmentsUntil, closestRoadApproach } from './js/road-motion.js';
 import { snapTimelineTime, buildRadarEvents } from './js/timeline.js';
-import { selectRadarFrame, radarCoverage } from './js/radar-source.js';
+import { selectRadarFrame, radarCoverage, createVolumeRadarSource } from './js/radar-source.js';
+import { prepareSurface, surfacePosition } from './js/air-surface.js';
 
 const $ = id => document.getElementById(id);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -12,13 +13,15 @@ const STORM_START = date('2013-05-31T22:45:00Z'), STORM_END = date('2013-06-01T0
 const state = {
   t: date('2013-05-31T23:10:20Z'), start: STORM_START, end: STORM_END,
   offset: 0, zone: 'America/Chicago', playing: false, speed: 30, compare: false,
-  follow: false, basemap: 'dark', radarSource: 'ktlx', range: 'storm', selectedSpotter: null,
+  follow: false, basemap: 'dark', radarSource: 'ktlx', volume: false, volumeSurface: true, range: 'storm', selectedSpotter: null,
   visible: { reflectivity: true, velocity: false, track: true, swath: true, center: true, spotters: true },
   opacity: { reflectivity: .72, velocity: .78, track: 1, swath: .7, center: 1, spotters: 1 }
 };
 let data, track = [], roadTrack, roadTracks = {}, centers = [], spotters = [], radarEvents = [], best, maps = [], syncLock = false, toastTimer;
 let animationId, lastFrame = 0, lastDraw = 0;
 const radarImageCache = new Map();
+let volumeViewer, volumeLoadVersion=0;
+let activeVolumeMarkers=new Map();
 const featuredChasers = {
   'survey-holcomb': {name:'Ben Holcomb',color:'#ffb454'},
   'survey-sullivan': {name:'Brandon Sullivan',color:'#ff7fa5'},
@@ -32,11 +35,69 @@ function fmt(t, seconds = true) {
   return new Intl.DateTimeFormat('en-US', { timeZone: state.zone, hour: 'numeric', minute: '2-digit', ...(seconds ? {second: '2-digit'} : {}), hour12: state.zone !== 'UTC' }).format(t);
 }
 function zoneLabel() { return state.zone === 'UTC' ? 'UTC' : 'CDT'; }
-function currentRadar() { return data.radars[state.radarSource]; }
+function currentRadar() { return state.volume?data.volumeRadar:data.radars[state.radarSource]; }
 function selectedRadar(product) { return selectRadarFrame(currentRadar(),state.t,product); }
+function exitVolumeMode() {
+  volumeLoadVersion++;
+  if(!state.volume)return;
+  state.volume=false;volumeViewer?.setActive(false);
+  document.querySelector('.map-workspace').classList.remove('volume-mode');
+  $('volume-stage').hidden=true;$('view-volume').classList.remove('selected');$('view-volume').setAttribute('aria-pressed','false');
+  $('view-single').classList.add('selected');$('view-single').setAttribute('aria-pressed','true');
+  radarEvents=currentRadarEvents();buildRadarRails();
+}
+async function enterVolumeMode() {
+  if(state.volume)return;
+  const version=++volumeLoadVersion;
+  setPlaying(false);
+  try {
+    if(!data.volumeRadar)data.volumeRadar=createVolumeRadarSource(data.radars.air,await loadJSON('data/air-volume/manifest.json'));
+    if(version!==volumeLoadVersion)return;
+    if(!data.volumeRadar)throw new Error('The 3D scan files are not available. The 2D map remains available.');
+    if(!data.airSurface)data.airSurface=prepareSurface(await loadJSON('data/air-surface.json'),data.roads);
+    if(version!==volumeLoadVersion)return;
+    const {AirVolumeViewer}=await import('./js/air-volume-viewer.js');
+    if(version!==volumeLoadVersion)return;
+    if(!volumeViewer)volumeViewer=new AirVolumeViewer($('volume-canvas'),{onMarkerSelect:selected=>{
+      const marker=activeVolumeMarkers.get(selected.id);if(marker)toast(marker.description);
+    },onStatus:status=>{
+      $('volume-load-status').textContent=status.message;
+      $('volume-load-status').dataset.state=status.state;
+    }});
+    setRadarSource('air');toggleCompare(false);
+    state.volume=true;state.visible.reflectivity=true;$('layer-reflectivity').checked=true;
+    document.querySelector('.map-workspace').classList.add('volume-mode');$('volume-stage').hidden=false;
+    $('view-volume').classList.add('selected');$('view-volume').setAttribute('aria-pressed','true');
+    $('view-single').classList.remove('selected');$('view-single').setAttribute('aria-pressed','false');
+    radarEvents=currentRadarEvents();radarImageCache.clear();
+    state.speed=5;$('speed').value='5';
+    volumeViewer.setActive(true);volumeViewer.setThreshold(Number($('volume-threshold').value));
+    setRange('air');requestAnimationFrame(()=>volumeViewer.resize());
+  } catch(error){if(version===volumeLoadVersion)toast(error.message);}
+}
 function currentRadarEvents() {
   return buildRadarEvents(currentRadar().frames,-8640000000000000,8640000000000000)
     .filter(event=>!currentRadar().unavailableProducts?.[event.product]);
+}
+function updateVolumeSurface(car) {
+  volumeViewer?.setSurface(state.volumeSurface?data.airSurface:null);
+  const markers=[];
+  const add=(id,label,point,color,kind,opacity,priority)=>{
+    const position=surfacePosition(point,data.airSurface);if(!position)return;
+    markers.push({id,label,...position,color,kind,opacity,priority,headingDegrees:point.headingDegrees,
+      description:label+' · '+fmt(state.t)+' '+zoneLabel()+' · '+motionText(point)+' · '+speedText(point)+'. Ground elevation estimated from terrain data; AIR alignment unverified.'});
+  };
+  if(state.volumeSurface){
+    if(state.visible.track&&car)add('smotley','OUR SUV',car,'#a4ada9','suv',state.opacity.track,3);
+    if(state.visible.spotters)for(const spotter of spotters){
+      const point=spotterPosition(spotter,state.t);
+      if(point)add(spotter.id,spotter.name,point,chaserColor(spotter),'chaser',state.opacity.spotters,featuredChasers[spotter.id]?2:1);
+    }
+  }
+  activeVolumeMarkers=new Map(markers.map(marker=>[marker.id,marker]));
+  volumeViewer?.setMarkers(markers);
+  $('volume-marker-count').textContent=state.volumeSurface?(markers.some(m=>m.kind==='suv')?'Our SUV · ':'')+markers.filter(m=>m.kind==='chaser').length+' survey chasers':'Surface hidden';
+  $('volume-focus').disabled=!activeVolumeMarkers.has('smotley');
 }
 function velocityNote() {
   return state.radarSource==='air'
@@ -45,6 +106,7 @@ function velocityNote() {
 }
 function setRadarSource(source) {
   if(!data.radars[source]||source===state.radarSource)return;
+  if(source!=='air')exitVolumeMode();
   setPlaying(false);state.radarSource=source;
   radarEvents=currentRadarEvents();
   radarImageCache.clear();
@@ -69,12 +131,12 @@ function updateRadarSourceUI() {
     $('source-'+source).setAttribute('aria-pressed',String(source===state.radarSource));
   }
   document.querySelector('.map-workspace').classList.toggle('air-source',air);
-  $('radar-source-detail').textContent=air?'AIR · 0.5° reflectivity preview':'KTLX · 0.5° · WSR-88D Level II';
+  $('radar-source-detail').textContent=air?(state.volume?'AIR · 3D reflectivity · 45 elevations':'AIR · 0.5° reflectivity preview'):'KTLX · 0.5° · WSR-88D Level II';
   $('radar-source-detail').title=air?'University of Oklahoma Atmospheric Imaging Radar. Volume midpoint timing; individual ray times unavailable.':'NOAA/NWS WSR-88D near Oklahoma City. Independent product sweep midpoint times.';
   $('radar-source-window').textContent=air?fmt(coverage.start)+'–'+fmt(coverage.end)+' '+zoneLabel()+' · ~7–8 s updates':'~4–5 min volumes · '+zoneLabel()+' clock';
   const airWindow=radarCoverage(data.radars.air);
   $('air-coverage-copy').textContent=data.radars.air.frames.length+' reflectivity images, '+fmt(airWindow.start)+'–'+fmt(airWindow.end)+' '+zoneLabel()+'. No AIR image is held beyond the recording window or across a gap over 25 seconds.';
-  $('layer-reflectivity-detail').textContent=air?'AIR · 0.5° research sweep':'KTLX · lowest sweep';
+  $('layer-reflectivity-detail').textContent=air?(state.volume?'AIR · 45 elevation slices':'AIR · 0.5° research sweep'):'KTLX · lowest sweep';
   $('layer-velocity-detail').textContent=air?'Unavailable · 2013 instrument limitation':'Relative to KTLX · not dealiased';
   for(const id of ['layer-velocity','opacity-velocity','view-compare']){
     $(id).disabled=air;
@@ -82,9 +144,10 @@ function updateRadarSourceUI() {
   }
   $('layer-velocity').closest('.layer-row').classList.toggle('unavailable',air);
   $('radar-quality').hidden=!air;
-  $('radar-quality').textContent='Research preview · alignment unverified';
+  $('radar-quality').textContent='Research preview · clock / alignment unverified';
 }
 function prefetchRadarImages() {
+  if(state.volume)return;
   const radar=currentRadar();
   let index=radar.frames.findIndex(f=>date(f.time)>state.t);
   if(index<0)index=radar.frames.length-1;
@@ -192,6 +255,7 @@ function updateRoadLabels(m) {
   }
 }
 function toggleCompare(compare) {
+  if(state.volume)exitVolumeMode();
   if(compare&&currentRadar().unavailableProducts?.velocity)return;
   const wasCompare=state.compare;
   state.compare=compare;
@@ -291,7 +355,7 @@ function updateLegend() {
   $('legend-title').textContent=product==='velocity'?'RADIAL VELOCITY':'REFLECTIVITY';
   $('legend-unit').textContent=palette.units;
   $('legend-ticks').innerHTML=(product==='velocity'?[-100,-50,0,50,100]:[-10,10,35,60,80]).map(n=>'<span style="left:'+((n-lo)/(hi-lo)*100)+'%">'+n+'</span>').join('');
-  $('radar-legend').title=product==='velocity'?velocityNote():(state.radarSource==='air'?'AIR reflectivity at 0.5°. Research preview; alignment and calibration are unverified. 30 m gate spacing is not independent spatial resolution.':'Native Level II reflectivity, 250 m range gates.');
+  $('radar-legend').title=product==='velocity'?velocityNote():(state.radarSource==='air'?(state.volume?'AIR reflectivity from 45 elevations, −2° to 20°.':'AIR reflectivity at 0.5°.')+' Research preview; alignment and calibration are unverified. 30 m gate spacing is not independent spatial resolution.':'Native Level II reflectivity, 250 m range gates.');
   let second=$('velocity-legend');
   if(!second){second=document.createElement('div');second.id='velocity-legend';second.className='radar-legend second-legend';document.querySelector('.map-workspace').append(second);}
   second.hidden=!state.compare||!state.visible.velocity;
@@ -311,6 +375,7 @@ function render() {
   const both=car&&tornado, distance=both?haversine(car,tornado):null;
   const route=roadSegmentsUntil(roadTrack,state.t,state.offset).map(s=>s.map(latlng));
   for(const [index,m] of maps.entries()){
+    if(state.volume)continue;
     if(index===1&&!state.compare)continue;
     updateRadar(m,index);
     const site=currentRadar().siteLocation;
@@ -359,10 +424,21 @@ function render() {
     return (p==='reflectivity'?'REF':'VEL')+' '+(r?fmt(r.t)+' · '+Math.floor(r.ageSeconds/60)+'m '+Math.floor(r.ageSeconds%60)+'s old':'no scan in range');
   });
   $('radar-status').textContent=readings.join(' / ')||'Both radar layers are off';
+  if(state.volume){
+    updateVolumeSurface(car);
+    const volume=state.visible.reflectivity?selectedRadar('reflectivity')?.frame:null;
+    volumeViewer?.setOpacity(state.opacity.reflectivity);
+    volumeViewer?.setFrame(volume,currentRadar(),state.visible.reflectivity?undefined:'Reflectivity layer is hidden. Turn it on to view the volume.');
+  }
   $('radar-title').textContent=state.radarSource==='air'?'AIR / ATMOSPHERIC IMAGING RADAR':state.visible.velocity?'KTLX / BASE VELOCITY NOT DEALIASED':'KTLX / ARCHIVED LEVEL II';
   const p=products[0],r=p?selectedRadar(p):null;
-  $('radar-elevation').textContent=r?'0.5°':'—';
+  $('radar-elevation').textContent=r?(state.volume?'3D':'0.5°'):'—';
   $('radar-elevation').title=r?'Nominal low tilt; encoded target '+r.frame[p+'Elevation']+'°. Radar times are '+(state.radarSource==='air'?'volume coverage midpoints; individual ray times unavailable.':'representative sweep midpoints.'):'';
+  if(state.volume)$('radar-elevation').title='45 elevation slices, −2° to 20°. Heights in meters above mean sea level; no vertical exaggeration.';
+  const interval=r?.frame.products?.[p]||r?.frame;
+  const acquisition=state.radarSource==='air'&&interval?.scanStart&&interval?.scanEnd;
+  $('radar-acquisition').hidden=!acquisition;
+  $('radar-acquisition').textContent=acquisition?'Recorded '+fmt(date(interval.scanStart))+'–'+fmt(date(interval.scanEnd))+' '+zoneLabel()+' · midpoint clock':'';
   const noRadar=products.length&&!products.some(p=>selectedRadar(p));
   $('map-notice').hidden=!noRadar;
   if(noRadar)$('map-notice').textContent=state.radarSource==='air'?'No AIR image at this time. Choose AIR window to view its recorded period; use WSR-88D for the wider chase.':'No WSR-88D scan within the preceding 10 minutes. Choose Storm window for the bundled KTLX sequence.';
@@ -378,7 +454,7 @@ function updateClosest() {
 function setRange(range) {
   state.range=range;
   if(range==='storm'){state.start=STORM_START;state.end=STORM_END;}
-  else if(range==='air'){const coverage=radarCoverage(data.radars.air);state.start=coverage.start;state.end=coverage.end;}
+  else if(range==='air'){const coverage=radarCoverage(state.volume?currentRadar():data.radars.air);state.start=coverage.start;state.end=coverage.end;}
   else{state.start=Math.min(track[0].t+state.offset,STORM_START,...spotters.map(s=>s.points[0].t));state.end=Math.max(track.at(-1).t+state.offset,STORM_END,...spotters.map(s=>s.points.at(-1).t));}
   if(range!=='air'){
     state.start=Math.floor(state.start/10000)*10000;state.end=Math.ceil(state.end/10000)*10000;
@@ -470,6 +546,7 @@ function updateRadarRails() {
 }
 function jumpSpotter(s) {
   setPlaying(false);
+  exitVolumeMode();for(const m of maps)m.map.invalidateSize({pan:false});
   state.selectedSpotter=s.id;
   let p=spotterPosition(s,state.t);
   if(!p){
@@ -521,10 +598,18 @@ function bindControls() {
     });
     $('opacity-'+layer).addEventListener('input',e=>{state.opacity[layer]=Number(e.target.value)/100;const output=$('opacity-'+layer+'-value');if(output)output.textContent=e.target.value+'%';render();});
   }
-  $('source-ktlx').addEventListener('click',()=>setRadarSource('ktlx'));$('source-air').addEventListener('click',()=>setRadarSource('air'));
+  $('source-ktlx').addEventListener('click',()=>{volumeLoadVersion++;setRadarSource('ktlx');});$('source-air').addEventListener('click',()=>{volumeLoadVersion++;setRadarSource('air');});
   $('air-info').addEventListener('click',()=>$('air-dialog').showModal());
   $('scan-back').addEventListener('click',()=>stepScan(-1));$('scan-next').addEventListener('click',()=>stepScan(1));
-  $('view-single').addEventListener('click',()=>toggleCompare(false));$('view-compare').addEventListener('click',()=>toggleCompare(true));
+  $('view-single').addEventListener('click',()=>{volumeLoadVersion++;toggleCompare(false);});$('view-compare').addEventListener('click',()=>{volumeLoadVersion++;toggleCompare(true);});
+  $('view-volume').addEventListener('click',enterVolumeMode);
+  $('view-volume').disabled=false;
+  $('volume-reset').addEventListener('click',()=>volumeViewer?.resetView());
+  $('volume-surface').addEventListener('change',e=>{state.volumeSurface=e.target.checked;render();});
+  $('volume-focus').addEventListener('click',()=>volumeViewer?.focusMarker('smotley'));
+  $('volume-threshold').addEventListener('input',e=>{
+    $('volume-threshold-value').textContent=e.target.value+' dBZ';volumeViewer?.setThreshold(Number(e.target.value));
+  });
   $('basemap').addEventListener('change',e=>{state.basemap=e.target.value;setBasemap();});
   $('follow').addEventListener('click',()=>{state.follow=!state.follow;$('follow').setAttribute('aria-pressed',String(state.follow));render();});
   $('fit-route').addEventListener('click',()=>{state.follow=false;$('follow').setAttribute('aria-pressed','false');maps[0].map.fitBounds(track.map(latlng),{padding:[45,65]});});
@@ -540,7 +625,7 @@ function bindControls() {
   });
   $('range-storm').addEventListener('click',()=>setRange('storm'));$('range-day').addEventListener('click',()=>setRange('day'));$('range-air').addEventListener('click',()=>{setPlaying(false);setRange('air');if(!selectedRadar('reflectivity'))setTime(radarCoverage(data.radars.air).start);});
   $('timezone').addEventListener('click',()=>{state.zone=state.zone==='UTC'?'America/Chicago':'UTC';updateClosest();setRange(state.range);});
-  $('closest').addEventListener('click',()=>{if(!best)return;setPlaying(false);if(best.t<state.start||best.t>state.end)setRange('day');setTime(best.t);maps[0].map.fitBounds([latlng(best.car),latlng(best.tornado)],{padding:[90,140],maxZoom:13});toast('Estimated center separation: '+(best.meters/MI).toFixed(1)+' mi at '+fmt(best.t)+' '+zoneLabel()+'. Road-matched vehicle and estimated NWS center; camera clock unverified.');});
+  $('closest').addEventListener('click',()=>{if(!best)return;setPlaying(false);exitVolumeMode();for(const m of maps)m.map.invalidateSize({pan:false});if(best.t<state.start||best.t>state.end)setRange('day');setTime(best.t);maps[0].map.fitBounds([latlng(best.car),latlng(best.tornado)],{padding:[90,140],maxZoom:13});toast('Estimated center separation: '+(best.meters/MI).toFixed(1)+' mi at '+fmt(best.t)+' '+zoneLabel()+'. Road-matched vehicle and estimated NWS center; camera clock unverified.');});
   for(const id of ['sources-open','distance-info'])$(id).addEventListener('click',()=>$('sources-dialog').showModal());
   $('clock-open').addEventListener('click',()=>$('clock-dialog').showModal());
   document.querySelectorAll('.dialog-close').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
@@ -562,6 +647,7 @@ function bindControls() {
   });
   document.addEventListener('keydown',e=>{
     if(/INPUT|SELECT|TEXTAREA|BUTTON/.test(e.target.tagName)||document.querySelector('dialog[open]'))return;
+    if(e.target.closest('#volume-canvas'))return;
     if(e.code==='Space'){e.preventDefault();setPlaying(!state.playing);}
     if(e.target.closest('.leaflet-container'))return;
     if(e.key==='ArrowRight'){e.preventDefault();step(1);}
@@ -586,6 +672,7 @@ async function init() {
       {label:'NWS Norman · May 31 event and official tornado survey',url:data.timeline.sourcePageUrl},
       {label:'NWS · original timed center positions (KMZ)',url:data.timeline.sourceUrl},
       {label:'OpenStreetMap · locally stored current road network',url:'https://www.openstreetmap.org/copyright'},
+      {label:'Mapzen / USGS · public terrain heights for the 3D surface',url:'https://registry.opendata.aws/terrain-tiles/'},
       ...(data.radars.ktlx.sources||[]),...(data.radars.air.sources||[]),...(data.spotters.sources||[])
     ];
     $('source-list').innerHTML=sources.map(s=>link(s.url,s.label||s.title||s.name||s.url)).join('');

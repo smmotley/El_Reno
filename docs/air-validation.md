@@ -30,6 +30,16 @@ Every source file has zero-valued ray times with malformed time units. Every fil
 
 The converter preserves each start/end interval and assigns its midpoint as a representative display time. Coverage durations are 8 seconds for 57 files, 7 seconds for 37, 15 seconds for four, and 6 seconds for one. The first midpoint is 23:12:00 UTC; the last is 23:24:54 UTC. No individual ray time is reconstructed. These intervals describe acquisition duration, not a statistically established clock-error bound. The unrelated source title containing a 1970 date is ignored.
 
+### Follow-up: the 45 elevation files do not imply 45 successive scans
+
+The archive directory contains **99 volume groups, each with 45 elevation files**. Within a group, the filename timestamp is shared: for example, `v1_s6` identifies the first volume's sixth elevation file, which contains the 0.5° sweep. The grouping does not describe 4,455 successive volume times.
+
+This interpretation agrees with the instrument's acquisition method. [Kurdzo et al. (2017), pp. 917–918](https://doi.org/10.1175/BAMS-D-15-00266.1), explain that AIR collects the elevation beams simultaneously while rotating mechanically in azimuth. [Bodine et al. (2022), pp. 1–2](https://par.nsf.gov/servlets/purl/10325864), likewise describe simultaneous vertical imaging, offline beamforming, and 6–7-second sector volumes in a typical configuration. Simultaneous elevations do not mean every azimuth ray is acquired at the same instant: each sector still takes several seconds, and this archive's unusable ray times prevent recovering that progression exactly.
+
+Combining the 45 elevation files makes a volume usable by software expecting an entire three-dimensional scan. In [NCAR's RadxConvert parameter example](https://github.com/NCAR/lrose-core/blob/master/codebase/apps/Radx/src/RadxConvert/RadxConvert.test), sweep aggregation and time correction are separate controls; `apply_time_offset` is disabled and its offset is zero in that example. A description of merging the files is therefore not evidence of a clock correction. The present 0.5° map reads that elevation directly and does not need to assemble all elevations first.
+
+The 2022 overview's section IV.D independently identifies **31 May 2013 El Reno moment data** on the same [OU archive page](https://arrc.ou.edu/data.html) used here. The reviewed primary publications and archive description provide no verified event-specific clock shift, corrected deployment coordinates, or alternative event origin. This bounded search does not prove that the acquisition clock was correct. It establishes that no defensible correction has been found: preserve the source UTC intervals and keep the alignment uncertainty visible.
+
 ## Why AIR velocity is excluded
 
 On printed page 918 and in Table 2, [Kurdzo et al. (2017)](https://repository.library.noaa.gov/view/noaa/67666/noaa_67666_DS1.pdf) report technical difficulties with AIR and omit radial-velocity estimates from before 2014. The 2013 campaign row marks velocity unavailable. This was checked in both extracted text and the rendered page.
