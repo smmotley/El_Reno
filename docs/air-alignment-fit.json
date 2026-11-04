@@ -1,0 +1,467 @@
+{
+  "screenshotSha256": "db8b4b7e06a5e611893af9c6892a42fe15f7a2f366c8a78fa23a6961d834499f",
+  "dimensions": [
+    1548,
+    998
+  ],
+  "time": "2013-05-31T23:12:00.000Z",
+  "markers": {
+    "survey-holcomb": {
+      "pixel": [
+        443.4,
+        228.34285714285716
+      ],
+      "colorCoreCount": 35
+    },
+    "survey-sullivan": {
+      "pixel": [
+        1054.5128205128206,
+        431.0769230769231
+      ],
+      "colorCoreCount": 39
+    },
+    "survey-talbot": {
+      "pixel": [
+        1494.6136363636363,
+        368.0681818181818
+      ],
+      "colorCoreCount": 44
+    },
+    "nws": {
+      "pixel": [
+        1088.9263721552877,
+        339.0281124497992
+      ],
+      "darkFillCount": 747
+    },
+    "smotley": {
+      "pixel": [
+        1054,
+        595
+      ],
+      "pixelMethod": "Approximate center of SUV icon, visually selected"
+    }
+  },
+  "red": {
+    "pixel": [
+      521.307994289793,
+      425.4300499643112
+    ],
+    "bbox": [
+      491,
+      397,
+      552,
+      454
+    ],
+    "radiusPixels": [
+      31.029106110574354,
+      28.744581211533017
+    ],
+    "maskPixelCount": 2802
+  },
+  "fits": {
+    "chasers-only": {
+      "usedMarkers": [
+        "survey-holcomb",
+        "survey-sullivan",
+        "survey-talbot"
+      ],
+      "mercatorMetersPerPixel": [
+        14.36513620327458,
+        -14.291595216871176
+      ],
+      "mercatorInterceptMeters": [
+        -10927313.545216518,
+        4230453.236570062
+      ],
+      "residuals": {
+        "survey-holcomb": {
+          "pixelError": [
+            -0.10176150004871114,
+            0.038082490290346736
+          ],
+          "pixelErrorMagnitude": 0.10865394129472797,
+          "mercatorErrorMeters": [
+            -1.4618178084492683,
+            -0.5442595360800624
+          ],
+          "predictedPixelFromLocation": [
+            443.501761500062,
+            228.30477465259438
+          ]
+        },
+        "survey-sullivan": {
+          "pixelError": [
+            0.24306493559079445,
+            0.08445000182926911
+          ],
+          "pixelErrorMagnitude": 0.25731763585638784,
+          "mercatorErrorMeters": [
+            3.4916609060019255,
+            -1.2069252422079444
+          ],
+          "predictedPixelFromLocation": [
+            1054.269755577245,
+            430.992473075086
+          ]
+        },
+        "survey-talbot": {
+          "pixelError": [
+            -0.1413034356717476,
+            -0.12253249205445009
+          ],
+          "pixelErrorMagnitude": 0.18703174206993203,
+          "mercatorErrorMeters": [
+            -2.0298430994153023,
+            1.7511847773566842
+          ],
+          "predictedPixelFromLocation": [
+            1494.754939799291,
+            368.1907143102284
+          ]
+        },
+        "nws": {
+          "pixelError": [
+            -0.46860570267293733,
+            -0.40368734862786876
+          ],
+          "pixelErrorMagnitude": 0.6185101292782487,
+          "mercatorErrorMeters": [
+            -6.731584744527936,
+            5.7693361807614565
+          ],
+          "predictedPixelFromLocation": [
+            1089.3949778579095,
+            339.4317997984171
+          ]
+        },
+        "smotley": {
+          "pixelError": [
+            -0.8230586036707092,
+            -0.1514856424413894
+          ],
+          "pixelErrorMagnitude": 0.8368831250194128,
+          "mercatorErrorMeters": [
+            -11.823348945006728,
+            2.164971482940018
+          ],
+          "predictedPixelFromLocation": [
+            1054.8230586036864,
+            595.1514856424678
+          ]
+        }
+      },
+      "redGeographicAnchor": {
+        "lon": -98.09445593991626,
+        "lat": 35.44392162014116
+      },
+      "targetGeographicAnchor": {
+        "lat": 35.4529158454014,
+        "lon": -98.02114760158207
+      },
+      "mercatorShiftMeters": {
+        "east": 8160.646894263104,
+        "north": 1229.0521807298064
+      },
+      "localAEQDShiftMeters": {
+        "east": 6643.673944275299,
+        "north": 979.1044533639997
+      },
+      "localShiftDistanceMeters": 6715.4336426205355,
+      "redDiskApproxGroundRadiusMeters": [
+        363.13484935465226,
+        334.6768012070557
+      ],
+      "inSampleRmsPixels": 0.19407809186279665,
+      "approxGroundMetersPerPixel": [
+        11.703039335409672,
+        11.643126707748843
+      ]
+    },
+    "chasers-plus-suv": {
+      "usedMarkers": [
+        "survey-holcomb",
+        "survey-sullivan",
+        "survey-talbot",
+        "smotley"
+      ],
+      "mercatorMetersPerPixel": [
+        14.366031063511272,
+        -14.297507214305957
+      ],
+      "mercatorInterceptMeters": [
+        -10927311.494648186,
+        4230455.093363359
+      ],
+      "residuals": {
+        "survey-holcomb": {
+          "pixelError": [
+            0.06860151891684249,
+            0.002617842702715816
+          ],
+          "pixelErrorMagnitude": 0.0686514493518823,
+          "mercatorErrorMeters": [
+            0.9855315517634153,
+            -0.03742862492799759
+          ],
+          "predictedPixelFromLocation": [
+            443.3313984811125,
+            228.34023930016045
+          ]
+        },
+        "survey-sullivan": {
+          "pixelError": [
+            0.4514726997441709,
+            0.13279640851501057
+          ],
+          "pixelErrorMagnitude": 0.47059800756991726,
+          "mercatorErrorMeters": [
+            6.4858708288520575,
+            -1.8986576087772846
+          ],
+          "predictedPixelFromLocation": [
+            1054.0613478130679,
+            430.9441266683771
+          ]
+        },
+        "survey-talbot": {
+          "pixelError": [
+            0.09454215566897615,
+            -0.10015451684117743
+          ],
+          "pixelErrorMagnitude": 0.13772852443203845,
+          "mercatorErrorMeters": [
+            1.3581955451518297,
+            1.4319599270820618
+          ],
+          "predictedPixelFromLocation": [
+            1494.5190942080294,
+            368.1683363350196
+          ]
+        },
+        "nws": {
+          "pixelError": [
+            -0.2580099878959449,
+            -0.3932011407142411
+          ],
+          "pixelErrorMagnitude": 0.4702938346534495,
+          "mercatorErrorMeters": [
+            -3.706579500809312,
+            5.621796146035194
+          ],
+          "predictedPixelFromLocation": [
+            1089.184382143241,
+            339.4213135905124
+          ]
+        },
+        "smotley": {
+          "pixelError": [
+            -0.6146163742003333,
+            -0.03525973431141015
+          ],
+          "pixelErrorMagnitude": 0.6156269457219001,
+          "mercatorErrorMeters": [
+            -8.829597923904657,
+            0.5041263056918979
+          ],
+          "predictedPixelFromLocation": [
+            1054.6146163742576,
+            595.0352597343432
+          ]
+        }
+      },
+      "redGeographicAnchor": {
+        "lon": -98.09443332872654,
+        "lat": 35.4439168020692
+      },
+      "targetGeographicAnchor": {
+        "lat": 35.4529158454014,
+        "lon": -98.02114760158207
+      },
+      "mercatorShiftMeters": {
+        "east": 8158.129828136414,
+        "north": 1229.71052879747
+      },
+      "localAEQDShiftMeters": {
+        "east": 6641.627532549854,
+        "north": 979.647434635448
+      },
+      "localShiftDistanceMeters": 6713.488316613954,
+      "redDiskApproxGroundRadiusMeters": [
+        363.1574921753044,
+        334.81526684237303
+      ]
+    },
+    "all-five": {
+      "usedMarkers": [
+        "survey-holcomb",
+        "survey-sullivan",
+        "survey-talbot",
+        "nws",
+        "smotley"
+      ],
+      "mercatorMetersPerPixel": [
+        14.366437033388632,
+        -14.29339870745598
+      ],
+      "mercatorInterceptMeters": [
+        -10927311.170300117,
+        4230452.357223684
+      ],
+      "residuals": {
+        "survey-holcomb": {
+          "pixelError": [
+            0.10370606576923133,
+            0.12841033431609344
+          ],
+          "pixelErrorMagnitude": 0.16505805656344988,
+          "mercatorErrorMeters": [
+            1.4898866638541222,
+            -1.83542010653764
+          ],
+          "predictedPixelFromLocation": [
+            443.2962939341726,
+            228.21444680852284
+          ]
+        },
+        "survey-sullivan": {
+          "pixelError": [
+            0.503835385378315,
+            0.20035226410299845
+          ],
+          "pixelErrorMagnitude": 0.542209484692506,
+          "mercatorErrorMeters": [
+            7.238319339230657,
+            -2.863714792765677
+          ],
+          "predictedPixelFromLocation": [
+            1054.00898512745,
+            430.8765708128343
+          ]
+        },
+        "survey-talbot": {
+          "pixelError": [
+            0.15935139130537535,
+            -0.014554334019017137
+          ],
+          "pixelErrorMagnitude": 0.1600146697952909,
+          "mercatorErrorMeters": [
+            2.2893117293715477,
+            0.20803089905530214
+          ],
+          "predictedPixelFromLocation": [
+            1494.4542849723816,
+            368.08273615217047
+          ]
+        },
+        "nws": {
+          "pixelError": [
+            -0.20465478800769182,
+            -0.29933788885745166
+          ],
+          "pixelErrorMagnitude": 0.3626110229434695,
+          "mercatorErrorMeters": [
+            -2.9401601254940033,
+            4.278555793687701
+          ],
+          "predictedPixelFromLocation": [
+            1089.1310269433409,
+            339.32745033865643
+          ]
+        },
+        "smotley": {
+          "pixelError": [
+            -0.5622380543155773,
+            -0.014870375607780609
+          ],
+          "pixelErrorMagnitude": 0.562434669798442,
+          "mercatorErrorMeters": [
+            -8.077357605099678,
+            0.21254820749163628
+          ],
+          "predictedPixelFromLocation": [
+            1054.5622380542573,
+            595.0148703755882
+          ]
+        }
+      },
+      "redGeographicAnchor": {
+        "lon": -98.09442851390564,
+        "lat": 35.44390956957945
+      },
+      "targetGeographicAnchor": {
+        "lat": 35.4529158454014,
+        "lon": -98.02114760158207
+      },
+      "mercatorShiftMeters": {
+        "east": 8157.593844724819,
+        "north": 1230.6987861981615
+      },
+      "localAEQDShiftMeters": {
+        "east": 6641.194211084527,
+        "north": 980.4531901364517
+      },
+      "localShiftDistanceMeters": 6713.177266197532,
+      "redDiskApproxGroundRadiusMeters": [
+        363.16778727986474,
+        334.7190849841805
+      ]
+    }
+  },
+  "scope": "User-requested approximate display translation only, not geolocation calibration or a change to source radar coordinates.",
+  "centroidThresholdSensitivity": [
+    {
+      "thresholdRGB": [
+        160,
+        100,
+        100
+      ],
+      "centroidPixel": [
+        521.3297872340426,
+        425.42446808510635
+      ],
+      "maskPixels": 2820
+    },
+    {
+      "thresholdRGB": [
+        180,
+        90,
+        80
+      ],
+      "centroidPixel": [
+        521.307994289793,
+        425.4300499643112
+      ],
+      "maskPixels": 2802
+    },
+    {
+      "thresholdRGB": [
+        200,
+        80,
+        60
+      ],
+      "centroidPixel": [
+        521.3108303249097,
+        425.4090252707581
+      ],
+      "maskPixels": 2770
+    },
+    {
+      "thresholdRGB": [
+        215,
+        65,
+        45
+      ],
+      "centroidPixel": [
+        521.2592321755028,
+        425.42669104204754
+      ],
+      "maskPixels": 2735
+    }
+  ],
+  "recommendation": {
+    "fit": "chasers-only",
+    "why": "Fit against three named survey markers; leave NWS target and own SUV as independent holdout checks.",
+    "interpretation": "A user-requested approximate display translation. Red-disk radius is an anchor-selection scale (~0.35 km), not a statistical confidence interval or tornado-location measurement. Marker/image reading precision is around one pixel (~12 m). No correction to source radar coordinates or timestamps."
+  }
+}

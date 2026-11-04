@@ -3,6 +3,7 @@ import { prepareRoadTrack, roadPositionAt, roadSegmentsUntil, closestRoadApproac
 import { snapTimelineTime, buildRadarEvents } from './js/timeline.js';
 import { selectRadarFrame, radarCoverage, createVolumeRadarSource } from './js/radar-source.js';
 import { prepareSurface, surfacePosition } from './js/air-surface.js';
+import { createAirAlignment, radarDisplayBounds } from './js/air-alignment.js';
 
 const $ = id => document.getElementById(id);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -13,7 +14,7 @@ const STORM_START = date('2013-05-31T22:45:00Z'), STORM_END = date('2013-06-01T0
 const state = {
   t: date('2013-05-31T23:10:20Z'), start: STORM_START, end: STORM_END,
   offset: 0, zone: 'America/Chicago', playing: false, speed: 30, compare: false,
-  follow: false, basemap: 'dark', radarSource: 'ktlx', volume: false, volumeSurface: true, range: 'storm', selectedSpotter: null,
+  follow: false, basemap: 'dark', radarSource: 'ktlx', volume: false, volumeSurface: true, airAlignment: true, range: 'storm', selectedSpotter: null,
   visible: { reflectivity: true, velocity: false, track: true, swath: true, center: true, spotters: true },
   opacity: { reflectivity: .72, velocity: .78, track: 1, swath: .7, center: 1, spotters: 1 }
 };
@@ -178,7 +179,10 @@ function updateRadarSourceUI() {
   }
   $('layer-velocity').closest('.layer-row').classList.toggle('unavailable',air);
   $('radar-quality').hidden=!air;
-  $('radar-quality').textContent='Research preview · clock / alignment unverified';
+  $('air-alignment-control').hidden=!air;
+  $('air-alignment').checked=state.airAlignment;
+  $('air-alignment-summary').textContent=state.airAlignment?'≈6.64 km E · 0.98 km N':'Original archive placement';
+  $('radar-quality').textContent=state.airAlignment?'Approx. NWS alignment · clock unverified':'Original placement · alignment / clock unverified';
 }
 function prefetchRadarImages() {
   if(state.volume)return;
@@ -358,6 +362,8 @@ function updatePeople(m) {
   return active;
 }
 function updateRadar(m,index) {
+  const bounds=radarDisplayBounds(state.radarSource,currentRadar().bounds,data.airAlignment,state.airAlignment);
+  const alignmentKey=state.radarSource+':'+state.airAlignment;
   for(const product of ['reflectivity','velocity']) {
     const allowed=state.visible[product]&&(!state.compare|| (index===0?product==='reflectivity':product==='velocity'));
     const selection=allowed?selectedRadar(product):null;
@@ -366,13 +372,17 @@ function updateRadar(m,index) {
       if(m.overlays[product])m.overlays[product].remove();
       m.radarFiles[product]=file;m.radarFailed[product]=false;
       if(file){
-        const overlay=L.imageOverlay(file,currentRadar().bounds,{pane:'radar',opacity:state.opacity[product],interactive:false,className:'radar-image'});
+        const overlay=L.imageOverlay(file,bounds,{pane:'radar',opacity:state.opacity[product],interactive:false,className:'radar-image'});
         overlay.on('error',()=>{if(m.radarFiles[product]===file){m.radarFailed[product]=true;toast('A local radar image could not load. See source data for this scan.');}});
         m.overlays[product]=overlay;overlay.addTo(m.map);
       } else m.overlays[product]=null;
     }
-    if(m.overlays[product])m.overlays[product].setOpacity(state.opacity[product]);
+    if(m.overlays[product]){
+      if(m.radarAlignmentKey!==alignmentKey)m.overlays[product].setBounds(bounds);
+      m.overlays[product].setOpacity(state.opacity[product]);
+    }
   }
+  m.radarAlignmentKey=alignmentKey;
 }
 function updateLegend() {
   const product=state.visible.velocity&&!state.compare?'velocity':'reflectivity';
@@ -413,7 +423,11 @@ function render() {
     if(index===1&&!state.compare)continue;
     updateRadar(m,index);
     const site=currentRadar().siteLocation;
-    if(site){m.radarSite.setLatLng([site.latitude,site.longitude]).setTooltipContent(currentRadar().site+' RADAR');m.radarSite.setPopupContent(sourcePopup(currentRadar().site+' radar',velocityNote(),state.radarSource==='air'?'https://arrc.ou.edu/data.html':'https://www.weather.gov/oun/'));
+    if(site){
+      const air=state.radarSource==='air';
+      m.radarSite.setLatLng([site.latitude,site.longitude]).setTooltipContent(air?'AIR ARCHIVE SITE':currentRadar().site+' RADAR');
+      const siteNote=air?'Recorded archive coordinates; actual deployment unverified. '+(state.airAlignment?'Radar imagery is shifted approximately 6.64 km east and 0.98 km north to align the marked 6:12 feature with the NWS estimate. This site marker stays at the archive coordinates.':'Original archive placement is displayed.') : velocityNote();
+      m.radarSite.setPopupContent(sourcePopup(air?'AIR recorded site':currentRadar().site+' radar',siteNote,air?'https://arrc.ou.edu/data.html':'https://www.weather.gov/oun/'));
       setPresent(m.map,m.radarSite,state.visible.reflectivity||state.visible.velocity);
     }
     m.swath.setStyle({opacity:state.opacity.swath,fillOpacity:state.opacity.swath*.14});
@@ -459,6 +473,7 @@ function render() {
   });
   $('radar-status').textContent=readings.join(' / ')||'Both radar layers are off';
   if(state.volume){
+    volumeViewer?.setRadarOffset(state.airAlignment?data.airAlignment.localKm:[0,0]);
     updateVolumeSurface(car);
     const volume=state.visible.reflectivity?selectedRadar('reflectivity')?.frame:null;
     volumeViewer?.setOpacity(state.opacity.reflectivity);
@@ -620,6 +635,12 @@ function buildVideos() {
   });
 }
 function bindControls() {
+  try{state.airAlignment=localStorage.getItem('elreno.airAlignment.v1')!=='false';}catch{}
+  $('air-alignment').addEventListener('change',e=>{
+    state.airAlignment=e.target.checked;
+    try{localStorage.setItem('elreno.airAlignment.v1',String(state.airAlignment));}catch{}
+    render();
+  });
   restoreVolumePanels();compactVolumePanels.addEventListener('change',restoreVolumePanels);
   for(const button of document.querySelectorAll('[data-minimize-panel]'))button.addEventListener('click',()=>setVolumePanel(button.dataset.minimizePanel,true,{focus:true}));
   for(const button of document.querySelectorAll('[data-toggle-panel]'))button.addEventListener('click',()=>{
@@ -706,8 +727,9 @@ function bindControls() {
 async function init() {
   try {
     if(!window.L)throw new Error('The bundled map library could not load. Start the local server rather than opening index.html directly.');
-    const values=await Promise.all(['GPS.json','data/tornado.geojson','data/tornado-timeline.json','data/radar/manifest.json','data/spotters.json','data/videos.json','data/roads.geojson','data/road-routes.json','data/air/manifest.json'].map(loadJSON));
+    const values=await Promise.all(['GPS.json','data/tornado.geojson','data/tornado-timeline.json','data/radar/manifest.json','data/spotters.json','data/videos.json','data/roads.geojson','data/road-routes.json','data/air/manifest.json','data/air-alignment.json'].map(loadJSON));
     data={gps:values[0],tornado:values[1],timeline:values[2],radars:{ktlx:values[3],air:values[8]},spotters:values[4],videos:values[5],roads:values[6],routes:values[7]};
+    data.airAlignment=createAirAlignment(values[9],data.radars.air.siteLocation);
     track=normalizePoints(data.gps.data);centers=normalizePoints(data.timeline.points);
     roadTracks=Object.fromEntries(Object.entries(data.routes.tracks).map(([id,t])=>[id,prepareRoadTrack(t)]));roadTrack=roadTracks.smotley;
     radarEvents=currentRadarEvents();

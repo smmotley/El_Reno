@@ -148,7 +148,7 @@ export class AirVolumeViewer {
     this._ready=false;this._key=null;this._pending=null;this._desired=null;this._raf=0;this._empty=false;this._emptyMessage=null;
     this._surface=null;this._terrain=null;this._terrainCount=0;this._roads=[];this._markers=[];this._markerHits=[];
     this._hiddenLabels=new Set();this._labelButtons=new Map();this._axisLabelsVisible=true;this._lastViewState=null;this._lastLabelsState=null;
-    this.yaw=0;this.pitch=.4;this.zoom=1;this._pan=[0,0,0];
+    this.yaw=0;this.pitch=.4;this.zoom=1;this._pan=[0,0,0];this._radarOffset=[0,0];
     this._oldPosition=container.style.position;
     if(getComputedStyle(container).position==='static')container.style.position='relative';
     this.element=document.createElement('div');
@@ -447,6 +447,20 @@ export class AirVolumeViewer {
 
   setOpacity(value) {if(Number.isFinite(value)){const next=clamp(value,0,1);if(next!==this.opacity){this.opacity=next;this._schedule();}}}
   setThreshold(dbz) {if(Number.isFinite(dbz)){const next=clamp(dbz,-32,95);if(next!==this.threshold){this.threshold=next;this._schedule();}}}
+  /** Display-only radar translation in the original local east/north plane, km.
+   * Source geometry and bytes stay intact; terrain and annotations never move.
+   * A zero offset restores the recorded placement without resampling the data.
+   */
+  setRadarOffset(offset) {
+    if(this.destroyed)return false;
+    if(!Array.isArray(offset)||offset.length!==2||!offset.every(Number.isFinite))throw new TypeError('Radar offset must be [east, north] in kilometers.');
+    const previous=this._radarOffset??[0,0];
+    if(offset.every((value,index)=>value===previous[index]))return false;
+    // Keep the camera anchored to the same ground-world location on a toggle.
+    // Reset view can deliberately reframe the translated radar box afterward.
+    this._pan[0]-=offset[0]-previous[0];this._pan[1]-=offset[1]-previous[1];
+    this._radarOffset=[...offset];this._viewChanged();return true;
+  }
   /** Positive yaw turns the view clockwise; positive pitch looks more downward. */
   rotateView(deltaYawDeg,deltaPitchDeg) {
     if(this.destroyed||![deltaYawDeg,deltaPitchDeg].every(Number.isFinite))return;
@@ -521,7 +535,11 @@ export class AirVolumeViewer {
       :[h[0],h[3],h[2]].every(Number.isFinite)?h[0]+(h[3]-h[2])*dx+(h[2]-h[0])*dy:null;
   }
   _camera() {
-    const grid=this._grid??{min:[-45,0,0],max:[23,45,16],dimensions:[192,160,96],decode:{scale:.5,offset:-32,indexOffset:1}};
+    const sourceGrid=this._grid??{min:[-45,0,0],max:[23,45,16],dimensions:[192,160,96],decode:{scale:.5,offset:-32,indexOffset:1}};
+    const [east,north]=this._radarOffset??[0,0];
+    // Translate only the sampled radar box. World coordinates for the terrain,
+    // roads and chasers remain tied to the original geographic reference.
+    const grid=east||north?{...sourceGrid,min:[sourceGrid.min[0]+east,sourceGrid.min[1]+north,sourceGrid.min[2]],max:[sourceGrid.max[0]+east,sourceGrid.max[1]+north,sourceGrid.max[2]]}:sourceGrid;
     const size=subtract(grid.max,grid.min),center=grid.min.map((v,i)=>(v+grid.max[i])/2+this._pan[i]);
     const aspect=this.canvas.width/this.canvas.height,tanHalfFov=Math.tan(Math.PI/8);
     const baseDistance=Math.hypot(...size)*.58/tanHalfFov/Math.min(1,aspect);
@@ -665,7 +683,8 @@ export class AirVolumeViewer {
       label([base[0],base[1],z1],'MSL',-24,-14);
       label([(x0+x1)/2,y0,z0],'East–west extent · '+Math.round(x1-x0)+' km',0,24);
       label([x1,(y0+y1)/2,z0],'North–south extent · '+Math.round(y1-y0)+' km',45,0);
-      if(!this._terrainCount&&x0<=0&&x1>=0&&y0<=0&&y1>=0){label([0,0,z0],'AIR reference · 0 MSL',0,12);}
+      const [east,north]=this._radarOffset??[0,0];
+      if(!this._terrainCount&&x0<=east&&x1>=east&&y0<=north&&y1>=north){label([east,north,z0],east||north?'AIR display reference · 0 MSL':'AIR reference · 0 MSL',0,12);}
     }
     this._drawMarkerAnnotations(ctx,project);
     this._drawCompass(ctx,camera);

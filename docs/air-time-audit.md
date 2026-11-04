@@ -37,7 +37,7 @@ The 2022 overview's section IV.D explicitly identifies the public **31 May 2013 
 
 The checks establish faithful use of internally consistent source timestamps. They do **not** independently establish absolute clock accuracy. In particular, the duration of a scan is not a bound on clock error. The display midpoint is a representative time, not a reconstructed timestamp for each ray.
 
-The apparent geographic disagreement discussed in [air-validation.md](air-validation.md) remains unresolved. It does not, by itself, identify a clock error, an incorrect radar position, or the correct surface tornado feature. No time shift or spatial adjustment has been fitted to force agreement. Both the 2D and 3D previews must retain the unverified-alignment qualification and must not supply precise tornado locations or chase-distance estimates.
+The apparent geographic disagreement discussed in [air-validation.md](air-validation.md) remains unresolved. It does not, by itself, identify a clock error, an incorrect radar position, or the correct surface tornado feature. The audit itself fitted no time shift or spatial adjustment. A subsequent user-requested, switchable [approximate display alignment](air-alignment.md) now fits the marked 6:12 feature; that fit does not resolve the geolocation or timing uncertainty. Both the 2D and 3D previews must retain the unverified-alignment qualification and must not supply precise tornado locations or chase-distance estimates.
 
 ## Follow-up: proposed 10–12-minute shift
 
@@ -59,4 +59,4 @@ A bounded comparison of the already rendered 0.5° images used three near-simult
 
 At the app's 6:12:00 PM selection, KTLX reflectivity is its preceding sweep with midpoint **6:10:05.703 PM CDT**, approximately 114 seconds older. This cadence difference matters for comparison but does not explain ten minutes.
 
-No clock or geographic correction has been applied. The start/end interpretation is resolved; absolute timing and registration remain unresolved. A stronger comparison must use documented usable AIR elevations, account for different sampling heights, and establish the radar origin/bearing against independent geographic evidence rather than choosing a shift from one image's appearance.
+The audit applies no clock or source-coordinate correction. The later [approximate display alignment](air-alignment.md) is a separate visual-fit option. The start/end interpretation is resolved; absolute timing and registration remain unresolved. A stronger comparison must use documented usable AIR elevations, account for different sampling heights, and establish the radar origin/bearing against independent geographic evidence rather than choosing a shift from one image's appearance.

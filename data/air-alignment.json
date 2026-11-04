@@ -1,0 +1,17 @@
+{
+  "id": "user-visual-fit-2013-05-31T231200Z",
+  "time": "2013-05-31T23:12:00.000Z",
+  "source": {
+    "lon": -98.09445593991626,
+    "lat": 35.44392162014116
+  },
+  "target": {
+    "lat": 35.4529158454014,
+    "lon": -98.02114760158207
+  },
+  "method": "Approximate fit from the user-marked feature in the first AIR image to the NWS minute center. North-up Web Mercator screenshot georeferenced using Ben Holcomb, Brandon Sullivan and Skip Talbot; SUV and NWS marker held out as checks.",
+  "screenshotSha256": "db8b4b7e06a5e611893af9c6892a42fe15f7a2f366c8a78fa23a6961d834499f",
+  "fitRmsPixels": 0.19407809186279665,
+  "markerRadiusMetersApprox": 350,
+  "scope": "Constant horizontal display translation across all AIR images and volumes. Not a verified radar deployment location, bearing correction, timestamp correction or surface tornado-center measurement."
+}

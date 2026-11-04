@@ -104,3 +104,11 @@ body{grid-template-rows:84px minmax(0,1fr) 190px}.timeline{padding-top:14px;padd
  .volume-panel-dock button{font-size:8px;padding:6px 7px}.volume-mode .volume-load-status{bottom:72px}
 }
 .camera-panel-heading{position:sticky;top:-12px;display:flex;align-items:center;justify-content:space-between;background:#142019;margin:-12px -12px 5px;padding:8px 7px 5px 12px;z-index:4}.camera-panel-heading h3{margin:0}.volume-mode .camera-panel-heading .volume-panel-close{position:static;flex:none}.volume-mode .volume-camera{scroll-padding-top:42px}
+
+/* The alignment switch stays with AIR's source description in both views. */
+.air-alignment-control{display:flex;align-items:center;gap:7px;margin-top:5px;padding-top:5px;border-top:1px solid #536147;color:#e6c89b;font-size:9px;cursor:pointer;pointer-events:auto}
+.air-alignment-control input{accent-color:#d9bb8b;width:13px;height:13px;margin:0;flex:none}
+.air-alignment-control span{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.air-alignment-control small{font-size:8px;color:#b6c4a6}
+.air-source .map-title{top:160px}
+@media(max-width:850px){.air-alignment-control{font-size:8px;background:#152019e8;border:1px solid #536147;border-radius:4px;padding:5px 7px;width:max-content;max-width:100%}.air-alignment-control span{gap:6px}.air-alignment-control small{font-size:7px}}
