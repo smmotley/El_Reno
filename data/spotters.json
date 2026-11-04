@@ -3034,7 +3034,7 @@
     },
     {
       "id": "survey-holcomb",
-      "name": "Holcomb",
+      "name": "Ben Holcomb",
       "sourceKey": "Holcomb",
       "username": null,
       "kind": "survey-camera",
@@ -3189,11 +3189,16 @@
           "positionStatus": "source-observation"
         }
       ],
-      "videos": [],
+      "videos": [
+        "ben-holcomb-el-reno"
+      ],
       "surveyVideoUrl": "https://vimeo.com/141870617",
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "identitySourceUrl": "https://el-reno-survey.net/participants/",
+      "identityVerification": "The primary El Reno Survey participant list identifies Holcomb, Ben and links his own May 31, 2013 chase report and two YouTube publications.",
+      "youtubeAvailabilityNote": "The survey-linked El Reno YouTube publication is currently private. The second survey-linked YouTube publication is the later Tuttle tornado and is not substituted for El Reno."
     },
     {
       "id": "survey-lingl",

@@ -126,6 +126,33 @@
       "publisher": "Pecos Hank",
       "publisherUrl": "https://www.youtube.com/@PecosHank",
       "oEmbedVerified": true
+    },
+    {
+      "id": "ben-holcomb-el-reno",
+      "title": "Ben Holcomb's survey-linked video (private)",
+      "creator": "Ben Holcomb",
+      "url": "https://www.youtube.com/watch?v=eSV-PCUeBqM",
+      "embedUrl": null,
+      "sourceUrl": "https://el-reno-survey.net/participants/",
+      "eventDate": "2013-05-31",
+      "time": null,
+      "lat": null,
+      "lon": null,
+      "timingStatus": "unlocated",
+      "description": "The El Reno Survey participant list attributes this original YouTube link to Ben Holcomb. YouTube currently marks it private. This is an archival reference; playback and video-to-map timing are unavailable.",
+      "spotterId": "survey-holcomb",
+      "verificationStatus": "survey-primary-source-attributed",
+      "playbackStatus": "private",
+      "checkedAt": "2026-11-04",
+      "oEmbedVerified": false,
+      "availabilityEvidence": {
+        "provider": "YouTube",
+        "watchPageStatus": "LOGIN_REQUIRED",
+        "watchPageReason": "Private video",
+        "oEmbedHttpStatus": 403
+      },
+      "creatorReportUrl": "https://www.benholcomb.com/chases/20130531/",
+      "creatorChannelUrl": "https://www.youtube.com/@Oklahomachaser"
     }
   ]
 }

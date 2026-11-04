@@ -48,6 +48,14 @@ The NWS service assessment links [Robinson's original dashcam publication](https
 
 No video files or thumbnails were copied. The map links/embeds the creators' players. Videos have null `time`, `lat` and `lon` and `timingStatus: "unlocated"`. An association with a survey contributor is a research lead, not a synchronized frame-to-position relationship. TED attaches Vimeo sources; a similarly named YouTube edit must not inherit their timing automatically. Historical EF5 language in some source titles does not change the final NWS EF3 damage rating.
 
+## Ben Holcomb identity and archival YouTube link
+
+Checked November 4, 2026: the primary [El Reno Survey participant list](https://el-reno-survey.net/participants/), entry 41, identifies **Holcomb, Ben** and links his [May 31, 2013 report](https://www.benholcomb.com/chases/20130531/) plus two YouTube publications. This supports expanding the existing `Holcomb` label to `Ben Holcomb`; all source observations remain unchanged.
+
+The survey's [original El Reno YouTube link](https://www.youtube.com/watch?v=eSV-PCUeBqM) is retained as a seventh, archival video reference. YouTube's publicly served watch-page player response states `LOGIN_REQUIRED` with the reason `Private video`; oEmbed returns HTTP 403. It is explicitly labeled private, not counted among the six oEmbed-verified public links above, and has no embed URL or assigned video/map timing. His public creator channel is [Oklahoma Storm Chaser](https://www.youtube.com/@Oklahomachaser), linked by his own website and identifying Ben Holcomb in its description.
+
+The participant list's second [YouTube link](https://www.youtube.com/watch?v=RCnYOV1XhJY) is titled “Oklahoma Tornado May 31, 2013 near Tuttle, OK” in the creator's own channel metadata. It is a different tornado later that day and is not substituted as footage of El Reno. The previously bundled survey Vimeo URL returned HTTP 404 from Vimeo's oEmbed endpoint; no continuing playback availability is claimed for it.
+
 ## Adding a genuine historical export
 
 Preserve the original file, retrieval date, source URL/account export context, hash, field definitions and timezone. Match `smotley`/public ID `5867` to the export's actual identity fields and compare overlapping observations against `GPS.json`; do not infer a person from proximity alone. Retain conflicting fixes and gaps for review. Keep public ID separate from any secret application credentials.

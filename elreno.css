@@ -23,3 +23,29 @@ dialog{background:#19231c;color:var(--text);border:1px solid #4b5842;border-radi
 .comparison-legends .second-legend{bottom:70px}
 @media(max-width:850px){.comparison-legends #radar-legend{left:18px;bottom:calc(50% + 15px);width:160px}.comparison-legends .second-legend{bottom:75px;right:18px;width:160px}.comparison-legends .radar-status{bottom:75px;max-width:calc(100% - 210px)}}
 .map-workspace{isolation:isolate}
+
+/* Locally stored roads remain available above radar, including when imagery fails. */
+.map{background:#1e2a22}.map.light-roads{background:#cbd3bc}
+.road-label,.place-label{background:none;border:0;text-align:center;color:#cbd5bd;text-shadow:0 1px 3px #101a11,1px 0 2px #101a11,-1px 0 2px #101a11;white-space:nowrap;font-size:9px;pointer-events:none}
+.place-label{font-size:13px;font-weight:600;letter-spacing:.5px}.light-roads .road-label,.light-roads .place-label{color:#253d2a;text-shadow:0 1px 3px #dbe1cd,1px 0 2px #dbe1cd}
+.vehicle-speed{font-size:10px;line-height:1.6;color:#c3d0b8;margin-top:10px;font-variant-numeric:tabular-nums}
+body{grid-template-rows:84px minmax(0,1fr) 190px}.timeline{padding-top:14px;padding-bottom:14px}.scrubber-top{margin-bottom:12px}
+.playback{grid-template-columns:31px 44px 31px}.step-button{font-size:9px;white-space:nowrap}.time-display{width:calc(var(--sidebar) - 55px)}
+.radar-rails{margin-top:14px;display:grid;gap:5px;position:relative}.scan-row{height:18px;position:relative;--scan-color:#b3c58a}.scan-row.velocity{--scan-color:#87b8cf}
+.scan-caption{position:absolute;right:calc(100% + 16px);width:120px;top:1px;display:flex;gap:7px;align-items:center;justify-content:flex-end;font-size:8px;color:var(--scan-color);white-space:nowrap;font-variant-numeric:tabular-nums}
+.scan-caption>span{font-weight:700;letter-spacing:1px}.scan-caption output{font-size:8px;color:#aebda8}
+.scan-rail{position:relative;height:18px;background:linear-gradient(transparent 8px,#384637 8px,#384637 9px,transparent 9px)}
+.scan-rail:after{content:'';position:absolute;left:var(--scan-progress);top:0;bottom:0;width:1px;background:#e6cba6;pointer-events:none;opacity:.7}
+.scan-tick{position:absolute;top:0;transform:translateX(-50%);width:12px;height:18px;padding:0;z-index:1;border-radius:2px}
+.scan-tick:before{content:'';position:absolute;left:5px;top:5px;height:7px;width:2px;background:var(--scan-color);opacity:.65}
+.scan-tick:hover,.scan-tick:focus-visible{background:#b7c2a62b}.scan-tick.active:before{left:3px;width:6px;top:3px;height:11px;border-radius:2px;opacity:1;box-shadow:0 0 8px #b8cc9b44}
+.scan-hint{margin-top:6px;font-size:8px;letter-spacing:.1px;color:#8fa083}.scan-hint span{padding:0 4px;color:#4b5c40}#toast{bottom:206px}
+@media(max-width:1150px) and (min-width:851px){.timeline{gap:16px}.time-display{width:265px}.scan-caption{right:calc(100% + 12px);width:120px}.scan-hint{font-size:7px}}
+@media(max-width:850px){body{grid-template-rows:68px minmax(0,1fr) 224px;min-height:650px}.notebook{bottom:224px}.timeline{padding:10px 18px;grid-template-rows:49px 139px;gap:7px}.time-display{width:auto}.playback{gap:9px}.radar-rails{margin-top:12px;margin-left:110px}.scan-caption{right:calc(100% + 8px);width:105px}.scan-hint{font-size:8px;margin-top:6px}.scrubber-top{margin-bottom:9px}.scan-row{height:18px}.radar-status{bottom:75px}.map-title{top:70px}.map-title strong{font-size:11px}.map-key{left:14px;gap:10px}.radar-legend{right:14px}.map-toolbar{gap:6px}.map-tools select{max-width:100px}#toast{bottom:240px}.map-title .eyebrow{font-size:6px}}
+
+.spotter-dot{border:0;background:none;box-shadow:none}.spotter-dot span{display:block;width:100%;height:100%;border:2px solid #d2e1de;border-radius:50%;background:var(--chaser-color);box-shadow:0 1px 5px #0009}.featured-dot span{border-color:#fff3df;box-shadow:0 0 0 2px #12221999,0 1px 7px #000a}.person-color{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--chaser-color);margin-right:6px}.featured-chasers{position:absolute;z-index:600;left:25px;bottom:71px;display:flex;gap:12px;flex-wrap:wrap}.featured-chasers button{display:flex;align-items:center;gap:5px;font-size:8px;color:#dde1d0;text-shadow:0 1px 3px #111;padding:2px 0}.featured-chasers i{width:7px;height:7px;border-radius:50%;border:1px solid #eee6d1}.radar-status{bottom:103px}.comparison-legends .featured-chasers{bottom:42px}.comparison-legends .map-key{bottom:8px}
+@media(max-width:850px){.featured-chasers{left:14px;bottom:57px;gap:10px}.featured-chasers button{font-size:7px}.comparison-legends .featured-chasers{bottom:57px}.comparison-legends .map-key{bottom:29px}.radar-status{bottom:86px}.radar-legend{bottom:86px}}
+
+/* All three time tracks share one horizontal coordinate system. */
+.scrubber-track,.time-ticks,.radar-rails{margin-left:110px}.scan-caption{right:calc(100% + 8px);width:105px}.scan-hint{margin-left:110px}
+@media(max-width:850px){.scrubber-track,.time-ticks{margin-left:110px}.scan-hint{margin-left:0;font-size:7.5px}.time-ticks span:nth-child(even){display:none}.scan-caption{font-size:7px}.scan-caption output{font-size:7px}}
