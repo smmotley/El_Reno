@@ -1,0 +1,8 @@
+# Optional: needed only to rebuild the checked-in historical radar overlays.
+# python3 -m venv .venv-radar
+# .venv-radar/bin/pip install -r requirements-radar.txt
+# .venv-radar/bin/python scripts/prepare_radar.py
+arm_pyart==2.3.0
+pyproj==3.8.0
+numpy>=2.0,<3
+Pillow>=11,<13

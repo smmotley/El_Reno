@@ -1,0 +1,1801 @@
+{
+  "schemaVersion": 1,
+  "site": "KTLX",
+  "siteLocation": {
+    "latitude": 35.33305740356445,
+    "longitude": -97.27748107910156,
+    "altitudeMeters": 388
+  },
+  "bounds": [
+    [
+      35.2,
+      -98.3
+    ],
+    [
+      35.7,
+      -97.5
+    ]
+  ],
+  "projection": "EPSG:3857",
+  "imageWidth": 480,
+  "imageHeight": 368,
+  "projectedPixelMeters": [
+    185.532,
+    185.669
+  ],
+  "approximateGroundPixelMeters": [
+    151.139,
+    151.25
+  ],
+  "attribution": "Derived visualization of NOAA/NWS NEXRAD Level II data, accessed via NSF Unidata's public archive.",
+  "sources": [
+    {
+      "title": "NOAA NEXRAD open archive",
+      "url": "https://registry.opendata.aws/noaa-nexrad/"
+    },
+    {
+      "title": "NOAA radar base velocity interpretation",
+      "url": "https://www.noaa.gov/jetstream/velocity"
+    },
+    {
+      "title": "Py-ART Level II reader",
+      "url": "https://arm-doe.github.io/pyart/API/generated/pyart.io.read_nexrad_archive.html"
+    }
+  ],
+  "processing": {
+    "sampling": "Nearest native polar gate, no temporal or spatial interpolation; spherical azimuthal-equidistant ground range with standard 4/3-Earth beam model; EPSG:3857 raster pixel centers.",
+    "missing": "Below-threshold, missing and range-folded Level II gates remain transparent.",
+    "time": "Each product's time is its sweep midpoint, with full scan start/end and visible-region ray-time range preserved in products. Frame time follows reflectivity.",
+    "velocity": "Uncorrected base radial velocity relative to KTLX. Negative values move toward the radar; positive away. Not storm-relative velocity or tornado wind speed. Aliasing is possible beyond each sweep's Nyquist velocity.",
+    "resolution": "Native range-gate spacing and measured azimuth spacing are recorded per product. Raster sampling is about 151 m; native azimuth footprint increases with distance and is coarser than the raster near El Reno.",
+    "geometry": "Radar measurements are elevated above ground. This overlay must not be interpreted as a surveyed tornado boundary."
+  },
+  "colorScales": {
+    "reflectivity": {
+      "units": "dBZ",
+      "type": "step",
+      "stops": [
+        [
+          -10,
+          "#526782"
+        ],
+        [
+          0,
+          "#00c5e8"
+        ],
+        [
+          5,
+          "#0094ed"
+        ],
+        [
+          10,
+          "#0063c7"
+        ],
+        [
+          15,
+          "#0033a6"
+        ],
+        [
+          20,
+          "#00eb35"
+        ],
+        [
+          25,
+          "#00c229"
+        ],
+        [
+          30,
+          "#008a22"
+        ],
+        [
+          35,
+          "#f6f500"
+        ],
+        [
+          40,
+          "#e6c700"
+        ],
+        [
+          45,
+          "#ff9500"
+        ],
+        [
+          50,
+          "#ff342a"
+        ],
+        [
+          55,
+          "#dc0022"
+        ],
+        [
+          60,
+          "#a80020"
+        ],
+        [
+          65,
+          "#f000ec"
+        ],
+        [
+          70,
+          "#a900df"
+        ],
+        [
+          75,
+          "#e6c4ff"
+        ],
+        [
+          80,
+          "#ffffff"
+        ]
+      ],
+      "underflow": "First color",
+      "overflow": "Last color"
+    },
+    "velocity": {
+      "units": "kt",
+      "type": "step",
+      "stops": [
+        [
+          -100,
+          "#e6fff9"
+        ],
+        [
+          -80,
+          "#93ffe7"
+        ],
+        [
+          -60,
+          "#37f5c2"
+        ],
+        [
+          -40,
+          "#05d875"
+        ],
+        [
+          -25,
+          "#08a747"
+        ],
+        [
+          -10,
+          "#176b38"
+        ],
+        [
+          -2,
+          "#666978"
+        ],
+        [
+          2,
+          "#784740"
+        ],
+        [
+          10,
+          "#a33130"
+        ],
+        [
+          25,
+          "#e83e38"
+        ],
+        [
+          40,
+          "#ff7055"
+        ],
+        [
+          60,
+          "#ffa37e"
+        ],
+        [
+          80,
+          "#ffdfb3"
+        ],
+        [
+          100,
+          "#ffffff"
+        ]
+      ],
+      "negative": "Toward KTLX",
+      "positive": "Away from KTLX",
+      "underflow": "First color",
+      "overflow": "Last color"
+    }
+  },
+  "coverageStart": "2013-05-31T22:42:31.325Z",
+  "coverageEnd": "2013-06-01T00:14:30.648Z",
+  "frames": [
+    {
+      "time": "2013-05-31T22:42:31.325Z",
+      "volumeTime": "2013-05-31T22:42:23.000Z",
+      "reflectivity": "data/radar/KTLX20130531_224223_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_224223_velocity.png",
+      "reflectivityTime": "2013-05-31T22:42:31.325Z",
+      "velocityTime": "2013-05-31T22:42:50.786Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_224223_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_224223_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_224223_reflectivity.png",
+          "time": "2013-05-31T22:42:31.325Z",
+          "scanStart": "2013-05-31T22:42:23.034Z",
+          "scanEnd": "2013-05-31T22:42:39.616Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.455933,
+            0.703125
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.85845,
+          "displayedValueRange": [
+            -12.5,
+            62.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T22:42:24.235Z",
+            "2013-05-31T22:42:28.821Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_224223_velocity.png",
+          "time": "2013-05-31T22:42:50.786Z",
+          "scanStart": "2013-05-31T22:42:40.414Z",
+          "scanEnd": "2013-05-31T22:43:01.158Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.444946,
+            0.560303
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.80719,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T22:42:40.991Z",
+            "2013-05-31T22:42:46.739Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T22:47:08.176Z",
+      "volumeTime": "2013-05-31T22:46:59.000Z",
+      "reflectivity": "data/radar/KTLX20130531_224659_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_224659_velocity.png",
+      "reflectivityTime": "2013-05-31T22:47:08.176Z",
+      "velocityTime": "2013-05-31T22:47:27.726Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_224659_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_224659_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_224659_reflectivity.png",
+          "time": "2013-05-31T22:47:08.176Z",
+          "scanStart": "2013-05-31T22:46:59.883Z",
+          "scanEnd": "2013-05-31T22:47:16.470Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.458679,
+            0.617981
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.87284,
+          "displayedValueRange": [
+            -11.5,
+            64.0
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T22:47:03.761Z",
+            "2013-05-31T22:47:08.353Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_224659_velocity.png",
+          "time": "2013-05-31T22:47:27.726Z",
+          "scanStart": "2013-05-31T22:47:17.354Z",
+          "scanEnd": "2013-05-31T22:47:38.098Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.455933,
+            0.543823
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.82165,
+          "displayedValueRange": [
+            -51.512,
+            52.484
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T22:47:21.165Z",
+            "2013-05-31T22:47:26.904Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T22:51:45.654Z",
+      "volumeTime": "2013-05-31T22:51:37.000Z",
+      "reflectivity": "data/radar/KTLX20130531_225137_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_225137_velocity.png",
+      "reflectivityTime": "2013-05-31T22:51:45.654Z",
+      "velocityTime": "2013-05-31T22:52:05.119Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_225137_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_225137_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_225137_reflectivity.png",
+          "time": "2013-05-31T22:51:45.654Z",
+          "scanStart": "2013-05-31T22:51:37.362Z",
+          "scanEnd": "2013-05-31T22:51:53.947Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.494385,
+            0.65918
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.494385,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.84905,
+          "displayedValueRange": [
+            -12.0,
+            69.0
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T22:51:43.270Z",
+            "2013-05-31T22:51:47.859Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_225137_velocity.png",
+          "time": "2013-05-31T22:52:05.119Z",
+          "scanStart": "2013-05-31T22:51:54.749Z",
+          "scanEnd": "2013-05-31T22:52:15.490Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.458679,
+            0.55481
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.501251,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.79858,
+          "displayedValueRange": [
+            -53.456,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T22:52:01.213Z",
+            "2013-05-31T22:52:06.951Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T22:56:19.798Z",
+      "volumeTime": "2013-05-31T22:56:11.000Z",
+      "reflectivity": "data/radar/KTLX20130531_225611_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_225611_velocity.png",
+      "reflectivityTime": "2013-05-31T22:56:19.798Z",
+      "velocityTime": "2013-05-31T22:56:39.353Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_225611_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_225611_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_225611_reflectivity.png",
+          "time": "2013-05-31T22:56:19.798Z",
+          "scanStart": "2013-05-31T22:56:11.505Z",
+          "scanEnd": "2013-05-31T22:56:28.092Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.420227,
+            0.639954
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.83245,
+          "displayedValueRange": [
+            -12.5,
+            69.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T22:56:11.505Z",
+            "2013-05-31T22:56:28.092Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_225611_velocity.png",
+          "time": "2013-05-31T22:56:39.353Z",
+          "scanStart": "2013-05-31T22:56:28.980Z",
+          "scanEnd": "2013-05-31T22:56:49.727Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.450439,
+            0.55481
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.78186,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T22:56:43.350Z",
+            "2013-05-31T22:56:49.089Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:00:57.086Z",
+      "volumeTime": "2013-05-31T23:00:48.000Z",
+      "reflectivity": "data/radar/KTLX20130531_230048_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_230048_velocity.png",
+      "reflectivityTime": "2013-05-31T23:00:57.086Z",
+      "velocityTime": "2013-05-31T23:01:16.672Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_230048_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_230048_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_230048_reflectivity.png",
+          "time": "2013-05-31T23:00:57.086Z",
+          "scanStart": "2013-05-31T23:00:48.791Z",
+          "scanEnd": "2013-05-31T23:01:05.382Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.447693,
+            0.6427
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.494385,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.82309,
+          "displayedValueRange": [
+            -12.0,
+            66.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:00:48.791Z",
+            "2013-05-31T23:01:05.382Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_230048_velocity.png",
+          "time": "2013-05-31T23:01:16.672Z",
+          "scanStart": "2013-05-31T23:01:06.302Z",
+          "scanEnd": "2013-05-31T23:01:27.043Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.447693,
+            0.560303
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.77062,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:01:06.302Z",
+            "2013-05-31T23:01:27.043Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:05:31.447Z",
+      "volumeTime": "2013-05-31T23:05:23.000Z",
+      "reflectivity": "data/radar/KTLX20130531_230523_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_230523_velocity.png",
+      "reflectivityTime": "2013-05-31T23:05:31.447Z",
+      "velocityTime": "2013-05-31T23:05:50.964Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_230523_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_230523_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_230523_reflectivity.png",
+          "time": "2013-05-31T23:05:31.447Z",
+          "scanStart": "2013-05-31T23:05:23.156Z",
+          "scanEnd": "2013-05-31T23:05:39.739Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.365295,
+            0.552063
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.494385,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.81853,
+          "displayedValueRange": [
+            -12.0,
+            67.0
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:05:27.173Z",
+            "2013-05-31T23:05:31.764Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_230523_velocity.png",
+          "time": "2013-05-31T23:05:50.964Z",
+          "scanStart": "2013-05-31T23:05:40.593Z",
+          "scanEnd": "2013-05-31T23:06:01.335Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.439453,
+            0.55481
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.75922,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:05:44.642Z",
+            "2013-05-31T23:05:50.380Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:10:05.703Z",
+      "volumeTime": "2013-05-31T23:09:57.000Z",
+      "reflectivity": "data/radar/KTLX20130531_230957_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_230957_velocity.png",
+      "reflectivityTime": "2013-05-31T23:10:05.703Z",
+      "velocityTime": "2013-05-31T23:10:25.243Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_230957_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_230957_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_230957_reflectivity.png",
+          "time": "2013-05-31T23:10:05.703Z",
+          "scanStart": "2013-05-31T23:09:57.408Z",
+          "scanEnd": "2013-05-31T23:10:13.998Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.346069,
+            0.563049
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.494385,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.80273,
+          "displayedValueRange": [
+            -12.5,
+            67.0
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:10:07.564Z",
+            "2013-05-31T23:10:12.151Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_230957_velocity.png",
+          "time": "2013-05-31T23:10:25.243Z",
+          "scanStart": "2013-05-31T23:10:14.875Z",
+          "scanEnd": "2013-05-31T23:10:35.612Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.455933,
+            0.565796
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.73982,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:10:26.530Z",
+            "2013-05-31T23:10:32.270Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:14:43.089Z",
+      "volumeTime": "2013-05-31T23:14:34.000Z",
+      "reflectivity": "data/radar/KTLX20130531_231434_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_231434_velocity.png",
+      "reflectivityTime": "2013-05-31T23:14:43.089Z",
+      "velocityTime": "2013-05-31T23:15:02.549Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_231434_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_231434_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_231434_reflectivity.png",
+          "time": "2013-05-31T23:14:43.089Z",
+          "scanStart": "2013-05-31T23:14:34.798Z",
+          "scanEnd": "2013-05-31T23:14:51.381Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.288391,
+            0.552063
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.78255,
+          "displayedValueRange": [
+            -11.5,
+            63.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:14:34.798Z",
+            "2013-05-31T23:14:51.381Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_231434_velocity.png",
+          "time": "2013-05-31T23:15:02.549Z",
+          "scanStart": "2013-05-31T23:14:52.178Z",
+          "scanEnd": "2013-05-31T23:15:12.921Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.455933,
+            0.55481
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.72439,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:15:06.489Z",
+            "2013-05-31T23:15:12.224Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:19:19.745Z",
+      "volumeTime": "2013-05-31T23:19:11.000Z",
+      "reflectivity": "data/radar/KTLX20130531_231911_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_231911_velocity.png",
+      "reflectivityTime": "2013-05-31T23:19:19.745Z",
+      "velocityTime": "2013-05-31T23:19:39.252Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_231911_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_231911_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_231911_reflectivity.png",
+          "time": "2013-05-31T23:19:19.745Z",
+          "scanStart": "2013-05-31T23:19:11.456Z",
+          "scanEnd": "2013-05-31T23:19:28.035Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.453186,
+            0.631714
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.74874,
+          "displayedValueRange": [
+            -12.5,
+            64.0
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:19:11.456Z",
+            "2013-05-31T23:19:28.035Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_231911_velocity.png",
+          "time": "2013-05-31T23:19:39.252Z",
+          "scanStart": "2013-05-31T23:19:28.880Z",
+          "scanEnd": "2013-05-31T23:19:49.625Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.450439,
+            0.568542
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.70355,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:19:28.880Z",
+            "2013-05-31T23:19:49.625Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:23:53.807Z",
+      "volumeTime": "2013-05-31T23:23:45.000Z",
+      "reflectivity": "data/radar/KTLX20130531_232345_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_232345_velocity.png",
+      "reflectivityTime": "2013-05-31T23:23:53.807Z",
+      "velocityTime": "2013-05-31T23:24:13.404Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_232345_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_232345_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_232345_reflectivity.png",
+          "time": "2013-05-31T23:23:53.807Z",
+          "scanStart": "2013-05-31T23:23:45.515Z",
+          "scanEnd": "2013-05-31T23:24:02.099Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.409241,
+            0.63446
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.72339,
+          "displayedValueRange": [
+            -12.5,
+            61.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:23:50.685Z",
+            "2013-05-31T23:23:55.273Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_232345_velocity.png",
+          "time": "2013-05-31T23:24:13.404Z",
+          "scanStart": "2013-05-31T23:24:03.033Z",
+          "scanEnd": "2013-05-31T23:24:23.776Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.464172,
+            0.541077
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.68298,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:24:08.403Z",
+            "2013-05-31T23:24:14.141Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:28:31.306Z",
+      "volumeTime": "2013-05-31T23:28:23.000Z",
+      "reflectivity": "data/radar/KTLX20130531_232823_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_232823_velocity.png",
+      "reflectivityTime": "2013-05-31T23:28:31.306Z",
+      "velocityTime": "2013-05-31T23:28:50.756Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_232823_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_232823_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_232823_reflectivity.png",
+          "time": "2013-05-31T23:28:31.306Z",
+          "scanStart": "2013-05-31T23:28:23.018Z",
+          "scanEnd": "2013-05-31T23:28:39.594Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.444946,
+            0.708618
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.494385,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.72349,
+          "displayedValueRange": [
+            -12.5,
+            63.0
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:28:30.121Z",
+            "2013-05-31T23:28:34.710Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_232823_velocity.png",
+          "time": "2013-05-31T23:28:50.756Z",
+          "scanStart": "2013-05-31T23:28:40.387Z",
+          "scanEnd": "2013-05-31T23:29:01.125Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.450439,
+            0.560303
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.68133,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:28:48.353Z",
+            "2013-05-31T23:28:54.092Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:33:07.380Z",
+      "volumeTime": "2013-05-31T23:32:59.000Z",
+      "reflectivity": "data/radar/KTLX20130531_233259_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_233259_velocity.png",
+      "reflectivityTime": "2013-05-31T23:33:07.380Z",
+      "velocityTime": "2013-05-31T23:33:26.839Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_233259_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_233259_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_233259_reflectivity.png",
+          "time": "2013-05-31T23:33:07.380Z",
+          "scanStart": "2013-05-31T23:32:59.087Z",
+          "scanEnd": "2013-05-31T23:33:15.674Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.318604,
+            0.552063
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.495758,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.72888,
+          "displayedValueRange": [
+            -13.0,
+            60.0
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:33:09.796Z",
+            "2013-05-31T23:33:14.379Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_233259_velocity.png",
+          "time": "2013-05-31T23:33:26.839Z",
+          "scanStart": "2013-05-31T23:33:16.467Z",
+          "scanEnd": "2013-05-31T23:33:37.211Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.453186,
+            0.560303
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.68897,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:33:28.933Z",
+            "2013-05-31T23:33:34.670Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:37:42.769Z",
+      "volumeTime": "2013-05-31T23:37:34.000Z",
+      "reflectivity": "data/radar/KTLX20130531_233734_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_233734_velocity.png",
+      "reflectivityTime": "2013-05-31T23:37:42.769Z",
+      "velocityTime": "2013-05-31T23:38:02.325Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_233734_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_233734_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_233734_reflectivity.png",
+          "time": "2013-05-31T23:37:42.769Z",
+          "scanStart": "2013-05-31T23:37:34.476Z",
+          "scanEnd": "2013-05-31T23:37:51.063Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.403748,
+            0.63446
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.72272,
+          "displayedValueRange": [
+            -12.5,
+            62.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:37:34.476Z",
+            "2013-05-31T23:37:51.063Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_233734_velocity.png",
+          "time": "2013-05-31T23:38:02.325Z",
+          "scanStart": "2013-05-31T23:37:51.951Z",
+          "scanEnd": "2013-05-31T23:38:12.699Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.455933,
+            0.571289
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.67912,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:37:51.951Z",
+            "2013-05-31T23:38:12.699Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:42:18.120Z",
+      "volumeTime": "2013-05-31T23:42:09.000Z",
+      "reflectivity": "data/radar/KTLX20130531_234209_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_234209_velocity.png",
+      "reflectivityTime": "2013-05-31T23:42:18.120Z",
+      "velocityTime": "2013-05-31T23:42:37.718Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_234209_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_234209_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_234209_reflectivity.png",
+          "time": "2013-05-31T23:42:18.120Z",
+          "scanStart": "2013-05-31T23:42:09.828Z",
+          "scanEnd": "2013-05-31T23:42:26.413Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.458679,
+            0.645447
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.495758,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.72054,
+          "displayedValueRange": [
+            -12.5,
+            67.0
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:42:13.336Z",
+            "2013-05-31T23:42:17.924Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_234209_velocity.png",
+          "time": "2013-05-31T23:42:37.718Z",
+          "scanStart": "2013-05-31T23:42:27.346Z",
+          "scanEnd": "2013-05-31T23:42:48.091Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.458679,
+            0.55481
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.68632,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:42:30.641Z",
+            "2013-05-31T23:42:36.382Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:46:53.581Z",
+      "volumeTime": "2013-05-31T23:46:45.000Z",
+      "reflectivity": "data/radar/KTLX20130531_234645_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_234645_velocity.png",
+      "reflectivityTime": "2013-05-31T23:46:53.581Z",
+      "velocityTime": "2013-05-31T23:47:13.037Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_234645_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_234645_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_234645_reflectivity.png",
+          "time": "2013-05-31T23:46:53.581Z",
+          "scanStart": "2013-05-31T23:46:45.291Z",
+          "scanEnd": "2013-05-31T23:47:01.872Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.458679,
+            0.683899
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.70697,
+          "displayedValueRange": [
+            -12.5,
+            64.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:46:53.459Z",
+            "2013-05-31T23:46:58.047Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_234645_velocity.png",
+          "time": "2013-05-31T23:47:13.037Z",
+          "scanStart": "2013-05-31T23:47:02.666Z",
+          "scanEnd": "2013-05-31T23:47:23.409Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.450439,
+            0.560303
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.67015,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:47:11.963Z",
+            "2013-05-31T23:47:17.699Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:51:28.796Z",
+      "volumeTime": "2013-05-31T23:51:20.000Z",
+      "reflectivity": "data/radar/KTLX20130531_235120_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_235120_velocity.png",
+      "reflectivityTime": "2013-05-31T23:51:28.796Z",
+      "velocityTime": "2013-05-31T23:51:48.251Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_235120_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_235120_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_235120_reflectivity.png",
+          "time": "2013-05-31T23:51:28.796Z",
+          "scanStart": "2013-05-31T23:51:20.507Z",
+          "scanEnd": "2013-05-31T23:51:37.086Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.464172,
+            0.667419
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.72744,
+          "displayedValueRange": [
+            -12.5,
+            66.0
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:51:20.507Z",
+            "2013-05-31T23:51:37.086Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_235120_velocity.png",
+          "time": "2013-05-31T23:51:48.251Z",
+          "scanStart": "2013-05-31T23:51:37.880Z",
+          "scanEnd": "2013-05-31T23:51:58.623Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.455933,
+            0.535583
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.68667,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:51:37.880Z",
+            "2013-05-31T23:51:58.623Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-05-31T23:56:04.822Z",
+      "volumeTime": "2013-05-31T23:55:56.000Z",
+      "reflectivity": "data/radar/KTLX20130531_235556_reflectivity.png",
+      "velocity": "data/radar/KTLX20130531_235556_velocity.png",
+      "reflectivityTime": "2013-05-31T23:56:04.822Z",
+      "velocityTime": "2013-05-31T23:56:24.320Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/05/31/KTLX/KTLX20130531_235556_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/05/31/KTLX/KTLX20130531_235556_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130531_235556_reflectivity.png",
+          "time": "2013-05-31T23:56:04.822Z",
+          "scanStart": "2013-05-31T23:55:56.535Z",
+          "scanEnd": "2013-05-31T23:56:13.109Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.458679,
+            0.703125
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.491638,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.73854,
+          "displayedValueRange": [
+            -13.0,
+            65.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:55:56.901Z",
+            "2013-05-31T23:56:01.490Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130531_235556_velocity.png",
+          "time": "2013-05-31T23:56:24.320Z",
+          "scanStart": "2013-05-31T23:56:13.948Z",
+          "scanEnd": "2013-05-31T23:56:34.692Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.450439,
+            0.560303
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.70125,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-05-31T23:56:13.948Z",
+            "2013-05-31T23:56:34.692Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-06-01T00:00:43.272Z",
+      "volumeTime": "2013-06-01T00:00:34.000Z",
+      "reflectivity": "data/radar/KTLX20130601_000034_reflectivity.png",
+      "velocity": "data/radar/KTLX20130601_000034_velocity.png",
+      "reflectivityTime": "2013-06-01T00:00:43.272Z",
+      "velocityTime": "2013-06-01T00:01:02.776Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/06/01/KTLX/KTLX20130601_000034_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/06/01/KTLX/KTLX20130601_000034_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130601_000034_reflectivity.png",
+          "time": "2013-06-01T00:00:43.272Z",
+          "scanStart": "2013-06-01T00:00:34.984Z",
+          "scanEnd": "2013-06-01T00:00:51.561Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.450439,
+            0.703125
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.497131,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.74519,
+          "displayedValueRange": [
+            -12.0,
+            63.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-06-01T00:00:36.316Z",
+            "2013-06-01T00:00:40.905Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130601_000034_velocity.png",
+          "time": "2013-06-01T00:01:02.776Z",
+          "scanStart": "2013-06-01T00:00:52.406Z",
+          "scanEnd": "2013-06-01T00:01:13.147Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.450439,
+            0.563049
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.70856,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-06-01T00:00:53.105Z",
+            "2013-06-01T00:00:58.843Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-06-01T00:05:17.750Z",
+      "volumeTime": "2013-06-01T00:05:09.000Z",
+      "reflectivity": "data/radar/KTLX20130601_000509_reflectivity.png",
+      "velocity": "data/radar/KTLX20130601_000509_velocity.png",
+      "reflectivityTime": "2013-06-01T00:05:17.750Z",
+      "velocityTime": "2013-06-01T00:05:37.260Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/06/01/KTLX/KTLX20130601_000509_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/06/01/KTLX/KTLX20130601_000509_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130601_000509_reflectivity.png",
+          "time": "2013-06-01T00:05:17.750Z",
+          "scanStart": "2013-06-01T00:05:09.458Z",
+          "scanEnd": "2013-06-01T00:05:26.042Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.296631,
+            0.557556
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.494385,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.76035,
+          "displayedValueRange": [
+            -12.5,
+            62.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-06-01T00:05:16.664Z",
+            "2013-06-01T00:05:21.248Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130601_000509_velocity.png",
+          "time": "2013-06-01T00:05:37.260Z",
+          "scanStart": "2013-06-01T00:05:26.886Z",
+          "scanEnd": "2013-06-01T00:05:47.634Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.444946,
+            0.549316
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.72317,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-06-01T00:05:34.949Z",
+            "2013-06-01T00:05:40.658Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-06-01T00:09:53.386Z",
+      "volumeTime": "2013-06-01T00:09:45.000Z",
+      "reflectivity": "data/radar/KTLX20130601_000945_reflectivity.png",
+      "velocity": "data/radar/KTLX20130601_000945_velocity.png",
+      "reflectivityTime": "2013-06-01T00:09:53.386Z",
+      "velocityTime": "2013-06-01T00:10:12.837Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/06/01/KTLX/KTLX20130601_000945_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/06/01/KTLX/KTLX20130601_000945_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130601_000945_reflectivity.png",
+          "time": "2013-06-01T00:09:53.386Z",
+          "scanStart": "2013-06-01T00:09:45.095Z",
+          "scanEnd": "2013-06-01T00:10:01.677Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.447693,
+            0.579529
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.494385,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.79362,
+          "displayedValueRange": [
+            -12.5,
+            62.5
+          ],
+          "visibleRegionTimeRange": [
+            "2013-06-01T00:09:56.583Z",
+            "2013-06-01T00:10:01.168Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130601_000945_velocity.png",
+          "time": "2013-06-01T00:10:12.837Z",
+          "scanStart": "2013-06-01T00:10:02.469Z",
+          "scanEnd": "2013-06-01T00:10:23.205Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.455933,
+            0.563049
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.76037,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-06-01T00:10:15.911Z",
+            "2013-06-01T00:10:21.651Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    },
+    {
+      "time": "2013-06-01T00:14:30.648Z",
+      "volumeTime": "2013-06-01T00:14:22.000Z",
+      "reflectivity": "data/radar/KTLX20130601_001422_reflectivity.png",
+      "velocity": "data/radar/KTLX20130601_001422_velocity.png",
+      "reflectivityTime": "2013-06-01T00:14:30.648Z",
+      "velocityTime": "2013-06-01T00:14:50.100Z",
+      "reflectivityElevation": 0.483398,
+      "velocityElevation": 0.483398,
+      "elevation": 0.483398,
+      "sourceKey": "2013/06/01/KTLX/KTLX20130601_001422_V06.gz",
+      "sourceUrl": "https://unidata-nexrad-level2.s3.amazonaws.com/2013/06/01/KTLX/KTLX20130601_001422_V06.gz",
+      "products": {
+        "reflectivity": {
+          "file": "data/radar/KTLX20130601_001422_reflectivity.png",
+          "time": "2013-06-01T00:14:30.648Z",
+          "scanStart": "2013-06-01T00:14:22.360Z",
+          "scanEnd": "2013-06-01T00:14:38.936Z",
+          "sweepIndex": 0,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.447693,
+            0.65094
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.491638,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1832,
+          "units": "dBZ",
+          "validPixelFraction": 0.80371,
+          "displayedValueRange": [
+            -12.0,
+            67.0
+          ],
+          "visibleRegionTimeRange": [
+            "2013-06-01T00:14:22.360Z",
+            "2013-06-01T00:14:38.936Z"
+          ]
+        },
+        "velocity": {
+          "file": "data/radar/KTLX20130601_001422_velocity.png",
+          "time": "2013-06-01T00:14:50.100Z",
+          "scanStart": "2013-06-01T00:14:39.729Z",
+          "scanEnd": "2013-06-01T00:15:00.471Z",
+          "sweepIndex": 1,
+          "targetElevationDegrees": 0.483398,
+          "medianElevationDegrees": 0.527344,
+          "elevationRangeDegrees": [
+            0.461426,
+            0.55481
+          ],
+          "rayCount": 720,
+          "medianAzimuthSpacingDegrees": 0.499878,
+          "rangeGateMeters": 250.0,
+          "firstGateCenterMeters": 2125.0,
+          "gateCount": 1192,
+          "units": "kt",
+          "validPixelFraction": 0.7745,
+          "displayedValueRange": [
+            -54.428,
+            54.428
+          ],
+          "visibleRegionTimeRange": [
+            "2013-06-01T00:14:39.729Z",
+            "2013-06-01T00:15:00.471Z"
+          ],
+          "nyquistVelocityKnots": [
+            54.855,
+            54.855
+          ],
+          "dealiased": false
+        }
+      }
+    }
+  ]
+}

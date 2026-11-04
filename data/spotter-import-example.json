@@ -1,0 +1,4 @@
+{
+  "_instructions": "Replace this illustrative example with sourced historical observations. This is not a real chaser track. Time must include Z (UTC) or an explicit UTC offset. Imported tracks are marked unverified and remain only in this browser session.",
+  "spotters": [{"id":"your-archive-id","name":"EXAMPLE ONLY — replace with a verified name","username":"","sourceUrl":"","points":[{"time":"2013-05-31T23:10:00Z","lat":35.4,"lon":-98.0},{"time":"2013-05-31T23:12:00Z","lat":35.4,"lon":-97.99}],"videos":[]}]
+}

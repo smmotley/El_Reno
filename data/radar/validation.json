@@ -1,0 +1,22 @@
+{
+  "frames": 21,
+  "pngsVerified": 42,
+  "sourceFileHashesVerified": 21,
+  "pixelSize": [
+    480,
+    368
+  ],
+  "nativeGeometryRoundtripMaximumErrorMeters": 2.9103830456733704e-11,
+  "result": "passed",
+  "checks": [
+    "source sizes and SHA-256",
+    "strictly increasing timestamps",
+    "product times inside sweep interval",
+    "visible-region observation times inside sweep interval",
+    "250 m native gates and 720 rays",
+    "PNG dimensions and transparency",
+    "every rendered color matches declared legend",
+    "inverse beam geometry agrees with Py-ART forward transform",
+    "native ray and gate centers roundtrip exactly"
+  ]
+}

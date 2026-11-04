@@ -1,0 +1,337 @@
+{
+  "sourceUrl": "https://www.weather.gov/source/oun/wxevents/20130531/gis/ElRenoTornadoPath_final.kmz",
+  "sourcePageUrl": "https://www.weather.gov/oun/events-20130531",
+  "sourceImageUrl": "https://www.weather.gov/images/oun/wxevents/20130531/maps/elreno_tornado_ef0contour_with_times.jpg",
+  "sourceRetrievedDate": "2026-11-04",
+  "sourceSha256": "3a6fb5a007e5fab120d844e8c34136fff6cbf8f65b890ba09bdadb4bc630fdce",
+  "name": "NWS estimated tornado center positions",
+  "status": "available",
+  "method": "Direct extraction of 39 time-labeled Point placemarks from the official NWS KMZ; no image digitization or synthetic points.",
+  "sourceTimezone": "America/Chicago",
+  "timeInterpretation": "The KMZ 6:04\u20136:42 labels are evening CDT (UTC\u221205:00), consistent with the NWS companion map and event narrative. Converted to 23:04\u201323:42 UTC.",
+  "timeResolutionSeconds": 60,
+  "uncertaintyMeters": null,
+  "uncertaintyNote": "NWS does not publish a spatial or clock confidence interval with these points. Coordinate precision does not establish position accuracy. Center distance is approximate and does not measure distance to a subvortex or tornado edge.",
+  "interpolation": {
+    "method": "linear-between-timed-centers",
+    "maximumGapSeconds": 60,
+    "extrapolate": false,
+    "note": "Between minute marks the displayed center is an interpolation, not a new observation. Linear interpolation may simplify turns and the loop."
+  },
+  "sourceDiscrepancy": "The NWS narrative gives dissipation at 6:42 PM CDT; its tornado table lists an end at 6:44 PM CDT. The KMZ ends at 6:42. No center positions are fabricated for 6:03 or after 6:42.",
+  "points": [
+    {
+      "time": "2013-05-31T23:04:00Z",
+      "lat": 35.47878246124045,
+      "lon": -98.07092974326828,
+      "sourceLabel": "6:04 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:05:00Z",
+      "lat": 35.47417973041775,
+      "lon": -98.06781456160681,
+      "sourceLabel": "6:05 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:06:00Z",
+      "lat": 35.47130507902062,
+      "lon": -98.06360017289082,
+      "sourceLabel": "6:06 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:07:00Z",
+      "lat": 35.46718978764002,
+      "lon": -98.05892260696919,
+      "sourceLabel": "6:07 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:08:00Z",
+      "lat": 35.46210136532956,
+      "lon": -98.0567134749803,
+      "sourceLabel": "6:08 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:09:00Z",
+      "lat": 35.45642371961319,
+      "lon": -98.05194320742007,
+      "sourceLabel": "6:09 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:10:00Z",
+      "lat": 35.45472372277286,
+      "lon": -98.04151814989955,
+      "sourceLabel": "6:10 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:11:00Z",
+      "lat": 35.45332248380541,
+      "lon": -98.03202643024933,
+      "sourceLabel": "6:11 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:12:00Z",
+      "lat": 35.4529158454014,
+      "lon": -98.02114760158207,
+      "sourceLabel": "6:12 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:13:00Z",
+      "lat": 35.45145963072685,
+      "lon": -98.00686563737541,
+      "sourceLabel": "6:13 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:14:00Z",
+      "lat": 35.45417988607535,
+      "lon": -97.9952229297938,
+      "sourceLabel": "6:14 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:15:00Z",
+      "lat": 35.4579671390931,
+      "lon": -97.98910346671843,
+      "sourceLabel": "6:15 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:16:00Z",
+      "lat": 35.45864252738311,
+      "lon": -97.9791271320556,
+      "sourceLabel": "6:16 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:17:00Z",
+      "lat": 35.45572959205624,
+      "lon": -97.96959074405858,
+      "sourceLabel": "6:17 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:18:00Z",
+      "lat": 35.45253486103849,
+      "lon": -97.95591334707565,
+      "sourceLabel": "6:18 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:19:00Z",
+      "lat": 35.45309015915255,
+      "lon": -97.94048369583385,
+      "sourceLabel": "6:19 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:20:00Z",
+      "lat": 35.45739428637771,
+      "lon": -97.92750262068765,
+      "sourceLabel": "6:20 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:21:00Z",
+      "lat": 35.46205388826071,
+      "lon": -97.91907395249629,
+      "sourceLabel": "6:21 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:22:00Z",
+      "lat": 35.46685483261022,
+      "lon": -97.90984909352386,
+      "sourceLabel": "6:22 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:23:00Z",
+      "lat": 35.47201679122134,
+      "lon": -97.90742641678672,
+      "sourceLabel": "6:23 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:24:00Z",
+      "lat": 35.47829065659857,
+      "lon": -97.90593178998931,
+      "sourceLabel": "6:24 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:25:00Z",
+      "lat": 35.48310512935544,
+      "lon": -97.8981120768612,
+      "sourceLabel": "6:25 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:26:00Z",
+      "lat": 35.48999339220952,
+      "lon": -97.8939038904492,
+      "sourceLabel": "6:26 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:27:00Z",
+      "lat": 35.49833298948496,
+      "lon": -97.89069007768526,
+      "sourceLabel": "6:27 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:28:00Z",
+      "lat": 35.50443132531481,
+      "lon": -97.88700437803583,
+      "sourceLabel": "6:28 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:29:00Z",
+      "lat": 35.50754621458322,
+      "lon": -97.88643659823491,
+      "sourceLabel": "6:29 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:30:00Z",
+      "lat": 35.50640785886416,
+      "lon": -97.88956190936538,
+      "sourceLabel": "6:30 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:31:00Z",
+      "lat": 35.50523711100782,
+      "lon": -97.89112493807164,
+      "sourceLabel": "6:31 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:32:00Z",
+      "lat": 35.50408392576208,
+      "lon": -97.89191747595024,
+      "sourceLabel": "6:32 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:33:00Z",
+      "lat": 35.50273582536507,
+      "lon": -97.89250772839453,
+      "sourceLabel": "6:33 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:34:00Z",
+      "lat": 35.50363326190606,
+      "lon": -97.89009575857868,
+      "sourceLabel": "6:34 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:35:00Z",
+      "lat": 35.5040187697707,
+      "lon": -97.88407695505128,
+      "sourceLabel": "6:35 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:36:00Z",
+      "lat": 35.50124138162927,
+      "lon": -97.87642379861295,
+      "sourceLabel": "6:36 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:37:00Z",
+      "lat": 35.50032136600753,
+      "lon": -97.86878724832538,
+      "sourceLabel": "6:37 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:38:00Z",
+      "lat": 35.50172424404569,
+      "lon": -97.86230725525024,
+      "sourceLabel": "6:38 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:39:00Z",
+      "lat": 35.50247016613207,
+      "lon": -97.85866211043843,
+      "sourceLabel": "6:39 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:40:00Z",
+      "lat": 35.50375388402842,
+      "lon": -97.85350706977188,
+      "sourceLabel": "6:40 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:41:00Z",
+      "lat": 35.50352549485547,
+      "lon": -97.84971605110904,
+      "sourceLabel": "6:41 PM CDT",
+      "kind": "estimated-center"
+    },
+    {
+      "time": "2013-05-31T23:42:00Z",
+      "lat": 35.50127653098339,
+      "lon": -97.84815499363609,
+      "sourceLabel": "6:42 PM CDT",
+      "kind": "estimated-center"
+    }
+  ],
+  "events": [
+    {
+      "time": "2013-05-31T23:03:00Z",
+      "title": "Tornado develops",
+      "detail": "NWS places genesis northeast of Heaston and Reuter roads. First timed KMZ center is one minute later.",
+      "sourceUrl": "https://www.weather.gov/oun/events-20130531"
+    },
+    {
+      "time": "2013-05-31T23:09:00Z",
+      "title": "Turns east",
+      "detail": "NWS describes an eastward turn south of Reno Road.",
+      "sourceUrl": "https://www.weather.gov/oun/events-20130531"
+    },
+    {
+      "time": "2013-05-31T23:19:00Z",
+      "title": "Crosses US 81",
+      "detail": "The expanding tornado crosses US 81 near Reno Road and accelerates northward.",
+      "sourceUrl": "https://www.weather.gov/oun/events-20130531"
+    },
+    {
+      "time": "2013-05-31T23:24:00Z",
+      "title": "Maximum size and intensity period",
+      "detail": "NWS identifies 6:24\u20136:26 PM CDT near Radio and Reuter roads.",
+      "sourceUrl": "https://www.weather.gov/oun/events-20130531",
+      "endTime": "2013-05-31T23:26:00Z"
+    },
+    {
+      "time": "2013-05-31T23:27:00Z",
+      "title": "Loop north of I-40",
+      "detail": "The center loops while slowing; NWS places this phase at 6:27\u20136:35 PM CDT.",
+      "sourceUrl": "https://www.weather.gov/oun/events-20130531",
+      "endTime": "2013-05-31T23:35:00Z"
+    },
+    {
+      "time": "2013-05-31T23:42:00Z",
+      "title": "Last published center point",
+      "detail": "KMZ ends at 6:42 PM CDT. NWS narrative gives dissipation here; its tornado table gives 6:44 PM CDT.",
+      "sourceUrl": "https://www.weather.gov/oun/events-20130531"
+    }
+  ]
+}
