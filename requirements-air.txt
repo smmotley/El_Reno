@@ -1,0 +1,5 @@
+# Optional dependencies for rebuilding the bundled AIR image layers.
+# Existing project machine Python already provides these packages.
+numpy>=2.0,<3
+scipy>=1.14,<2
+Pillow>=11,<13

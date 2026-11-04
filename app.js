@@ -1,6 +1,7 @@
-import { MI, normalizePoints, haversine, positionAt, radarFrameAt, validateSpotterImport } from './js/analysis.js';
+import { MI, normalizePoints, haversine, positionAt, validateSpotterImport } from './js/analysis.js';
 import { prepareRoadTrack, roadPositionAt, roadSegmentsUntil, closestRoadApproach } from './js/road-motion.js';
-import { snapTimelineTime, buildRadarEvents, activeRadarEvent } from './js/timeline.js';
+import { snapTimelineTime, buildRadarEvents } from './js/timeline.js';
+import { selectRadarFrame, radarCoverage } from './js/radar-source.js';
 
 const $ = id => document.getElementById(id);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -11,12 +12,13 @@ const STORM_START = date('2013-05-31T22:45:00Z'), STORM_END = date('2013-06-01T0
 const state = {
   t: date('2013-05-31T23:10:20Z'), start: STORM_START, end: STORM_END,
   offset: 0, zone: 'America/Chicago', playing: false, speed: 30, compare: false,
-  follow: false, basemap: 'dark', range: 'storm', selectedSpotter: null,
+  follow: false, basemap: 'dark', radarSource: 'ktlx', range: 'storm', selectedSpotter: null,
   visible: { reflectivity: true, velocity: false, track: true, swath: true, center: true, spotters: true },
   opacity: { reflectivity: .72, velocity: .78, track: 1, swath: .7, center: 1, spotters: 1 }
 };
 let data, track = [], roadTrack, roadTracks = {}, centers = [], spotters = [], radarEvents = [], best, maps = [], syncLock = false, toastTimer;
 let animationId, lastFrame = 0, lastDraw = 0;
+const radarImageCache = new Map();
 const featuredChasers = {
   'survey-holcomb': {name:'Ben Holcomb',color:'#ffb454'},
   'survey-sullivan': {name:'Brandon Sullivan',color:'#ff7fa5'},
@@ -30,6 +32,69 @@ function fmt(t, seconds = true) {
   return new Intl.DateTimeFormat('en-US', { timeZone: state.zone, hour: 'numeric', minute: '2-digit', ...(seconds ? {second: '2-digit'} : {}), hour12: state.zone !== 'UTC' }).format(t);
 }
 function zoneLabel() { return state.zone === 'UTC' ? 'UTC' : 'CDT'; }
+function currentRadar() { return data.radars[state.radarSource]; }
+function selectedRadar(product) { return selectRadarFrame(currentRadar(),state.t,product); }
+function currentRadarEvents() {
+  return buildRadarEvents(currentRadar().frames,-8640000000000000,8640000000000000)
+    .filter(event=>!currentRadar().unavailableProducts?.[event.product]);
+}
+function velocityNote() {
+  return state.radarSource==='air'
+    ? 'AIR reflectivity research preview; geographic alignment is unverified. AIR velocity is unavailable here because of documented 2013 instrument limitations. Switch to WSR-88D for velocity.'
+    : 'Negative: toward KTLX. Positive: away from KTLX. Raw base velocity, not dealiased; folding can occur near ±55 kt.';
+}
+function setRadarSource(source) {
+  if(!data.radars[source]||source===state.radarSource)return;
+  setPlaying(false);state.radarSource=source;
+  radarEvents=currentRadarEvents();
+  radarImageCache.clear();
+  for(const m of maps)for(const product of ['reflectivity','velocity']){
+    m.overlays[product]?.remove();m.overlays[product]=null;m.radarFiles[product]=null;m.radarFailed[product]=false;
+  }
+  if(source==='air'){
+    state.visible.reflectivity=true;state.visible.velocity=false;
+    $('layer-reflectivity').checked=true;$('layer-velocity').checked=false;
+    if(state.compare)toggleCompare(false);
+    const coverage=radarCoverage(currentRadar());
+    const moved=state.t<coverage.start||state.t>coverage.end;
+    if(moved)state.t=coverage.start;
+    setRange('air');
+    if(moved)toast('AIR begins at '+fmt(coverage.start)+' '+zoneLabel()+'. Moved to its first available image.');
+  }else setRange(state.range);
+}
+function updateRadarSourceUI() {
+  const air=state.radarSource==='air', radar=currentRadar(), coverage=radarCoverage(radar);
+  for(const source of ['ktlx','air']){
+    $('source-'+source).classList.toggle('selected',source===state.radarSource);
+    $('source-'+source).setAttribute('aria-pressed',String(source===state.radarSource));
+  }
+  document.querySelector('.map-workspace').classList.toggle('air-source',air);
+  $('radar-source-detail').textContent=air?'AIR · 0.5° reflectivity preview':'KTLX · 0.5° · WSR-88D Level II';
+  $('radar-source-detail').title=air?'University of Oklahoma Atmospheric Imaging Radar. Volume midpoint timing; individual ray times unavailable.':'NOAA/NWS WSR-88D near Oklahoma City. Independent product sweep midpoint times.';
+  $('radar-source-window').textContent=air?fmt(coverage.start)+'–'+fmt(coverage.end)+' '+zoneLabel()+' · ~7–8 s updates':'~4–5 min volumes · '+zoneLabel()+' clock';
+  const airWindow=radarCoverage(data.radars.air);
+  $('air-coverage-copy').textContent=data.radars.air.frames.length+' reflectivity images, '+fmt(airWindow.start)+'–'+fmt(airWindow.end)+' '+zoneLabel()+'. No AIR image is held beyond the recording window or across a gap over 25 seconds.';
+  $('layer-reflectivity-detail').textContent=air?'AIR · 0.5° research sweep':'KTLX · lowest sweep';
+  $('layer-velocity-detail').textContent=air?'Unavailable · 2013 instrument limitation':'Relative to KTLX · not dealiased';
+  for(const id of ['layer-velocity','opacity-velocity','view-compare']){
+    $(id).disabled=air;
+    $(id).title=air?'AIR velocity is excluded because of documented 2013 instrument limitations. Switch to WSR-88D for velocity.':'';
+  }
+  $('layer-velocity').closest('.layer-row').classList.toggle('unavailable',air);
+  $('radar-quality').hidden=!air;
+  $('radar-quality').textContent='Research preview · alignment unverified';
+}
+function prefetchRadarImages() {
+  const radar=currentRadar();
+  let index=radar.frames.findIndex(f=>date(f.time)>state.t);
+  if(index<0)index=radar.frames.length-1;
+  const files=radar.frames.slice(Math.max(0,index-1),index+3).flatMap(f=>['reflectivity','velocity'].filter(p=>state.visible[p]).map(p=>f[p]));
+  for(const file of files)if(file&&!radarImageCache.has(file)){
+    const img=new Image();img.decoding='async';img.src=file;radarImageCache.set(file,img);
+  }
+  for(const file of radarImageCache.keys())if(!files.includes(file))radarImageCache.delete(file);
+}
+
 function toast(text) { $('toast').textContent = text; $('toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').hidden = true, 5000); }
 async function loadJSON(url) { const res = await fetch(url); if (!res.ok) throw new Error('Could not load ' + url); return res.json(); }
 function latlng(p) { return [p.lat, p.lon]; }
@@ -62,6 +127,7 @@ function makeMap(id, isSecond = false) {
   m.car = L.marker([0,0],{icon:vehicleIcon(),zIndexOffset:500,title:'Shane Motley / smotley',alt:'Grey SUV — our chase'}).bindTooltip('OUR SUV',{permanent:true,direction:'right',offset:[12,0],className:'marker-label'}).bindPopup('');
   m.center = L.marker([0,0],{icon:L.divIcon({className:'tornado-marker',html:'⌁',iconSize:[28,28],iconAnchor:[14,14]}),zIndexOffset:400,title:'NWS estimated tornado center',alt:'Estimated tornado center'}).bindTooltip('NWS CENTER',{direction:'right',offset:[15,0],className:'marker-label'}).bindPopup('');
   m.separation = L.polyline([], {pane:'separation',color:'#e7cfaa',weight:1,dashArray:'3 6',opacity:.7,interactive:false});
+  m.radarSite = L.circleMarker([0,0],{pane:'survey',radius:5,color:'#d9e5d3',fillColor:'#477b8c',fillOpacity:1,weight:1.5}).bindTooltip('',{direction:'right',className:'marker-label'}).bindPopup('');
   m.selectedTrail = L.polyline([], {pane:'tracks',color:'#a9d3d5',weight:2,opacity:.65});
   m.videoMarkers = L.layerGroup();
   for (const v of data.videos.videos) if (v.time && Number.isFinite(v.lat) && Number.isFinite(v.lon)) {
@@ -126,6 +192,7 @@ function updateRoadLabels(m) {
   }
 }
 function toggleCompare(compare) {
+  if(compare&&currentRadar().unavailableProducts?.velocity)return;
   const wasCompare=state.compare;
   state.compare=compare;
   $('maps').classList.toggle('compare',compare); $('map-compare').hidden=!compare; $('main-pane-label').hidden=!compare;
@@ -195,13 +262,13 @@ function updatePeople(m) {
 function updateRadar(m,index) {
   for(const product of ['reflectivity','velocity']) {
     const allowed=state.visible[product]&&(!state.compare|| (index===0?product==='reflectivity':product==='velocity'));
-    const selection=allowed?radarFrameAt(data.radar.frames,state.t,product):null;
+    const selection=allowed?selectedRadar(product):null;
     const file=selection?.frame[product];
     if(m.radarFiles[product]!==file) {
       if(m.overlays[product])m.overlays[product].remove();
       m.radarFiles[product]=file;m.radarFailed[product]=false;
       if(file){
-        const overlay=L.imageOverlay(file,data.radar.bounds,{pane:'radar',opacity:state.opacity[product],interactive:false,className:'radar-image'});
+        const overlay=L.imageOverlay(file,currentRadar().bounds,{pane:'radar',opacity:state.opacity[product],interactive:false,className:'radar-image'});
         overlay.on('error',()=>{if(m.radarFiles[product]===file){m.radarFailed[product]=true;toast('A local radar image could not load. See source data for this scan.');}});
         m.overlays[product]=overlay;overlay.addTo(m.map);
       } else m.overlays[product]=null;
@@ -213,7 +280,7 @@ function updateLegend() {
   const product=state.visible.velocity&&!state.compare?'velocity':'reflectivity';
   const shown=state.visible.reflectivity||state.visible.velocity;
   $('radar-legend').hidden=!shown;
-  const palette=data.radar.colorScales[product], stops=palette.stops;
+  const palette=currentRadar().colorScales[product], stops=palette.stops;
   const lo=stops[0][0],hi=stops.at(-1)[0];
   const gradient=[];
   for(let i=0;i<stops.length-1;i++){
@@ -224,17 +291,17 @@ function updateLegend() {
   $('legend-title').textContent=product==='velocity'?'RADIAL VELOCITY':'REFLECTIVITY';
   $('legend-unit').textContent=palette.units;
   $('legend-ticks').innerHTML=(product==='velocity'?[-100,-50,0,50,100]:[-10,10,35,60,80]).map(n=>'<span style="left:'+((n-lo)/(hi-lo)*100)+'%">'+n+'</span>').join('');
-  $('radar-legend').title=product==='velocity'?'Negative: toward KTLX. Positive: away. Raw base velocity, not dealiased; folding can occur near ±55 kt.':'Native Level II reflectivity, 250 m range gates.';
+  $('radar-legend').title=product==='velocity'?velocityNote():(state.radarSource==='air'?'AIR reflectivity at 0.5°. Research preview; alignment and calibration are unverified. 30 m gate spacing is not independent spatial resolution.':'Native Level II reflectivity, 250 m range gates.');
   let second=$('velocity-legend');
   if(!second){second=document.createElement('div');second.id='velocity-legend';second.className='radar-legend second-legend';document.querySelector('.map-workspace').append(second);}
   second.hidden=!state.compare||!state.visible.velocity;
   document.querySelector('.map-workspace').classList.toggle('comparison-legends',state.compare);
   if(state.compare){
-    const vs=data.radar.colorScales.velocity.stops,g=[];
+    const vs=currentRadar().colorScales.velocity.stops,g=[];
     for(let i=0;i<vs.length-1;i++)g.push(vs[i][1]+' '+((vs[i][0]+100)/2)+'%',vs[i][1]+' '+((vs[i+1][0]+100)/2)+'%');
     g.push(vs.at(-1)[1]+' 100%');
     second.innerHTML='<div><span>RADIAL VELOCITY</span><span>kt</span></div><div class="colorbar" style="background:linear-gradient(to right,'+g.join(',')+')"></div><div class="legend-ticks">'+[-100,-50,0,50,100].map(n=>'<span style="left:'+((n+100)/2)+'%">'+n+'</span>').join('')+'</div>';
-    second.title='Negative toward KTLX; positive away. Undealiased base velocity; folding near ±55 kt.';
+    second.title=velocityNote();
     $('radar-legend').hidden=!state.visible.reflectivity;
   }
 }
@@ -246,6 +313,10 @@ function render() {
   for(const [index,m] of maps.entries()){
     if(index===1&&!state.compare)continue;
     updateRadar(m,index);
+    const site=currentRadar().siteLocation;
+    if(site){m.radarSite.setLatLng([site.latitude,site.longitude]).setTooltipContent(currentRadar().site+' RADAR');m.radarSite.setPopupContent(sourcePopup(currentRadar().site+' radar',velocityNote(),state.radarSource==='air'?'https://arrc.ou.edu/data.html':'https://www.weather.gov/oun/'));
+      setPresent(m.map,m.radarSite,state.visible.reflectivity||state.visible.velocity);
+    }
     m.swath.setStyle({opacity:state.opacity.swath,fillOpacity:state.opacity.swath*.14});
     m.centerPath.setStyle({opacity:state.opacity.swath*.45});
     setPresent(m.map,m.swath,state.visible.swath);setPresent(m.map,m.centerPath,state.visible.swath);
@@ -284,18 +355,18 @@ function render() {
   $('time-slider').setAttribute('aria-valuetext',fmt(state.t)+' '+zoneLabel());
   const products=['reflectivity','velocity'].filter(p=>state.visible[p]);
   const readings=products.map(p=>{
-    const r=radarFrameAt(data.radar.frames,state.t,p);
+    const r=selectedRadar(p);
     return (p==='reflectivity'?'REF':'VEL')+' '+(r?fmt(r.t)+' · '+Math.floor(r.ageSeconds/60)+'m '+Math.floor(r.ageSeconds%60)+'s old':'no scan in range');
   });
   $('radar-status').textContent=readings.join(' / ')||'Both radar layers are off';
-  $('radar-title').textContent=state.visible.velocity?'KTLX / BASE VELOCITY NOT DEALIASED':'KTLX / ARCHIVED LEVEL II';
-  const p=products[0],r=p?radarFrameAt(data.radar.frames,state.t,p):null;
+  $('radar-title').textContent=state.radarSource==='air'?'AIR / ATMOSPHERIC IMAGING RADAR':state.visible.velocity?'KTLX / BASE VELOCITY NOT DEALIASED':'KTLX / ARCHIVED LEVEL II';
+  const p=products[0],r=p?selectedRadar(p):null;
   $('radar-elevation').textContent=r?'0.5°':'—';
-  $('radar-elevation').title=r?'Nominal low tilt; encoded target '+r.frame[p+'Elevation']+'°. Radar times are representative sweep midpoints.':'';
-  const noRadar=products.length&&!products.some(p=>radarFrameAt(data.radar.frames,state.t,p));
+  $('radar-elevation').title=r?'Nominal low tilt; encoded target '+r.frame[p+'Elevation']+'°. Radar times are '+(state.radarSource==='air'?'volume coverage midpoints; individual ray times unavailable.':'representative sweep midpoints.'):'';
+  const noRadar=products.length&&!products.some(p=>selectedRadar(p));
   $('map-notice').hidden=!noRadar;
-  if(noRadar)$('map-notice').textContent='No radar scan within the preceding 10 minutes. The bundled radar covers 5:42–7:14 PM CDT.';
-  updateLegend();updateRadarRails();
+  if(noRadar)$('map-notice').textContent=state.radarSource==='air'?'No AIR image at this time. Choose AIR window to view its recorded period; use WSR-88D for the wider chase.':'No WSR-88D scan within the preceding 10 minutes. Choose Storm window for the bundled KTLX sequence.';
+  updateLegend();updateRadarRails();updateRadarSourceUI();prefetchRadarImages();
 }
 function updateClosest() {
   best=closestRoadApproach(roadTrack,centers,state.offset);
@@ -307,14 +378,17 @@ function updateClosest() {
 function setRange(range) {
   state.range=range;
   if(range==='storm'){state.start=STORM_START;state.end=STORM_END;}
+  else if(range==='air'){const coverage=radarCoverage(data.radars.air);state.start=coverage.start;state.end=coverage.end;}
   else{state.start=Math.min(track[0].t+state.offset,STORM_START,...spotters.map(s=>s.points[0].t));state.end=Math.max(track.at(-1).t+state.offset,STORM_END,...spotters.map(s=>s.points.at(-1).t));}
-  state.start=Math.floor(state.start/10000)*10000;state.end=Math.ceil(state.end/10000)*10000;
+  if(range!=='air'){
+    state.start=Math.floor(state.start/10000)*10000;state.end=Math.ceil(state.end/10000)*10000;
+  }
   $('time-slider').min=0;$('time-slider').max=(state.end-state.start)/1000;
-  $('range-storm').classList.toggle('selected',range==='storm');$('range-day').classList.toggle('selected',range==='day');
-  $('timeline-label').textContent=range==='storm'?'THE TORNADO WINDOW':'THE FULL CHASE';
+  $('range-storm').classList.toggle('selected',range==='storm');$('range-day').classList.toggle('selected',range==='day');$('range-air').classList.toggle('selected',range==='air');
+  $('timeline-label').textContent=range==='storm'?'THE TORNADO WINDOW':range==='air'?'THE AIR WINDOW':'THE FULL CHASE';
   $('time-ticks').innerHTML=Array.from({length:5},(_,i)=>'<span>'+esc(fmt(state.start+(state.end-state.start)*i/4,false))+'</span>').join('');
-  $('tornado-period').style.left=((centers[0].t-state.start)/(state.end-state.start)*100)+'%';
-  $('tornado-period').style.width=((centers.at(-1).t-centers[0].t)/(state.end-state.start)*100)+'%';
+  $('tornado-period').style.left=(Math.max(0,(centers[0].t-state.start)/(state.end-state.start))*100)+'%';
+  $('tornado-period').style.width=(Math.max(0,Math.min(centers.at(-1).t,state.end)-Math.max(centers[0].t,state.start))/(state.end-state.start)*100)+'%';
   $('event-markers').replaceChildren();
   for(const event of data.timeline.events||[]){
     const t=date(event.time);if(t<state.start||t>state.end)continue;
@@ -346,18 +420,28 @@ function step(direction) {
   setPlaying(false);
   setTime(state.t+direction*10000);
 }
+function stepScan(direction) {
+  setPlaying(false);
+  const product=state.visible.velocity&&!state.visible.reflectivity?'velocity':'reflectivity';
+  const times=[...new Set(radarEvents.filter(e=>state.compare?state.visible[e.product]:e.product===product).map(e=>e.t))].sort((a,b)=>a-b);
+  const next=direction>0?times.find(t=>t>state.t+1):times.filter(t=>t<state.t-1).at(-1);
+  if(next===undefined){toast('No '+(direction>0?'later':'earlier')+' '+currentRadar().site+' image in this archive.');return;}
+  if(next<state.start||next>state.end)setRange(state.radarSource==='air'?'air':next<STORM_START||next>STORM_END?'day':'storm');
+  setTime(next);
+}
 function buildRadarRails() {
   for(const product of ['reflectivity','velocity']){
     const rail=$('scan-'+product);rail.replaceChildren();
     for(const event of radarEvents.filter(e=>e.product===product&&e.t>=state.start&&e.t<=state.end)){
       const button=document.createElement('button');button.className='scan-tick';button.dataset.eventId=event.id;
       button.style.left=((event.t-state.start)/(state.end-state.start)*100)+'%';
-      button.title=(product==='reflectivity'?'Reflectivity':'Velocity')+' scan · '+fmt(event.t)+' '+zoneLabel()+' · click to jump';
+      if(state.radarSource==='air')button.style.width='min(12px,'+(7/(state.end-state.start)*100000)+'%)';
+      button.title=currentRadar().site+' '+(product==='reflectivity'?'reflectivity':'velocity')+' scan · '+fmt(event.t)+' '+zoneLabel()+' · click to jump';
       button.setAttribute('aria-label',button.title);
       button.addEventListener('click',()=>{
         setPlaying(false);state.visible[product]=true;$('layer-'+product).checked=true;
         if(!state.compare){const other=product==='reflectivity'?'velocity':'reflectivity';state.visible[other]=false;$('layer-'+other).checked=false;}
-        setTime(event.t);toast('New '+(product==='reflectivity'?'reflectivity':'velocity')+' scan at '+fmt(event.t)+' '+zoneLabel()+'. Sweep midpoint; vehicle positions are inferred.');
+        setTime(event.t);toast('New '+(product==='reflectivity'?'reflectivity':'velocity')+' scan at '+fmt(event.t)+' '+zoneLabel()+'. '+(state.radarSource==='air'?'Volume coverage midpoint':'Sweep midpoint')+'; vehicle positions are inferred.');
       });
       rail.append(button);
     }
@@ -367,7 +451,15 @@ function updateRadarRails() {
   const progress=(state.t-state.start)/(state.end-state.start)*100;
   $('radar-rails').style.setProperty('--scan-progress',progress+'%');
   for(const product of ['reflectivity','velocity']){
-    const active=activeRadarEvent(radarEvents,state.t,product);
+    const unavailable=currentRadar().unavailableProducts?.[product];
+    $('scan-'+product).closest('.scan-row').classList.toggle('unavailable',!!unavailable);
+    if(unavailable){
+      $('scan-'+product+'-time').textContent='Unavailable';
+      $('scan-'+product+'-time').title=unavailable.reason;
+      continue;
+    }
+    const selection=selectedRadar(product);
+    const active=selection?radarEvents.find(e=>e.product===product&&e.t===selection.t):null;
     for(const b of $('scan-'+product).children){
       const selected=b.dataset.eventId===active?.id;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected));
     }
@@ -420,6 +512,7 @@ function bindControls() {
   document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
   for(const layer of Object.keys(state.visible)){
     $('layer-'+layer).addEventListener('change',e=>{
+      if(currentRadar().unavailableProducts?.[layer]){e.target.checked=false;return;}
       state.visible[layer]=e.target.checked;
       if(!state.compare&&e.target.checked&&['reflectivity','velocity'].includes(layer)){
         const other=layer==='reflectivity'?'velocity':'reflectivity';state.visible[other]=false;$('layer-'+other).checked=false;
@@ -428,6 +521,9 @@ function bindControls() {
     });
     $('opacity-'+layer).addEventListener('input',e=>{state.opacity[layer]=Number(e.target.value)/100;const output=$('opacity-'+layer+'-value');if(output)output.textContent=e.target.value+'%';render();});
   }
+  $('source-ktlx').addEventListener('click',()=>setRadarSource('ktlx'));$('source-air').addEventListener('click',()=>setRadarSource('air'));
+  $('air-info').addEventListener('click',()=>$('air-dialog').showModal());
+  $('scan-back').addEventListener('click',()=>stepScan(-1));$('scan-next').addEventListener('click',()=>stepScan(1));
   $('view-single').addEventListener('click',()=>toggleCompare(false));$('view-compare').addEventListener('click',()=>toggleCompare(true));
   $('basemap').addEventListener('change',e=>{state.basemap=e.target.value;setBasemap();});
   $('follow').addEventListener('click',()=>{state.follow=!state.follow;$('follow').setAttribute('aria-pressed',String(state.follow));render();});
@@ -436,7 +532,13 @@ function bindControls() {
   $('play').addEventListener('click',()=>setPlaying(!state.playing));$('step-back').addEventListener('click',()=>step(-1));$('step-forward').addEventListener('click',()=>step(1));
   $('speed').addEventListener('change',e=>state.speed=Number(e.target.value));
   $('time-slider').addEventListener('input',e=>{setPlaying(false);setTime(state.start+Number(e.target.value)*1000,true);});
-  $('range-storm').addEventListener('click',()=>setRange('storm'));$('range-day').addEventListener('click',()=>setRange('day'));
+  $('time-slider').addEventListener('keydown',e=>{
+    // AIR can end between ten-second ticks; keep both exact bounds reachable.
+    if(e.key==='Home'||e.key==='End'){
+      e.preventDefault();setPlaying(false);setTime(e.key==='Home'?state.start:state.end);
+    }
+  });
+  $('range-storm').addEventListener('click',()=>setRange('storm'));$('range-day').addEventListener('click',()=>setRange('day'));$('range-air').addEventListener('click',()=>{setPlaying(false);setRange('air');if(!selectedRadar('reflectivity'))setTime(radarCoverage(data.radars.air).start);});
   $('timezone').addEventListener('click',()=>{state.zone=state.zone==='UTC'?'America/Chicago':'UTC';updateClosest();setRange(state.range);});
   $('closest').addEventListener('click',()=>{if(!best)return;setPlaying(false);if(best.t<state.start||best.t>state.end)setRange('day');setTime(best.t);maps[0].map.fitBounds([latlng(best.car),latlng(best.tornado)],{padding:[90,140],maxZoom:13});toast('Estimated center separation: '+(best.meters/MI).toFixed(1)+' mi at '+fmt(best.t)+' '+zoneLabel()+'. Road-matched vehicle and estimated NWS center; camera clock unverified.');});
   for(const id of ['sources-open','distance-info'])$(id).addEventListener('click',()=>$('sources-dialog').showModal());
@@ -470,11 +572,11 @@ function bindControls() {
 async function init() {
   try {
     if(!window.L)throw new Error('The bundled map library could not load. Start the local server rather than opening index.html directly.');
-    const values=await Promise.all(['GPS.json','data/tornado.geojson','data/tornado-timeline.json','data/radar/manifest.json','data/spotters.json','data/videos.json','data/roads.geojson','data/road-routes.json'].map(loadJSON));
-    data={gps:values[0],tornado:values[1],timeline:values[2],radar:values[3],spotters:values[4],videos:values[5],roads:values[6],routes:values[7]};
+    const values=await Promise.all(['GPS.json','data/tornado.geojson','data/tornado-timeline.json','data/radar/manifest.json','data/spotters.json','data/videos.json','data/roads.geojson','data/road-routes.json','data/air/manifest.json'].map(loadJSON));
+    data={gps:values[0],tornado:values[1],timeline:values[2],radars:{ktlx:values[3],air:values[8]},spotters:values[4],videos:values[5],roads:values[6],routes:values[7]};
     track=normalizePoints(data.gps.data);centers=normalizePoints(data.timeline.points);
     roadTracks=Object.fromEntries(Object.entries(data.routes.tracks).map(([id,t])=>[id,prepareRoadTrack(t)]));roadTrack=roadTracks.smotley;
-    radarEvents=buildRadarEvents(data.radar.frames,-8640000000000000,8640000000000000);
+    radarEvents=currentRadarEvents();
     spotters=data.spotters.spotters.map(s=>({...s,name:featuredChasers[s.id]?.name||s.name,points:normalizePoints(s.points)}));
     maps=[makeMap('map'),makeMap('map-compare',true)];
     setBasemap();buildPeople();buildVideos();bindControls();updateClosest();setRange('storm');
@@ -484,11 +586,11 @@ async function init() {
       {label:'NWS Norman · May 31 event and official tornado survey',url:data.timeline.sourcePageUrl},
       {label:'NWS · original timed center positions (KMZ)',url:data.timeline.sourceUrl},
       {label:'OpenStreetMap · locally stored current road network',url:'https://www.openstreetmap.org/copyright'},
-      ...(data.radar.sources||[]),...(data.spotters.sources||[])
+      ...(data.radars.ktlx.sources||[]),...(data.radars.air.sources||[]),...(data.spotters.sources||[])
     ];
     $('source-list').innerHTML=sources.map(s=>link(s.url,s.label||s.title||s.name||s.url)).join('');
-    // Preload the small bundled radar images. No external radar service is needed.
-    for(const f of data.radar.frames)for(const p of ['reflectivity','velocity']){const img=new Image();img.src=f[p];}
+    // Prefetch a bounded neighborhood; AIR's larger images must not all decode at once.
+    prefetchRadarImages();
   } catch(error) {
     $('map-notice').hidden=false;$('map-notice').textContent=error.message;
     $('radar-status').textContent='Unable to load reconstruction';$('closest-value').textContent='Unavailable';$('closest').disabled=true;
