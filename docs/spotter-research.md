@@ -38,7 +38,11 @@ Dan Robinson's [June 29, 2013 Stormtrack post](https://stormtrack.org/threads/20
 
 The primary metadata endpoint initially returned HTTP 406 to Python/default requests. A normal curl request with a current browser user agent, the TED page as Referer, and the `?download=1` URL returned the complete file. Its byte hash matched the independently recorded hash in [this public research audit](https://github.com/T92T1914/tornado-atlas/blob/main/research/robinson-registration-decision-2026-10-04.md). That repository helped locate the original endpoint; the imported positions came directly from the original survey server.
 
-No animated Tim Samaras/TWISTEX route is supplied. The desired white car can be enabled when an authenticated historical track or defensible reconstruction with explicit provenance is acquired. A recovery location, a last sighting and a fatal-impact location must not be substituted for one another.
+Tim Samaras/TWISTEX's final approach is documented. [Wurman et al. (2014), *The Role of Multiple-Vortex Tornado Structure in Causing Storm Researcher Fatalities*](https://doi.org/10.1175/BAMS-D-13-00221.1), reconstruct the vehicle traveling east on Reuter Road around **6:21–6:22 PM CDT** (23:21–23:22 UTC), with its headlights last visible west of Radio Road at **6:22:15 PM CDT** (23:22:15 UTC). These are video-supported sightings and a reconstruction, not precise GPS fixes or a continuous measured trajectory. The paper distinguishes the inferred impact location from where the vehicle was recovered; neither should be displayed as its position throughout the chase.
+
+[Skip Talbot's July 4, 2013 creator post](https://stormtrack.org/threads/2013-05-31-event-ks-ok-mo-il.26811/page-14/) also describes a reconstruction using contributed GPS logs, timestamped photographs, accounts of the team's locations, and annotated maps. That publication does not establish a downloadable TWISTEX GPS track.
+
+No verified public timestamped TWISTEX trajectory was recovered in this bounded search, and none is present among the 33 imported survey tracks. The map therefore supplies no animated Tim Samaras/TWISTEX route. A documented reconstruction could be added with explicit provenance and uncertainty, while keeping last sightings, inferred impact, and recovery locations separate. His absence from the map does not mean his whereabouts are entirely undocumented.
 
 ## Original video publications
 

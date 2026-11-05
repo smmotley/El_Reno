@@ -31,6 +31,7 @@ Dark and light road maps are bundled locally and stay visible without internet o
 - Ten-second timeline scrubbing and step buttons, continuous playback, exact scan jumps, **Storm window** and **Full chase** ranges, follow mode, and CDT/UTC display. Switching radar sources preserves the selected time and timeline bounds; AIR is empty outside its recording window.
 - Inferred road routes for every published vehicle track, respecting connected roads and turns. Estimated interval-average speeds appear on the SUV card and every chaser popup.
 - Distinct, consistent marker colors for Ben Holcomb (amber), Brandon Sullivan (pink), and Skip Talbot (violet), with clickable map keys and footage links.
+- Click a chaser on the map, or select their name in **Chasers**, to keep a contrasting outline around them while scrubbing. The selection carries between 2D and 3D, persists through gaps without inventing positions, and transfers when another chaser is selected. Closing the info card leaves the highlight active; selecting a marker does not move the clock or camera.
 - An import format for documented spotter tracks. Imported files stay in the current browser session and remain marked unverified.
 
 ## Watch the chase footage

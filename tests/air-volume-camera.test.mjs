@@ -133,3 +133,26 @@ test('label close controls are accessible DOM buttons while the point remains dr
     assert.equal(buttons[0].hidden, false); assert.equal(buttons.length, 1, 'the DOM button is reused across frames');
   } finally { globalThis.document = originalDocument; }
 });
+
+test('selected chasers get a double outline at the same point, without altering our SUV', () => {
+  const { v } = viewer();
+  const strokes = [];
+  const ctx = new Proxy({
+    measureText: text => ({ width: text.length * 6 }),
+    strokeRect(...rect) { strokes.push({ rect, color: this.strokeStyle, width: this.lineWidth }); }
+  }, { get: (object, key) => key in object ? object[key] : () => {}, set: (object, key, value) => { object[key] = value; return true; } });
+  const chaser = { id: 'selected', x: 1, y: 2, z: .4, kind: 'chaser', selected: true, color: '#ffb454' };
+  v.setMarkers([chaser]); v._hiddenLabels.add(chaser.id);
+  v._drawMarkerAnnotations(ctx, () => [400, 300]);
+  assert.deepEqual(strokes.map(stroke => [stroke.color, stroke.width]), [['#0a1712', 6], ['#fff9e9', 2]]);
+  assert.deepEqual(v._markers[0], { ...chaser, opacity: 1, priority: 1 });
+  assert.equal(v._markerHits[0].x, 400); assert.equal(v._markerHits[0].y, 300);
+  strokes.length = 0;
+  v.setMarkers([{ ...chaser, selected: false }]);
+  v._drawMarkerAnnotations(ctx, () => [400, 300]);
+  assert.equal(strokes.length, 0);
+  const suv = { ...chaser, id: 'our-suv', kind: 'suv', selected: true };
+  v.setMarkers([suv]); v._hiddenLabels.add(suv.id);
+  v._drawMarkerAnnotations(ctx, () => [400, 300]);
+  assert.deepEqual(strokes.map(stroke => stroke.color), ['#eff2e8'], 'SUV keeps its existing outline only');
+});

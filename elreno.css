@@ -113,6 +113,14 @@ body{grid-template-rows:84px minmax(0,1fr) 190px}.timeline{padding-top:14px;padd
 .air-source .map-title{top:160px}
 @media(max-width:850px){.air-alignment-control{font-size:8px;background:#152019e8;border:1px solid #536147;border-radius:4px;padding:5px 7px;width:max-content;max-width:100%}.air-alignment-control span{gap:6px}.air-alignment-control small{font-size:7px}}
 
+/* The selection cue follows identity independently of a popup or location gap. */
+.leaflet-marker-icon.selected-chaser::after{content:'';position:absolute;inset:-7px;border:2px solid #fff9e9;border-radius:6px;box-shadow:0 0 0 2px #0a1712,0 0 0 4px #fff9e933;pointer-events:none}
+.spotter-dot.selected-chaser span{border-radius:2px;box-shadow:0 0 0 2px #0a1712}
+.person-select{padding:0;text-align:left;color:inherit;border-radius:3px}
+.person-select:hover strong{color:#f2dfb8}.person-select:focus-visible{outline:2px solid #fff9e9;outline-offset:4px}
+.person-card.selected-chaser{background:#2a382d;box-shadow:inset 3px 0 0 #fff9e9;padding-left:10px;padding-right:10px;border-radius:4px}
+.featured-chasers button.selected-chaser{outline:1px solid #fff9e9;outline-offset:4px;background:#14251be6;border-radius:2px}
+
 /* Video, road position, and radar share the same playback surface and clock. */
 body{grid-template-rows:84px minmax(0,1fr) 216px}
 .playback-stage{min-width:0;min-height:0;display:grid;grid-template-rows:45px minmax(0,1fr);background:#101815;--video-share:50%}

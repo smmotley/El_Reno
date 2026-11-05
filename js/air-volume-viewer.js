@@ -606,9 +606,13 @@ export class AirVolumeViewer {
         ctx.fillStyle='#314948';ctx.fillRect(-4,-7,8,5);ctx.fillRect(-4,6,8,3);
         ctx.fillStyle='#efe7c1';ctx.fillRect(-5,-12,3,2);ctx.fillRect(2,-12,3,2);
       }else{
+        if(marker.selected){
+          ctx.lineJoin='round';ctx.strokeStyle='#0a1712';ctx.lineWidth=6;ctx.strokeRect(-8,-8,16,16);
+          ctx.strokeStyle='#fff9e9';ctx.lineWidth=2;ctx.strokeRect(-8,-8,16,16);
+        }
         ctx.beginPath();ctx.arc(0,0,4.5,0,Math.PI*2);ctx.fillStyle=marker.color;ctx.fill();ctx.strokeStyle='#10231c';ctx.lineWidth=2;ctx.stroke();
       }
-      ctx.restore();this._markerHits.push({marker,x:p[0],y:p[1],radius:marker.kind==='suv'?16:10});
+      ctx.restore();this._markerHits.push({marker,x:p[0],y:p[1],radius:marker.kind==='suv'?16:marker.selected?12:10});
     }
     const occupied=this._width>=122?[{x:this._width-113,y:7,w:98,h:84}]:[];
     const overlaps=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;

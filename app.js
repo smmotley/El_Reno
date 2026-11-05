@@ -105,6 +105,7 @@ async function enterVolumeMode() {
     if(!volumeViewer)volumeViewer=new AirVolumeViewer($('volume-canvas'),{onViewChange:updateVolumeViewUI,onLabelsChange:({hiddenCount})=>{
       $('volume-restore-labels').hidden=!hiddenCount;$('volume-restore-labels').textContent='Restore names ('+hiddenCount+')';
     },onMarkerSelect:selected=>{
+      if(selected.kind!=='suv')selectSpotter(selected.id);
       const marker=activeVolumeMarkers.get(selected.id);if(marker)toast(marker.description);
     },onStatus:status=>{
       $('volume-load-status').textContent=status.message;
@@ -129,7 +130,8 @@ function updateVolumeSurface(car) {
   const markers=[];
   const add=(id,label,point,color,kind,opacity,priority)=>{
     const position=surfacePosition(point,data.airSurface);if(!position)return;
-    markers.push({id,label,...position,color,kind,opacity,priority,headingDegrees:point.headingDegrees,
+    const selected=kind!=='suv'&&id===state.selectedSpotter;
+    markers.push({id,label,...position,color,kind,opacity,selected,priority:selected?2.5:priority,headingDegrees:point.headingDegrees,
       description:label+' · '+fmt(state.t)+' '+zoneLabel()+' · '+motionText(point)+' · '+speedText(point)+'. Ground elevation estimated from terrain data; AIR alignment unverified.'});
   };
   if(state.volumeSurface){
@@ -345,6 +347,24 @@ function spotterPopup(s,p) {
   if(s.username)html+='<small>'+esc(s.username)+'</small>';
   return html;
 }
+function updateSpotterSelectionUI() {
+  for(const element of document.querySelectorAll('[data-spotter-selection]')){
+    const selected=element.dataset.spotterSelection===state.selectedSpotter;
+    element.classList.toggle('selected-chaser',selected);
+    if(element.tagName==='BUTTON')element.setAttribute('aria-pressed',String(selected));
+    else if(selected)element.setAttribute('aria-current','true');
+    else element.removeAttribute('aria-current');
+  }
+}
+function selectSpotter(id) {
+  if(!spotters.some(s=>s.id===id))return false;
+  state.selectedSpotter=id;
+  updateSpotterSelectionUI();
+  // Selecting identity does not change the clock, camera, or follow setting.
+  for(const m of maps)updatePeople(m);
+  if(state.volume)updateVolumeSurface(roadPositionAt(roadTrack,state.t,state.offset));
+  return true;
+}
 function updatePeople(m) {
   let active=0;
   spotters.forEach((s,i)=>{
@@ -354,11 +374,21 @@ function updatePeople(m) {
       active++;
       if(!marker){
         marker=L.marker(latlng(p),{icon:s.kind==='twistex'?vehicleIcon(true):L.divIcon({className:'spotter-dot'+(featuredChasers[s.id]?' featured-dot':''),html:'<span style="--chaser-color:'+chaserColor(s)+'"></span>',iconSize:[12,12],iconAnchor:[6,6]}),zIndexOffset:100,title:s.name,alt:s.name})
-          .bindTooltip(esc(s.name),{direction:'top',className:'marker-label'}).bindPopup('');
+          .bindTooltip(esc(s.name),{direction:'top',className:'marker-label'}).bindPopup('')
+          .on('click',()=>selectSpotter(s.id))
+          .on('keypress',event=>{
+            // Leaflet opens marker popups on Enter without firing a click.
+            if(event.originalEvent?.key==='Enter'||event.originalEvent?.keyCode===13)selectSpotter(s.id);
+          });
         m.people.set(s.id,marker);
       }
       marker.setLatLng(latlng(p)).setOpacity(state.opacity.spotters);
       marker.setPopupContent(spotterPopup(s,p));marker.setTooltipContent(esc(s.name)+'<br>'+esc(speedText(p)));setPresent(m.map,marker,true);
+      const selected=s.id===state.selectedSpotter,element=marker.getElement();
+      element?.classList.toggle('selected-chaser',selected);
+      element?.setAttribute('aria-pressed',String(selected));
+      element?.setAttribute('aria-label',s.name+(selected?' · selected chaser':''));
+      const order=selected?450:100;if(marker.options.zIndexOffset!==order)marker.setZIndexOffset(order);
       const body=marker.getElement()?.querySelector('.vehicle-body');if(body)body.style.transform='rotate('+(p.headingDegrees??0)+'deg)';
     }else if(marker)setPresent(m.map,marker,false);
   });
@@ -599,7 +629,7 @@ function updateRadarRails() {
 function jumpSpotter(s) {
   setPlaying(false);
   exitVolumeMode();for(const m of maps)m.map.invalidateSize({pan:false});
-  state.selectedSpotter=s.id;
+  selectSpotter(s.id);
   let p=spotterPosition(s,state.t);
   if(!p){
     p=s.points.reduce((a,b)=>Math.abs(b.t-state.t)<Math.abs(a.t-state.t)?b:a);
@@ -617,16 +647,18 @@ function buildPeople() {
   $('people-count').textContent=spotters.length;
   $('people-list').replaceChildren();
   spotters.forEach((s,i)=>{
-    const card=document.createElement('article');card.className='person-card';card.style.setProperty('--chaser-color',chaserColor(s));
+    const card=document.createElement('article');card.className='person-card';card.dataset.spotterSelection=s.id;card.style.setProperty('--chaser-color',chaserColor(s));
     const initials=s.name.split(/[ ,]+/).filter(Boolean).slice(0,2).map(x=>x[0]).join('');
-    card.innerHTML='<div class="person-top"><span class="person-avatar" style="color:'+chaserColor(s)+'">'+esc(initials)+'</span><div class="person-info"><strong><i class="person-color"></i>'+esc(s.name)+'</strong><span>'+s.points.length+' positions · '+(s.imported?'imported, unverified':'survey camera')+'</span></div><button class="person-go" aria-label="Locate '+esc(s.name)+'">↗</button></div><div class="person-links">'+(s.videos||[]).map(id=>{const v=data.videos.videos.find(v=>v.id===id);return v?link(v.url,v.playbackStatus==='private'?'YouTube (private)':'YouTube'):'';}).join('')+'</div>';
-    card.querySelector('button').addEventListener('click',()=>jumpSpotter(s));$('people-list').append(card);
+    card.innerHTML='<div class="person-top"><span class="person-avatar" style="color:'+chaserColor(s)+'">'+esc(initials)+'</span><div class="person-info"><button class="person-select" type="button" aria-label="Select '+esc(s.name)+'"><strong><i class="person-color"></i>'+esc(s.name)+'</strong></button><span>'+s.points.length+' positions · '+(s.imported?'imported, unverified':'survey camera')+'</span></div><button class="person-go" aria-label="Locate '+esc(s.name)+'">↗</button></div><div class="person-links">'+(s.videos||[]).map(id=>{const v=data.videos.videos.find(v=>v.id===id);return v?link(v.url,v.playbackStatus==='private'?'YouTube (private)':'YouTube'):'';}).join('')+'</div>';
+    const name=card.querySelector('.person-select');name.dataset.spotterSelection=s.id;name.addEventListener('click',()=>selectSpotter(s.id));
+    card.querySelector('.person-go').addEventListener('click',()=>jumpSpotter(s));$('people-list').append(card);
   });
   $('featured-chasers').replaceChildren();
   for(const [id,featured] of Object.entries(featuredChasers)){
     const s=spotters.find(s=>s.id===id);if(!s)continue;
-    const b=document.createElement('button');b.innerHTML='<i style="background:'+featured.color+'"></i>'+esc(featured.name);b.title='Locate '+featured.name;b.addEventListener('click',()=>jumpSpotter(s));$('featured-chasers').append(b);
+    const b=document.createElement('button');b.dataset.spotterSelection=s.id;b.innerHTML='<i style="background:'+featured.color+'"></i>'+esc(featured.name);b.title='Locate '+featured.name;b.addEventListener('click',()=>jumpSpotter(s));$('featured-chasers').append(b);
   }
+  updateSpotterSelectionUI();
   $('spotter-note').innerHTML='<strong>These are survey camera positions.</strong><p>'+esc(data.spotters.sourceNotes)+'</p><p>All published tracks are matched to connected roads where possible. Motion follows the inferred route at its interval-average speed. Gaps over two minutes, failed matches, and flagged jumps stay empty; imported tracks show original fixes only.</p>';
 }
 function buildVideos() {
