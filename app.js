@@ -4,22 +4,34 @@ import { snapTimelineTime, buildRadarEvents } from './js/timeline.js';
 import { selectRadarFrame, radarCoverage, createVolumeRadarSource } from './js/radar-source.js';
 import { prepareSurface, surfacePosition } from './js/air-surface.js';
 import { createAirAlignment, radarDisplayBounds } from './js/air-alignment.js';
+import { ChasePlayer } from './js/chase-player.js';
+import { applyChaseCorrections } from './js/chase-corrections.js';
 
 const $ = id => document.getElementById(id);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const safeURL = value => { try { const u = new URL(value); return ['https:', 'http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
+const safeURL = value => { try { const u = new URL(value); return ['https:', 'http:'].includes(u.protocol) && !/(^|\.)vimeo\.com$/i.test(u.hostname) ? u.href : ''; } catch { return ''; } };
 const link = (url, label) => safeURL(url) ? '<a href="' + esc(safeURL(url)) + '" target="_blank" rel="noopener noreferrer">' + esc(label) + ' ↗</a>' : '';
 const date = value => Date.parse(value);
 const STORM_START = date('2013-05-31T22:45:00Z'), STORM_END = date('2013-06-01T00:15:00Z');
 const state = {
   t: date('2013-05-31T23:10:20Z'), start: STORM_START, end: STORM_END,
-  offset: 0, zone: 'America/Chicago', playing: false, speed: 30, compare: false,
-  follow: false, basemap: 'dark', radarSource: 'ktlx', volume: false, volumeSurface: true, airAlignment: true, range: 'storm', selectedSpotter: null,
+  offset: 0, zone: 'America/Chicago', playing: false, speed: 1, compare: false,
+  follow: false, basemap: 'dark', radarSource: 'ktlx', volume: false, volumeSurface: true, airAlignment: true, range: 'storm', selectedSpotter: null, chaseCorrection: true,
   visible: { reflectivity: true, velocity: false, track: true, swath: true, center: true, spotters: true },
   opacity: { reflectivity: .72, velocity: .78, track: 1, swath: .7, center: 1, spotters: 1 }
 };
 let data, track = [], roadTrack, roadTracks = {}, centers = [], spotters = [], radarEvents = [], best, maps = [], syncLock = false, toastTimer;
-let animationId, lastFrame = 0, lastDraw = 0;
+let animationId, lastFrame = 0, lastDraw = 0, chasePlayer, originalRoadTrack;
+function resizeViews() {
+  const views=maps.map(m=>({m,center:m.map.getCenter(),zoom:m.map.getZoom()}));
+  requestAnimationFrame(()=>{syncLock=true;for(const {m,center,zoom} of views){m.map.invalidateSize({pan:false});m.map.setView(center,zoom,{animate:false});}syncLock=false;volumeViewer?.resize();});
+}
+function setChaseCorrection(enabled) {
+  state.chaseCorrection=enabled;roadTrack=applyChaseCorrections(originalRoadTrack,data.chaseCorrections,{enabled});
+  $('chase-correction').checked=enabled;
+  for(const m of maps)m.fullRoute.setLatLngs(roadSegmentsUntil(roadTrack).map(s=>s.map(latlng)));
+  updateClosest();render();
+}
 const radarImageCache = new Map();
 let volumeViewer, volumeLoadVersion=0;
 let activeVolumeMarkers=new Map();
@@ -104,9 +116,8 @@ async function enterVolumeMode() {
     $('view-volume').classList.add('selected');$('view-volume').setAttribute('aria-pressed','true');
     $('view-single').classList.remove('selected');$('view-single').setAttribute('aria-pressed','false');
     radarEvents=currentRadarEvents();radarImageCache.clear();
-    state.speed=5;$('speed').value='5';
     volumeViewer.setActive(true);volumeViewer.setThreshold(Number($('volume-threshold').value));
-    setRange('air');requestAnimationFrame(()=>volumeViewer.resize());
+    setRange(state.range);requestAnimationFrame(()=>volumeViewer.resize());
   } catch(error){if(version===volumeLoadVersion)toast(error.message);}
 }
 function currentRadarEvents() {
@@ -152,12 +163,8 @@ function setRadarSource(source) {
     state.visible.reflectivity=true;state.visible.velocity=false;
     $('layer-reflectivity').checked=true;$('layer-velocity').checked=false;
     if(state.compare)toggleCompare(false);
-    const coverage=radarCoverage(currentRadar());
-    const moved=state.t<coverage.start||state.t>coverage.end;
-    if(moved)state.t=coverage.start;
-    setRange('air');
-    if(moved)toast('AIR begins at '+fmt(coverage.start)+' '+zoneLabel()+'. Moved to its first available image.');
-  }else setRange(state.range);
+  }
+  setRange(state.range);
 }
 function updateRadarSourceUI() {
   const air=state.radarSource==='air', radar=currentRadar(), coverage=radarCoverage(radar);
@@ -201,7 +208,7 @@ async function loadJSON(url) { const res = await fetch(url); if (!res.ok) throw 
 function latlng(p) { return [p.lat, p.lon]; }
 function setPresent(map, layer, shown) { if (shown && !map.hasLayer(layer)) layer.addTo(map); else if (!shown && map.hasLayer(layer)) map.removeLayer(layer); }
 function speedText(p) { return Number.isFinite(p?.averageSpeedMph) ? '≈ '+Math.round(p.averageSpeedMph)+' mph · inferred interval average' : 'Speed unavailable'; }
-function motionText(p) { return ({'road-interpolated':'Inferred position along roads','road-matched':'Source fix matched to road','stationary':'Inferred stationary position','observed-unmatched':'Original fix · no road match'})[p.status] || 'Original observation'; }
+function motionText(p) { if(p.reconstruction||p.interval?.reconstruction)return p.interval?.status==='stationary'?'Reported 52-second stop · video reconstruction':'Approximate video-based road reconstruction'; return ({'road-interpolated':'Inferred position along roads','road-matched':'Source fix matched to road','stationary':'Inferred stationary position','observed-unmatched':'Original fix · no road match'})[p.status] || 'Original observation'; }
 function vehicleIcon(white = false) {
   return L.divIcon({ className: 'vehicle-icon', html: '<div class="vehicle-body">' + (white ? SUV.replace('#a4ada9','#f4f4ed').replace('#87928e','#d7ddd6') : SUV) + '</div>', iconSize: [24,42], iconAnchor: [12,21], popupAnchor: [0,-22] });
 }
@@ -329,13 +336,12 @@ function spotterSegments(s,t) {
   return roadTracks[s.id]?roadSegmentsUntil(roadTracks[s.id],t).map(s=>s.map(latlng)):[];
 }
 function spotterPopup(s,p) {
-  let html=sourcePopup(s.name,(s.imported?'Imported, unverified':'El Reno Survey camera position')+' · '+motionText(p)+' · '+fmt(state.t)+' '+zoneLabel(),s.sourceUrl);
+  let html=sourcePopup(s.name,(s.imported?'Imported, unverified':'El Reno Survey camera position')+' · '+motionText(p)+' · '+fmt(state.t)+' '+zoneLabel());
   html+='<small>'+esc(speedText(p))+'</small>';
   if(p.gapSeconds)html+='<small>'+p.gapSeconds+' seconds between source positions</small>';
   if(Number.isFinite(p.snapDistanceMeters))html+='<small>Road match: '+Math.round(p.snapDistanceMeters)+' m from source fix</small>';
   const videos=(s.videos||[]).map(id=>data.videos.videos.find(v=>v.id===id)).filter(Boolean);
   for(const v of videos)html+='<br>'+link(v.url,v.title+(v.playbackStatus==='private'&&!/private/i.test(v.title)?' (private)':''));
-  if(s.surveyVideoUrl)html+='<br>'+link(s.surveyVideoUrl,'Survey camera footage');
   if(s.username)html+='<small>'+esc(s.username)+'</small>';
   return html;
 }
@@ -439,7 +445,7 @@ function render() {
     for(const l of [m.fullRoute,m.routeShadow,m.route])setPresent(m.map,l,state.visible.track);
     if(car){
       m.car.setLatLng(latlng(car)).setOpacity(state.opacity.track);
-      m.car.setPopupContent('<strong>Shane Motley / smotley</strong><small>'+esc(motionText(car))+'</small><small>'+esc(fmt(state.t)+' '+zoneLabel())+'</small><small>Camera clock unverified'+(state.offset?' · correction '+state.offset/60000+' min':' · UTC assumed')+'</small><small>'+car.lat.toFixed(5)+', '+car.lon.toFixed(5)+'</small><small>'+esc(speedText(car))+'</small>'+ (car.gapSeconds?'<small>'+car.gapSeconds+' seconds between GPS fixes</small>':'')+(Number.isFinite(car.snapDistanceMeters)?'<small>Road match: '+Math.round(car.snapDistanceMeters)+' m from source fix</small>':''));
+      m.car.setPopupContent('<strong>Shane Motley / smotley</strong><small>'+esc(motionText(car))+'</small><small>'+esc(fmt(state.t)+' '+zoneLabel())+'</small><small>Camera clock unverified'+(state.offset?' · correction '+state.offset/60000+' min':' · UTC assumed')+'</small><small>'+car.lat.toFixed(5)+', '+car.lon.toFixed(5)+'</small><small>'+esc(speedText(car))+'</small>'+ (car.gapSeconds?'<small>'+car.gapSeconds+' seconds '+(car.reconstruction||car.interval?.reconstruction?'in reconstructed interval':'between GPS fixes')+'</small>':'')+(Number.isFinite(car.snapDistanceMeters)?'<small>Road match: '+Math.round(car.snapDistanceMeters)+' m from source fix</small>':''));
       setPresent(m.map,m.car,state.visible.track);
       const body=m.car.getElement()?.querySelector('.vehicle-body');if(body)body.style.transform='rotate('+(car.headingDegrees??0)+'deg)';
     }else setPresent(m.map,m.car,false);
@@ -490,8 +496,8 @@ function render() {
   $('radar-acquisition').textContent=acquisition?'Recorded '+fmt(date(interval.scanStart))+'–'+fmt(date(interval.scanEnd))+' '+zoneLabel()+' · midpoint clock':'';
   const noRadar=products.length&&!products.some(p=>selectedRadar(p));
   $('map-notice').hidden=!noRadar;
-  if(noRadar)$('map-notice').textContent=state.radarSource==='air'?'No AIR image at this time. Choose AIR window to view its recorded period; use WSR-88D for the wider chase.':'No WSR-88D scan within the preceding 10 minutes. Choose Storm window for the bundled KTLX sequence.';
-  updateLegend();updateRadarRails();updateRadarSourceUI();prefetchRadarImages();
+  if(noRadar)$('map-notice').textContent=state.radarSource==='air'?'No AIR image at this time. Its recorded coverage is '+fmt(radarCoverage(currentRadar()).start)+'–'+fmt(radarCoverage(currentRadar()).end)+' '+zoneLabel()+'. The timeline stays unchanged; click an image tick to jump.':'No WSR-88D scan within the preceding 10 minutes. Choose Storm window for the bundled KTLX sequence.';
+  updateLegend();updateRadarRails();updateRadarSourceUI();prefetchRadarImages();chasePlayer?.render();
 }
 function updateClosest() {
   best=closestRoadApproach(roadTrack,centers,state.offset);
@@ -501,16 +507,13 @@ function updateClosest() {
   $('clock-offset').value=state.offset/60000;
 }
 function setRange(range) {
-  state.range=range;
+  range=range==='day'?'day':'storm';state.range=range;
   if(range==='storm'){state.start=STORM_START;state.end=STORM_END;}
-  else if(range==='air'){const coverage=radarCoverage(state.volume?currentRadar():data.radars.air);state.start=coverage.start;state.end=coverage.end;}
   else{state.start=Math.min(track[0].t+state.offset,STORM_START,...spotters.map(s=>s.points[0].t));state.end=Math.max(track.at(-1).t+state.offset,STORM_END,...spotters.map(s=>s.points.at(-1).t));}
-  if(range!=='air'){
-    state.start=Math.floor(state.start/10000)*10000;state.end=Math.ceil(state.end/10000)*10000;
-  }
+  state.start=Math.floor(state.start/10000)*10000;state.end=Math.ceil(state.end/10000)*10000;
   $('time-slider').min=0;$('time-slider').max=(state.end-state.start)/1000;
-  $('range-storm').classList.toggle('selected',range==='storm');$('range-day').classList.toggle('selected',range==='day');$('range-air').classList.toggle('selected',range==='air');
-  $('timeline-label').textContent=range==='storm'?'THE TORNADO WINDOW':range==='air'?'THE AIR WINDOW':'THE FULL CHASE';
+  $('range-storm').classList.toggle('selected',range==='storm');$('range-day').classList.toggle('selected',range==='day');
+  $('timeline-label').textContent=range==='storm'?'THE TORNADO WINDOW':'THE FULL CHASE';
   $('time-ticks').innerHTML=Array.from({length:5},(_,i)=>'<span>'+esc(fmt(state.start+(state.end-state.start)*i/4,false))+'</span>').join('');
   $('tornado-period').style.left=(Math.max(0,(centers[0].t-state.start)/(state.end-state.start))*100)+'%';
   $('tornado-period').style.width=(Math.max(0,Math.min(centers.at(-1).t,state.end)-Math.max(centers[0].t,state.start))/(state.end-state.start)*100)+'%';
@@ -522,7 +525,7 @@ function setRange(range) {
     b.addEventListener('click',()=>{setPlaying(false);setTime(t);toast(event.title+': '+(event.detail||event.description||''));});
     $('event-markers').append(b);
   }
-  buildRadarRails();
+  buildRadarRails();chasePlayer?.buildRail(state.start,state.end);
   setTime(Math.min(state.end,Math.max(state.start,state.t)));
 }
 function setTime(t,snap=false){state.t=snap?snapTimelineTime(t,state.start,state.end):Math.min(state.end,Math.max(state.start,t));render();}
@@ -530,12 +533,12 @@ function setPlaying(playing) {
   state.playing=playing;
   $('play').setAttribute('aria-label',playing?'Pause timeline':'Play timeline');
   $('play').innerHTML=playing?'<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 5H10V19H6ZM14 5H18V19H14Z" fill="currentColor"/></svg>':'<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 4L20 12L8 20Z" fill="currentColor"/></svg>';
-  cancelAnimationFrame(animationId);
+  cancelAnimationFrame(animationId);chasePlayer?.render();
   if(playing){if(state.t>=state.end)state.t=state.start;lastFrame=0;lastDraw=0;animationId=requestAnimationFrame(tick);}
 }
 function tick(now) {
   if(!state.playing)return;
-  if(lastFrame)state.t=Math.min(state.end,state.t+Math.min(now-lastFrame,250)*state.speed);
+  if(lastFrame&&!chasePlayer?.isBuffering())state.t=Math.min(state.end,state.t+Math.min(now-lastFrame,250)*state.speed);
   lastFrame=now;
   if(now-lastDraw>100){render();lastDraw=now;}
   if(state.t>=state.end){render();setPlaying(false);return;}
@@ -551,7 +554,7 @@ function stepScan(direction) {
   const times=[...new Set(radarEvents.filter(e=>state.compare?state.visible[e.product]:e.product===product).map(e=>e.t))].sort((a,b)=>a-b);
   const next=direction>0?times.find(t=>t>state.t+1):times.filter(t=>t<state.t-1).at(-1);
   if(next===undefined){toast('No '+(direction>0?'later':'earlier')+' '+currentRadar().site+' image in this archive.');return;}
-  if(next<state.start||next>state.end)setRange(state.radarSource==='air'?'air':next<STORM_START||next>STORM_END?'day':'storm');
+  if(next<state.start||next>state.end)setRange(next<STORM_START||next>STORM_END?'day':'storm');
   setTime(next);
 }
 function buildRadarRails() {
@@ -616,7 +619,7 @@ function buildPeople() {
   spotters.forEach((s,i)=>{
     const card=document.createElement('article');card.className='person-card';card.style.setProperty('--chaser-color',chaserColor(s));
     const initials=s.name.split(/[ ,]+/).filter(Boolean).slice(0,2).map(x=>x[0]).join('');
-    card.innerHTML='<div class="person-top"><span class="person-avatar" style="color:'+chaserColor(s)+'">'+esc(initials)+'</span><div class="person-info"><strong><i class="person-color"></i>'+esc(s.name)+'</strong><span>'+s.points.length+' positions · '+(s.imported?'imported, unverified':'survey camera')+'</span></div><button class="person-go" aria-label="Locate '+esc(s.name)+'">↗</button></div><div class="person-links">'+link(s.sourceUrl,'Source')+link(s.surveyVideoUrl,'Survey film')+(s.videos||[]).map(id=>{const v=data.videos.videos.find(v=>v.id===id);return v?link(v.url,v.playbackStatus==='private'?'YouTube (private)':'YouTube'):'';}).join('')+'</div>';
+    card.innerHTML='<div class="person-top"><span class="person-avatar" style="color:'+chaserColor(s)+'">'+esc(initials)+'</span><div class="person-info"><strong><i class="person-color"></i>'+esc(s.name)+'</strong><span>'+s.points.length+' positions · '+(s.imported?'imported, unverified':'survey camera')+'</span></div><button class="person-go" aria-label="Locate '+esc(s.name)+'">↗</button></div><div class="person-links">'+(s.videos||[]).map(id=>{const v=data.videos.videos.find(v=>v.id===id);return v?link(v.url,v.playbackStatus==='private'?'YouTube (private)':'YouTube'):'';}).join('')+'</div>';
     card.querySelector('button').addEventListener('click',()=>jumpSpotter(s));$('people-list').append(card);
   });
   $('featured-chasers').replaceChildren();
@@ -628,13 +631,15 @@ function buildPeople() {
 }
 function buildVideos() {
   $('video-list').replaceChildren();
-  data.videos.videos.forEach((v,i)=>{
+  data.videos.videos.filter(v=>safeURL(v.url)).forEach((v,i)=>{
     const card=document.createElement('article');card.className='video-card';
     card.innerHTML='<a class="video-cover" href="'+esc(safeURL(v.url))+'" target="_blank" rel="noopener noreferrer" aria-label="'+(v.playbackStatus==='private'?'View original listing: ':'Watch ')+esc(v.title)+'"><span class="film-label">31 MAY 2013 / ORIGINAL FOOTAGE</span><span class="video-play">'+(v.playbackStatus==='private'?'▣':'▶')+'</span><span class="film-number">'+String(i+1).padStart(2,'0')+'</span></a><div class="video-info"><h3>'+esc(v.title)+'</h3><div class="creator">'+esc(v.creator)+'</div><p>'+esc(v.description)+'</p><div class="video-foot"><span>'+(v.playbackStatus==='private'?'PRIVATE VIDEO':v.time?'TIMED LOCATION':'TIMING NOT REGISTERED')+'</span>'+link(v.url,v.playbackStatus==='private'?'Original listing':'Watch original')+'</div></div>';
     $('video-list').append(card);
   });
 }
 function bindControls() {
+  $('chase-correction').addEventListener('change',e=>setChaseCorrection(e.target.checked));
+  $('chase-correction-info').addEventListener('click',()=>$('sources-dialog').showModal());
   try{state.airAlignment=localStorage.getItem('elreno.airAlignment.v1')!=='false';}catch{}
   $('air-alignment').addEventListener('change',e=>{
     state.airAlignment=e.target.checked;
@@ -684,7 +689,7 @@ function bindControls() {
   $('fit-route').addEventListener('click',()=>{state.follow=false;$('follow').setAttribute('aria-pressed','false');maps[0].map.fitBounds(track.map(latlng),{padding:[45,65]});});
   $('fit-storm').addEventListener('click',()=>{state.follow=false;$('follow').setAttribute('aria-pressed','false');maps[0].map.setView([35.455,-97.985],11);});
   $('play').addEventListener('click',()=>setPlaying(!state.playing));$('step-back').addEventListener('click',()=>step(-1));$('step-forward').addEventListener('click',()=>step(1));
-  $('speed').addEventListener('change',e=>state.speed=Number(e.target.value));
+  $('speed').addEventListener('change',e=>{state.speed=Number(e.target.value);chasePlayer?.render();});
   $('time-slider').addEventListener('input',e=>{setPlaying(false);setTime(state.start+Number(e.target.value)*1000,true);});
   $('time-slider').addEventListener('keydown',e=>{
     // AIR can end between ten-second ticks; keep both exact bounds reachable.
@@ -692,7 +697,7 @@ function bindControls() {
       e.preventDefault();setPlaying(false);setTime(e.key==='Home'?state.start:state.end);
     }
   });
-  $('range-storm').addEventListener('click',()=>setRange('storm'));$('range-day').addEventListener('click',()=>setRange('day'));$('range-air').addEventListener('click',()=>{setPlaying(false);setRange('air');if(!selectedRadar('reflectivity'))setTime(radarCoverage(data.radars.air).start);});
+  $('range-storm').addEventListener('click',()=>setRange('storm'));$('range-day').addEventListener('click',()=>setRange('day'));
   $('timezone').addEventListener('click',()=>{state.zone=state.zone==='UTC'?'America/Chicago':'UTC';updateClosest();setRange(state.range);});
   $('closest').addEventListener('click',()=>{if(!best)return;setPlaying(false);exitVolumeMode();for(const m of maps)m.map.invalidateSize({pan:false});if(best.t<state.start||best.t>state.end)setRange('day');setTime(best.t);maps[0].map.fitBounds([latlng(best.car),latlng(best.tornado)],{padding:[90,140],maxZoom:13});toast('Estimated center separation: '+(best.meters/MI).toFixed(1)+' mi at '+fmt(best.t)+' '+zoneLabel()+'. Road-matched vehicle and estimated NWS center; camera clock unverified.');});
   for(const id of ['sources-open','distance-info'])$(id).addEventListener('click',()=>$('sources-dialog').showModal());
@@ -727,15 +732,17 @@ function bindControls() {
 async function init() {
   try {
     if(!window.L)throw new Error('The bundled map library could not load. Start the local server rather than opening index.html directly.');
-    const values=await Promise.all(['GPS.json','data/tornado.geojson','data/tornado-timeline.json','data/radar/manifest.json','data/spotters.json','data/videos.json','data/roads.geojson','data/road-routes.json','data/air/manifest.json','data/air-alignment.json'].map(loadJSON));
-    data={gps:values[0],tornado:values[1],timeline:values[2],radars:{ktlx:values[3],air:values[8]},spotters:values[4],videos:values[5],roads:values[6],routes:values[7]};
+    const values=await Promise.all(['GPS.json','data/tornado.geojson','data/tornado-timeline.json','data/radar/manifest.json','data/spotters.json','data/videos.json','data/roads.geojson','data/road-routes.json','data/air/manifest.json','data/air-alignment.json','data/chase-videos.json','data/chase-corrections.json'].map(loadJSON));
+    data={gps:values[0],tornado:values[1],timeline:values[2],radars:{ktlx:values[3],air:values[8]},spotters:values[4],videos:values[5],roads:values[6],routes:values[7],chaseVideos:values[10],chaseCorrections:values[11]};
     data.airAlignment=createAirAlignment(values[9],data.radars.air.siteLocation);
     track=normalizePoints(data.gps.data);centers=normalizePoints(data.timeline.points);
-    roadTracks=Object.fromEntries(Object.entries(data.routes.tracks).map(([id,t])=>[id,prepareRoadTrack(t)]));roadTrack=roadTracks.smotley;
+    roadTracks=Object.fromEntries(Object.entries(data.routes.tracks).map(([id,t])=>[id,prepareRoadTrack(t)]));originalRoadTrack=roadTracks.smotley;roadTrack=applyChaseCorrections(originalRoadTrack,data.chaseCorrections,{enabled:state.chaseCorrection});
     radarEvents=currentRadarEvents();
     spotters=data.spotters.spotters.map(s=>({...s,name:featuredChasers[s.id]?.name||s.name,points:normalizePoints(s.points)}));
     maps=[makeMap('map'),makeMap('map-compare',true)];
-    setBasemap();buildPeople();buildVideos();bindControls();updateClosest();setRange('storm');
+    setBasemap();buildPeople();buildVideos();
+    chasePlayer=new ChasePlayer(data.chaseVideos,{getState:()=>state,seek:t=>{if(t<state.start||t>state.end)setRange('day');setTime(t);},play:setPlaying,resize:resizeViews,format:t=>fmt(t)+' '+zoneLabel(),toast});
+    bindControls();updateClosest();setRange('storm');
     $('track-summary').textContent=track.length+' GPS fixes · inferred road routes';
     const sources=[
       {label:'Original camera GPS · smotley',url:'https://github.com/smmotley/El_Reno/blob/master/GPS.json'},
@@ -743,9 +750,10 @@ async function init() {
       {label:'NWS · original timed center positions (KMZ)',url:data.timeline.sourceUrl},
       {label:'OpenStreetMap · locally stored current road network',url:'https://www.openstreetmap.org/copyright'},
       {label:'Mapzen / USGS · public terrain heights for the 3D surface',url:'https://registry.opendata.aws/terrain-tiles/'},
+      ...[...new Set(spotters.map(s=>s.sourceUrl).filter(Boolean))].map(url=>({label:'El Reno Survey · original camera-position records',url})),
       ...(data.radars.ktlx.sources||[]),...(data.radars.air.sources||[]),...(data.spotters.sources||[])
     ];
-    $('source-list').innerHTML=sources.map(s=>link(s.url,s.label||s.title||s.name||s.url)).join('');
+    $('source-list').innerHTML=sources.filter((source,i)=>sources.findIndex(other=>other.url===source.url)===i).map(s=>link(s.url,s.label||s.title||s.name||s.url)).join('');
     // Prefetch a bounded neighborhood; AIR's larger images must not all decode at once.
     prefetchRadarImages();
   } catch(error) {

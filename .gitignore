@@ -7,3 +7,5 @@ node_modules/
 test-results/
 .local/
 
+# Original footage and generated viewing copies stay local.
+data/movies/

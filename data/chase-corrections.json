@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "trackId": "smotley",
+  "label": "Video stop reconstruction",
+  "enabledByDefault": true,
+  "method": "Approximate user video timing replaces one bounded interval of inferred road motion; original camera GPS remains available unchanged.",
+  "corrections": [
+    {
+      "id": "clip12-03-51-stop",
+      "type": "stationary-stop",
+      "videoId": "clip12_03_51",
+      "clipStart": "2013-05-31T23:02:40Z",
+      "videoElapsedStartSeconds": 16,
+      "durationSeconds": 52,
+      "start": "2013-05-31T23:02:56Z",
+      "end": "2013-05-31T23:03:48Z",
+      "requestedLocation": { "lat": 35.44883333333333, "lon": -98.07538888888888 },
+      "requestedLocationDMS": "35°26′55.8″N 98°04′31.4″W",
+      "reviewedRoadLocation": { "lat": 35.4495350576125, "lon": -98.07538639161154 },
+      "reviewedRoadSnapMeters": 78.02861542486691,
+      "maxRoadSnapMeters": 80,
+      "roadSnapReview": "The revised candidate is 78.03 m from the existing road. An explicit 80 m bound replaces the original 75 m bound for this correction only.",
+      "supersededLocationCandidates": [
+        {
+          "requestedLocation": { "lat": 35.448966, "lon": -98.066550 },
+          "active": false,
+          "reason": "Replaced by the user's revised candidate, which is closer to the 23:02:59 UTC camera fix and to its baseline inferred passage time. Retained as a reference only."
+        }
+      ],
+      "maxMovingSpeedMph": 110,
+      "window": { "start": "2013-05-31T22:59:52Z", "end": "2013-05-31T23:05:02Z" },
+      "supersededSourceTimes": ["2013-05-31T23:02:59Z"],
+      "source": {
+        "kind": "user-video-reconstruction",
+        "timingAccuracy": "approximate; start described as about 16 seconds into the clip",
+        "description": "User requested a clip start of 18:02:40 CDT and a 52-second stationary pause beginning about 16 seconds into the clip. Their revised stop candidate was adopted as the better approximate match to the camera GPS; it is not an independently verified stop location.",
+        "independentlyClockCalibrated": false
+      },
+      "limitations": [
+        "The displayed stop uses the nearest point on the existing inferred road, approximately 78 metres north of the revised coordinate.",
+        "The original 23:02:59 UTC camera fix conflicts with the requested stop and is superseded only in corrected playback; it remains in GPS.json and correction audit metadata.",
+        "The reconstruction does not prove exact vehicle speed, stopping location, or absolute camera time.",
+        "No 52-second shift is added to later GPS fixes, other chasers, radar, or video playback."
+      ]
+    }
+  ]
+}

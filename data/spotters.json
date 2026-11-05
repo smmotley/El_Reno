@@ -239,10 +239,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/135931319",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-bartlett",
@@ -388,10 +389,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/135931364",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-bowling",
@@ -586,10 +588,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/135989914",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-casey",
@@ -700,10 +703,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/143100889",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-deligny-asselin",
@@ -877,10 +881,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/142710257",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-engquist",
@@ -984,10 +989,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/137104179",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-farrar-demko",
@@ -1154,10 +1160,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/138558828",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-faubion",
@@ -1450,10 +1457,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/137104924",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-gribble-goltl",
@@ -1585,10 +1593,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/144785251",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-gwyn",
@@ -1748,10 +1757,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/141999133",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-hallen",
@@ -1932,10 +1942,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/203030095",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-hannon",
@@ -2515,7 +2526,7 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/136067567",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
       "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
@@ -2525,7 +2536,8 @@
           "end": "2013-05-31T23:17:00Z",
           "reason": "Source positions imply a 1.918 km movement in 19 seconds (about 226 mph). Preserve observations but do not interpolate across this unresolved interval."
         }
-      ]
+      ],
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-hendrickson",
@@ -2703,10 +2715,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/137108857",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-hines",
@@ -3027,10 +3040,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/203235413",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-holcomb",
@@ -3192,13 +3206,14 @@
       "videos": [
         "ben-holcomb-el-reno"
       ],
-      "surveyVideoUrl": "https://vimeo.com/141870617",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
       "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
       "identitySourceUrl": "https://el-reno-survey.net/participants/",
       "identityVerification": "The primary El Reno Survey participant list identifies Holcomb, Ben and links his own May 31, 2013 chase report and two YouTube publications.",
-      "youtubeAvailabilityNote": "The survey-linked El Reno YouTube publication is currently private. The second survey-linked YouTube publication is the later Tuttle tornado and is not substituted for El Reno."
+      "youtubeAvailabilityNote": "The survey-linked El Reno YouTube publication is currently private. The second survey-linked YouTube publication is the later Tuttle tornado and is not substituted for El Reno.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-lingl",
@@ -3400,10 +3415,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/144025746",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-marshall",
@@ -3570,10 +3586,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/143033121",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-mcmillan",
@@ -3817,10 +3834,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/137855469",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-nelson",
@@ -3903,10 +3921,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/139088465",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-pfister-kaser",
@@ -4367,10 +4386,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/137451877",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-potter",
@@ -4565,10 +4585,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/136067568",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-rhinehart",
@@ -4798,10 +4819,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/138561904",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-robinson",
@@ -5117,10 +5139,11 @@
       "videos": [
         "dan-robinson-dashcam"
       ],
-      "surveyVideoUrl": "https://vimeo.com/145291664",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-sampson",
@@ -5322,10 +5345,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/118782507",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-schyma",
@@ -5403,10 +5427,11 @@
       "videos": [
         "pecos-hank-el-reno"
       ],
-      "surveyVideoUrl": "https://vimeo.com/149356812",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-seimon",
@@ -5587,10 +5612,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/137400017",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-shaw",
@@ -5897,10 +5923,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/136902552",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-snyder",
@@ -6011,10 +6038,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/136067566",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-sullivan",
@@ -6190,10 +6218,11 @@
       "videos": [
         "sullivan-wright-escape"
       ],
-      "surveyVideoUrl": "https://vimeo.com/137629734",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-talbot",
@@ -6691,10 +6720,11 @@
       "videos": [
         "skip-talbot-chase"
       ],
-      "surveyVideoUrl": "https://vimeo.com/142010192",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-weingart",
@@ -6868,10 +6898,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/136902554",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-wilburn",
@@ -6975,10 +7006,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/142312526",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     },
     {
       "id": "survey-watts",
@@ -7040,10 +7072,11 @@
         }
       ],
       "videos": [],
-      "surveyVideoUrl": "https://vimeo.com/142332420",
+      "surveyVideoUrl": null,
       "interpolationLimitSeconds": 120,
       "positionUncertaintyMeters": null,
-      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading."
+      "note": "Survey camera locations; not a Spotter Network GPS feed. Uncertainty is not numerically supplied by the source. Camera direction is not vehicle heading.",
+      "surveyVideoAvailability": "Original survey footage unavailable; link removed at user request."
     }
   ]
 }
