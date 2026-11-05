@@ -12,7 +12,7 @@ Alternatively, with Node.js installed:
 npm start
 ```
 
-Open the localhost address in a browser. Opening `index.html` directly will not work because browsers restrict local data loading. The server listens only on this computer. No website has been deployed. The HTML, scripts, styles, `vendor`, `assets`, `GPS.json`, and `data` folders can later be served by a static host.
+Open the localhost address in a browser. Opening `index.html` directly will not work because browsers restrict local data loading. The development server listens only on this computer.
 
 Dark and light road maps are bundled locally and stay visible without internet or tile requests. Optional satellite imagery and Google Fonts need internet. All radar images, chase positions, road routes, tornado evidence, and film metadata are bundled locally. YouTube/Vimeo links open the original publications. The basemap and satellite imagery provide present-day geographic context, not May 2013 imagery.
 
